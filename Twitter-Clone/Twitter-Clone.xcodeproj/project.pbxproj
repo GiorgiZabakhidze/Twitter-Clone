@@ -11,6 +11,7 @@
 		CE16266D2A8643240080C802 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16266C2A8643240080C802 /* ContentView.swift */; };
 		CE16266F2A8643250080C802 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE16266E2A8643250080C802 /* Assets.xcassets */; };
 		CE1626732A8643250080C802 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1626722A8643250080C802 /* Preview Assets.xcassets */; };
+		CE1626882A86455D0080C802 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1626872A86455D0080C802 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		CE16266E2A8643250080C802 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE1626702A8643250080C802 /* Twitter_Clone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Twitter_Clone.entitlements; sourceTree = "<group>"; };
 		CE1626722A8643250080C802 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE1626872A86455D0080C802 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,11 @@
 		CE1626692A8643240080C802 /* Twitter-Clone */ = {
 			isa = PBXGroup;
 			children = (
+				CE16267D2A86448E0080C802 /* Extensions */,
+				CE16267C2A8644830080C802 /* Services */,
+				CE16267B2A8644780080C802 /* Model */,
+				CE16267A2A86445D0080C802 /* ViewModel */,
+				CE1626792A8644520080C802 /* View */,
 				CE16266A2A8643240080C802 /* Twitter_CloneApp.swift */,
 				CE16266C2A8643240080C802 /* ContentView.swift */,
 				CE16266E2A8643250080C802 /* Assets.xcassets */,
@@ -67,6 +74,114 @@
 				CE1626722A8643250080C802 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CE1626792A8644520080C802 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE1626862A86452C0080C802 /* Main */,
+				CE1626852A8645270080C802 /* Feed */,
+				CE1626842A86451F0080C802 /* Search */,
+				CE1626832A8645180080C802 /* Notifications */,
+				CE1626822A86450F0080C802 /* Messages */,
+				CE1626812A8644DF0080C802 /* Authentication */,
+				CE1626802A8644D90080C802 /* Items */,
+				CE16267F2A8644D20080C802 /* Post */,
+				CE16267E2A8644C10080C802 /* Profile */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE16267A2A86445D0080C802 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE16267B2A8644780080C802 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE16267C2A8644830080C802 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE16267D2A86448E0080C802 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE16267E2A8644C10080C802 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CE16267F2A8644D20080C802 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		CE1626802A8644D90080C802 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		CE1626812A8644DF0080C802 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		CE1626822A86450F0080C802 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		CE1626832A8645180080C802 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		CE1626842A86451F0080C802 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		CE1626852A8645270080C802 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		CE1626862A86452C0080C802 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CE1626872A86455D0080C802 /* Home.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE16266D2A8643240080C802 /* ContentView.swift in Sources */,
+				CE1626882A86455D0080C802 /* Home.swift in Sources */,
 				CE16266B2A8643240080C802 /* Twitter_CloneApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Twitter-Clone
 //
-//  Created by Macbook Pro on 11/8/23.
+//  Created by Giorgi Zabakhidze on 11/8/23.
 //
 
 import SwiftUI
