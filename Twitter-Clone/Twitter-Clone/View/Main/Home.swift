@@ -22,11 +22,12 @@ struct Home: View {
                         }
                         .tabItem({
                             if (selectedIndex == 0) {
-                                Image("twitter-home")
+                                Image("house")
+                                    
                                     .renderingMode(.template)
                                     .foregroundColor(Color("bg"))
                             }else {
-                                Image("twitter-home")
+                                Image("house")
                             }
                         })
                         .tag(0)
@@ -36,11 +37,11 @@ struct Home: View {
                         }
                         .tabItem({
                             if (selectedIndex != 1) {
-                                Image("twitter-search")
+                                Image("search")
                                     .renderingMode(.template)
                                     .foregroundColor(Color("bg"))
                             }else {
-                                Image("twitter-search")
+                                Image("search")
                             }
                         })
                         .tag(1)
@@ -50,11 +51,11 @@ struct Home: View {
                         }
                         .tabItem({
                             if (selectedIndex != 2) {
-                                Image("twitter-alert")
+                                Image("notification")
                                     .renderingMode(.template)
                                     .foregroundColor(Color("bg"))
                             }else {
-                                Image("twitter-alert")
+                                Image("notification")
                             }
                         })
                         .tag(2)
@@ -64,11 +65,11 @@ struct Home: View {
                         }
                         .tabItem({
                             if (selectedIndex != 3) {
-                                Image("twitter-message")
+                                Image("message")
                                     .renderingMode(.template)
                                     .foregroundColor(Color("bg"))
                             }else {
-                                Image("twitter-message")
+                                Image("message")
                             }
                         })
                         .tag(3)

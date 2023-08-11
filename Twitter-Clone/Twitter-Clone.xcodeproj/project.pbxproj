@@ -18,6 +18,7 @@
 		CE1626902A864E800080C802 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16268F2A864E800080C802 /* MessagesView.swift */; };
 		CE1626922A865E430080C802 /* CreateTweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1626912A865E430080C802 /* CreateTweetView.swift */; };
 		CE1626962A86666F0080C802 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1626952A86666F0080C802 /* MultilineTextField.swift */; };
+		CE1626982A86A4400080C802 /* TweetCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1626972A86A4400080C802 /* TweetCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CE16268F2A864E800080C802 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		CE1626912A865E430080C802 /* CreateTweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTweetView.swift; sourceTree = "<group>"; };
 		CE1626952A86666F0080C802 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
+		CE1626972A86A4400080C802 /* TweetCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1626892A864E550080C802 /* Feed.swift */,
+				CE1626972A86A4400080C802 /* TweetCellView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1626982A86A4400080C802 /* TweetCellView.swift in Sources */,
 				CE1626922A865E430080C802 /* CreateTweetView.swift in Sources */,
 				CE16268C2A864E630080C802 /* SearchView.swift in Sources */,
 				CE16266D2A8643240080C802 /* ContentView.swift in Sources */,
