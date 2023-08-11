@@ -12,6 +12,10 @@
 		CE16266F2A8643250080C802 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE16266E2A8643250080C802 /* Assets.xcassets */; };
 		CE1626732A8643250080C802 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1626722A8643250080C802 /* Preview Assets.xcassets */; };
 		CE1626882A86455D0080C802 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1626872A86455D0080C802 /* Home.swift */; };
+		CE16268A2A864E560080C802 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1626892A864E550080C802 /* Feed.swift */; };
+		CE16268C2A864E630080C802 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16268B2A864E630080C802 /* SearchView.swift */; };
+		CE16268E2A864E750080C802 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16268D2A864E750080C802 /* NotificationsView.swift */; };
+		CE1626902A864E800080C802 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16268F2A864E800080C802 /* MessagesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		CE1626702A8643250080C802 /* Twitter_Clone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Twitter_Clone.entitlements; sourceTree = "<group>"; };
 		CE1626722A8643250080C802 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE1626872A86455D0080C802 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		CE1626892A864E550080C802 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		CE16268B2A864E630080C802 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		CE16268D2A864E750080C802 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		CE16268F2A864E800080C802 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +159,7 @@
 		CE1626822A86450F0080C802 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				CE16268F2A864E800080C802 /* MessagesView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 		CE1626832A8645180080C802 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				CE16268D2A864E750080C802 /* NotificationsView.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -165,6 +175,7 @@
 		CE1626842A86451F0080C802 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				CE16268B2A864E630080C802 /* SearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 		CE1626852A8645270080C802 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				CE1626892A864E550080C802 /* Feed.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -254,9 +266,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE16268C2A864E630080C802 /* SearchView.swift in Sources */,
 				CE16266D2A8643240080C802 /* ContentView.swift in Sources */,
+				CE16268A2A864E560080C802 /* Feed.swift in Sources */,
 				CE1626882A86455D0080C802 /* Home.swift in Sources */,
+				CE1626902A864E800080C802 /* MessagesView.swift in Sources */,
 				CE16266B2A8643240080C802 /* Twitter_CloneApp.swift in Sources */,
+				CE16268E2A864E750080C802 /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
