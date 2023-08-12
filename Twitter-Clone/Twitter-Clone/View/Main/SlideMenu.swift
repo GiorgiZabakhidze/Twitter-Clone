@@ -12,6 +12,10 @@ struct SlideMenu: View {
     
     var menuButtons = ["Profile", "Lists", "Topics", "Bookmarks", "Moments"]
     
+    var edges = UIApplication.shared.windows.first?.safeAreaInsets
+    
+    var width = UIScreen.main.bounds.width
+    
     var body: some View {
         VStack {
             HStack(spacing: 0){
@@ -30,8 +34,8 @@ struct SlideMenu: View {
                                 .foregroundColor(.gray)
                             
                             HStack(spacing: 20) {
-                                FollowView(count: 8, title: "Followers")
-                                FollowView(count: 16, title: "Folloing")
+                                FollowView(count: 999, title: "Followers")
+                                FollowView(count: 16, title: "Following")
                             }.padding(.top, 10)
                             Divider()
                                 .padding(.top, 10)
@@ -86,9 +90,65 @@ struct SlideMenu: View {
                         
                         Divider()
                             .padding(.bottom)
+                        
+                        HStack {
+                            Button {
+                                
+                            } label: {
+                                Image("help")
+                                    .renderingMode(.template)
+                                    .scaledToFit()
+                                    .frame(width: 26, height: 26)
+                                    .foregroundColor(Color("bg"))
+                            }
+                            Spacer(minLength: 0)
+                            
+                            Button {
+                                
+                            } label: {
+                                Image("Barcode")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .frame(width: 27, height: 27)
+                                    .foregroundColor(Color("bg"))
+                            }
+
+
+                        }
                     }
+                    .opacity(show ? 1 : 0)
+                    .frame(height: show ? nil : 0)
                     
+                    VStack(alignment: .leading) {
+                        Button {
+                            
+                        } label: {
+                            Text("Create a New Account")
+                                .foregroundColor(Color("bg"))
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Add an Existing Account")
+                                .foregroundColor(Color("bg"))
+                        }
+                        
+                        Spacer(minLength: 0)
+
+                    }
+                    .opacity(show ? 0 : 1)
+                    .frame(height: show ? 0 : nil)
                 }
+                .padding(.horizontal, 12)
+                .padding(.top, edges?.top == 0 ? 15 : edges?.top)
+                .padding(.bottom, edges?.bottom == 0 ? 15 : edges?.bottom)
+                .frame(width: width - 90)
+                .background(Color.white)
+                .ignoresSafeArea(.all, edges: .vertical)
+                
+                Spacer(minLength: 0)
+                
             }
         }
     }
