@@ -16,7 +16,7 @@ struct SearchView: View {
             SearchBar(text: $text, isEditing: $isEditing)
                 .padding(.horizontal)
             
-            if (!isEditing) {
+            if (!isEditing || text == "") {
                 List(0..<9) { i in
                     SearchCell(tag: "Heloua", tweets: String(i))
                 }.listStyle(PlainListStyle())
