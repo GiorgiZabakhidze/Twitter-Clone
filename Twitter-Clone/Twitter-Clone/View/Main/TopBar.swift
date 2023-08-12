@@ -20,12 +20,12 @@ struct TopBar: View {
                         .font(.system(size: 24))
                         .foregroundColor(Color("bg"))
                 }
-                Spacer(minLength: 0)
-
+                
                 Image("twitter")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 20, height: 20)
+                    .padding(.leading, width/3.1)
                 Spacer(minLength: 0)
                 
             }.padding()
