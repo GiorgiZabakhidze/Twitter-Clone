@@ -40,6 +40,7 @@ struct SearchBar: View {
                     .animation(.default)
             }
         }
+        .padding(.top, 4)
         .onTapGesture {
             isEditing = true
         }
