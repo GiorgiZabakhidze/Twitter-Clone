@@ -10,6 +10,8 @@ import SwiftUI
 struct SlideMenu: View {
     @State var show = false
     
+    var menuButtons = ["Profile", "Lists", "Topics", "Bookmarks", "Moments"]
+    
     var body: some View {
         VStack {
             HStack(spacing: 0){
@@ -47,6 +49,45 @@ struct SlideMenu: View {
                                     .foregroundColor(Color("bg"))
                         }
                     }
+                    
+                    VStack(alignment: .leading) {
+                        ForEach(menuButtons, id:\.self) { item in
+                            MenuButton(title: item)
+                        }
+                        
+                        Divider()
+                            .padding(.top)
+                        
+                        Button {
+                            
+                        } label: {
+                            MenuButton(title: "Twitter Ads")
+                        }
+                        
+                        Divider()
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Setings and Privacy")
+                                .foregroundColor(.black)
+                            
+                        }.padding(.top, 20)
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Help Centre")
+                                .foregroundColor(.black)
+                        }
+
+                        
+                        Spacer(minLength: 0)
+                        
+                        Divider()
+                            .padding(.bottom)
+                    }
+                    
                 }
             }
         }

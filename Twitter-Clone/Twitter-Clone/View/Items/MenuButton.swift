@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct MenuButton: View {
+    var title: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct MenuButton_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuButton()
+        HStack(spacing: 15) {
+            Image(title)
+                .resizable()
+                .renderingMode(.template)
+                .frame(width: 24, height: 24)
+                .foregroundColor(.gray)
+            Text(title)
+                .foregroundColor(.black)
+            Spacer(minLength: 0)
+            
+        }.padding(.vertical, 12)
     }
 }
