@@ -27,6 +27,9 @@
 		CEB772DF2A87C5BF00A2C8F4 /* MessagesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772DE2A87C5BE00A2C8F4 /* MessagesCellView.swift */; };
 		CEB772E12A87DD5E00A2C8F4 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772E02A87DD5E00A2C8F4 /* TopBar.swift */; };
 		CEB772E32A87E15400A2C8F4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772E22A87E15400A2C8F4 /* MainView.swift */; };
+		CEB772E52A87E6BF00A2C8F4 /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772E42A87E6BF00A2C8F4 /* SlideMenu.swift */; };
+		CEB772E72A87E89B00A2C8F4 /* FollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772E62A87E89B00A2C8F4 /* FollowView.swift */; };
+		CEB772E92A87ECDE00A2C8F4 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772E82A87ECDE00A2C8F4 /* MenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		CEB772DE2A87C5BE00A2C8F4 /* MessagesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCellView.swift; sourceTree = "<group>"; };
 		CEB772E02A87DD5E00A2C8F4 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		CEB772E22A87E15400A2C8F4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		CEB772E42A87E6BF00A2C8F4 /* SlideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenu.swift; sourceTree = "<group>"; };
+		CEB772E62A87E89B00A2C8F4 /* FollowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowView.swift; sourceTree = "<group>"; };
+		CEB772E82A87ECDE00A2C8F4 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,8 @@
 			children = (
 				CE1626952A86666F0080C802 /* MultilineTextField.swift */,
 				CE16269B2A86BF7A0080C802 /* SearchBar.swift */,
+				CEB772E62A87E89B00A2C8F4 /* FollowView.swift */,
+				CEB772E82A87ECDE00A2C8F4 /* MenuButton.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 				CE1626872A86455D0080C802 /* Home.swift */,
 				CEB772E02A87DD5E00A2C8F4 /* TopBar.swift */,
 				CEB772E22A87E15400A2C8F4 /* MainView.swift */,
+				CEB772E42A87E6BF00A2C8F4 /* SlideMenu.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -301,9 +310,11 @@
 			files = (
 				CEB772D92A87A43D00A2C8F4 /* searchUserCell.swift in Sources */,
 				CEB772E32A87E15400A2C8F4 /* MainView.swift in Sources */,
+				CEB772E92A87ECDE00A2C8F4 /* MenuButton.swift in Sources */,
 				CE1626982A86A4400080C802 /* TweetCellView.swift in Sources */,
 				CE16269A2A86BDD00080C802 /* SearchCell.swift in Sources */,
 				CE1626922A865E430080C802 /* CreateTweetView.swift in Sources */,
+				CEB772E52A87E6BF00A2C8F4 /* SlideMenu.swift in Sources */,
 				CEB772DF2A87C5BF00A2C8F4 /* MessagesCellView.swift in Sources */,
 				CE16268C2A864E630080C802 /* SearchView.swift in Sources */,
 				CE16266D2A8643240080C802 /* ContentView.swift in Sources */,
@@ -311,6 +322,7 @@
 				CE16268A2A864E560080C802 /* Feed.swift in Sources */,
 				CEB772E12A87DD5E00A2C8F4 /* TopBar.swift in Sources */,
 				CE1626882A86455D0080C802 /* Home.swift in Sources */,
+				CEB772E72A87E89B00A2C8F4 /* FollowView.swift in Sources */,
 				CE1626902A864E800080C802 /* MessagesView.swift in Sources */,
 				CE1626962A86666F0080C802 /* MultilineTextField.swift in Sources */,
 				CE16266B2A8643240080C802 /* Twitter_CloneApp.swift in Sources */,
