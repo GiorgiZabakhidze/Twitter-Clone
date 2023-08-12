@@ -16,7 +16,7 @@ struct SearchCell: View {
             Text(tag)
                 .fontWeight(.heavy)
             Text(tweets + " Tweets")
-                .fontWeight(.light )
+                .fontWeight(.light)
         }
     }
 }

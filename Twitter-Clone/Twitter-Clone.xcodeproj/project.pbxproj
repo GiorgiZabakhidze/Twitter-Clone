@@ -23,6 +23,8 @@
 		CE16269C2A86BF7A0080C802 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16269B2A86BF7A0080C802 /* SearchBar.swift */; };
 		CEB772D92A87A43D00A2C8F4 /* searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772D82A87A43D00A2C8F4 /* searchUserCell.swift */; };
 		CEB772DB2A87A83400A2C8F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772DA2A87A83400A2C8F4 /* Extensions.swift */; };
+		CEB772DD2A87AE9D00A2C8F4 /* NotificationsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772DC2A87AE9D00A2C8F4 /* NotificationsCellView.swift */; };
+		CEB772DF2A87C5BF00A2C8F4 /* MessagesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772DE2A87C5BE00A2C8F4 /* MessagesCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		CE16269B2A86BF7A0080C802 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CEB772D82A87A43D00A2C8F4 /* searchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserCell.swift; sourceTree = "<group>"; };
 		CEB772DA2A87A83400A2C8F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CEB772DC2A87AE9D00A2C8F4 /* NotificationsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCellView.swift; sourceTree = "<group>"; };
+		CEB772DE2A87C5BE00A2C8F4 /* MessagesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				CE16268F2A864E800080C802 /* MessagesView.swift */,
+				CEB772DE2A87C5BE00A2C8F4 /* MessagesCellView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				CE16268D2A864E750080C802 /* NotificationsView.swift */,
+				CEB772DC2A87AE9D00A2C8F4 /* NotificationsCellView.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				CE1626982A86A4400080C802 /* TweetCellView.swift in Sources */,
 				CE16269A2A86BDD00080C802 /* SearchCell.swift in Sources */,
 				CE1626922A865E430080C802 /* CreateTweetView.swift in Sources */,
+				CEB772DF2A87C5BF00A2C8F4 /* MessagesCellView.swift in Sources */,
 				CE16268C2A864E630080C802 /* SearchView.swift in Sources */,
 				CE16266D2A8643240080C802 /* ContentView.swift in Sources */,
 				CE16269C2A86BF7A0080C802 /* SearchBar.swift in Sources */,
@@ -300,6 +307,7 @@
 				CE1626962A86666F0080C802 /* MultilineTextField.swift in Sources */,
 				CE16266B2A8643240080C802 /* Twitter_CloneApp.swift in Sources */,
 				CE16268E2A864E750080C802 /* NotificationsView.swift in Sources */,
+				CEB772DD2A87AE9D00A2C8F4 /* NotificationsCellView.swift in Sources */,
 				CEB772DB2A87A83400A2C8F4 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

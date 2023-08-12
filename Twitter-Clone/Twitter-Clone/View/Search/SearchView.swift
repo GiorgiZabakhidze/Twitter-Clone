@@ -12,18 +12,18 @@ struct SearchView: View {
     @State var isEditing = false
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             SearchBar(text: $text, isEditing: $isEditing)
                 .padding(.horizontal)
             
-            if  (!isEditing) {
+            if (!isEditing) {
                 List(0..<9) { i in
                     SearchCell(tag: "Heloua", tweets: String(i))
-                }
+                }.listStyle(PlainListStyle())
             }else {
-                List(0..<9) { _ in
+                List(0..<5) { _ in
                     searchUserCell()
-                }
+                }.listStyle(PlainListStyle())
             }
         }
     }
