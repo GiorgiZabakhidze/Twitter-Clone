@@ -10,6 +10,9 @@ import SwiftUI
 struct UserProfile: View {
     @State var offset: CGFloat = 0
     @State var titleOffset: CGFloat = 0
+    @State var currentTab = "Tweets"
+    @State var tabBarOffset: CGFloat = 0
+    @Namespace var animation
     
     var body: some View {
         ScrollView {
@@ -101,7 +104,38 @@ struct UserProfile: View {
                             Text("Following")
                                 .foregroundColor(.gray)
                         }
+                    }.overlay(GeometryReader{ proxy -> Color in
+                        let minY = proxy.frame(in: .global).minY
+                        DispatchQueue.main.async {
+                            self.titleOffset = minY
+                        }
+                        return Color.clear
+                    }.frame(width: 0, height: 0), alignment: .top)
+                    
+                    VStack(spacing: 0) {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 0) {
+                                TabButton(title: "Tweets", currentTab: $currentTab, animation: animation)
+                                TabButton(title: "Tweets & Likes", currentTab: $currentTab, animation: animation)
+                                TabButton(title: "Media", currentTab: $currentTab, animation: animation)
+                                TabButton(title: "Likes", currentTab: $currentTab, animation: animation)
+                            }
+                        }
+                        Divider()
                     }
+                    .padding(.top, 30)
+                    .background(Color.white)
+                    .offset(y: tabBarOffset < 90 ? -tabBarOffset + 90 : 0)
+                    .overlay(GeometryReader { proxy -> Color in
+                        let minY = proxy.frame(in: .global).minY
+                        
+                        DispatchQueue.main.async {
+                            self.tabBarOffset = minY
+                        }
+                        
+                        return Color.clear
+                    }.frame(width: 0, height: 0), alignment: .top)
+                    .zIndex(1)
                 }
             }
         }
