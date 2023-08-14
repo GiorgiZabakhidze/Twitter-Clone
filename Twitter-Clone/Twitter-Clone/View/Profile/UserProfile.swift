@@ -15,7 +15,7 @@ struct UserProfile: View {
     @Namespace var animation
     
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 15) {
                 GeometryReader { proxy -> AnyView in
                     let minY = proxy.frame(in: .global).minY
@@ -61,7 +61,7 @@ struct UserProfile: View {
                             .frame(width: 75, height: 75)
                             .clipShape(Circle())
                             .padding(8)
-                            .background(Color.white)
+                            .background(Color.white.clipShape(Circle()))
                             .offset(y: offset < 0 ? getOffset() - 20 : -20)
                             .scaleEffect(getScale())
                         
@@ -136,9 +136,26 @@ struct UserProfile: View {
                         return Color.clear
                     }.frame(width: 0, height: 0), alignment: .top)
                     .zIndex(1)
+                    
+                    VStack(spacing: 18) {
+                        
+                        TweetCellView(tweet: sampleText, tweetImage: "post")
+                        
+                        Divider()
+                
+                        ForEach(1...20, id: \.self) { _ in
+                            TweetCellView(tweet: sampleText)
+                            Divider()
+                        }
+                    }
+                    .padding(.top)
+                    .zIndex(0)
                 }
+                .padding(.horizontal, 10)
+                .zIndex(-offset > 80 ? 0 : 1)
             }
         }
+        .ignoresSafeArea(.all, edges: .top)
     }
     
     func blurViewOpacity() -> Double {
