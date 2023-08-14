@@ -26,7 +26,7 @@ struct UserProfile: View {
                             Image("banner")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: UIScreen.main.bounds.width, height: minY > 0 ? 0 : 180 + minY)
+                                .frame(width: UIScreen.main.bounds.width, height: minY > 0 ? 180 + minY : 180)
                                 .cornerRadius(0)
                             BlurView()
                                 .opacity(blurViewOpacity())
@@ -49,6 +49,60 @@ struct UserProfile: View {
                 }
                 .frame(height: 180)
                 .zIndex(1)
+                
+                VStack {
+                    HStack {
+                        Image("profile_pic")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 75, height: 75)
+                            .clipShape(Circle())
+                            .padding(8)
+                            .background(Color.white)
+                            .offset(y: offset < 0 ? getOffset() - 20 : -20)
+                            .scaleEffect(getScale())
+                        
+                        Spacer()
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Edit Profile")
+                                .foregroundColor(.blue)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal)
+                                .background(Capsule()
+                                    .stroke(Color.blue, lineWidth: 1.5))
+                        }
+
+                    }
+                    .padding(.top, -25)
+                    .padding(.bottom, -10)
+                    
+                    VStack(alignment: .leading, spacing:  8) {
+                        Text("zabaxa")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
+                        Text("@Giorgi_Zabakhidze")
+                            .foregroundColor(.gray)
+                        Text("Let everything go, see what stays back. That’s yours.")
+                        
+                        HStack(spacing: 5) {
+                            Text("8")
+                                .foregroundColor(.primary)
+                                .fontWeight(.semibold)
+                            Text("Follower")
+                                .foregroundColor(.gray)
+                            Text("16")
+                                .foregroundColor(.primary)
+                                .fontWeight(.semibold)
+                                .padding(.leading, 10)
+                            Text("Following")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
             }
         }
     }
@@ -62,6 +116,18 @@ struct UserProfile: View {
         let progress = 20 / titleOffset
         let offset = 60 * (progress > 0 && progress <= 1 ? progress : 1)
         return offset
+    }
+    
+    func getOffset() -> CGFloat {
+        let progress = -offset / 80 * 20
+        return progress <= 20 ? progress : 20
+    }
+    
+    func getScale() -> CGFloat {
+        let progress = -offset/80
+        let scale = 1.8 - (progress < 1.0 ? progress : 1)
+        
+        return scale < 1 ? scale : 1
     }
 }
 
