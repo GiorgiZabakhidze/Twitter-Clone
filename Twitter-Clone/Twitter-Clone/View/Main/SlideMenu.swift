@@ -56,7 +56,11 @@ struct SlideMenu: View {
                     
                     VStack(alignment: .leading) {
                         ForEach(menuButtons, id:\.self) { item in
-                            MenuButton(title: item)
+                            Button {
+                                
+                            } label: {
+                                MenuButton(title: item)
+                            }
                         }
                         
                         Divider()

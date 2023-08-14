@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Feed: View {
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: 18) {
                 
                 TweetCellView(tweet: sampleText, tweetImage: "post")

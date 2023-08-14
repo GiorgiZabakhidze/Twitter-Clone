@@ -38,8 +38,14 @@ struct MainView: View {
                                 x = -width + val.translation.width
                             }
                         }else {
-                            if (x != -width) {
-                                x = val.translation.width
+                            if (x > -width + 0.1) {
+                                if(abs(abs(x) - abs(val.translation.width)) < UIScreen.main.bounds.width - 150) {
+                                    x = val.translation.width
+                                }else {
+                                    x = -width
+                                }
+                            }else {
+                                x = -width
                             }
                         }
                     }
