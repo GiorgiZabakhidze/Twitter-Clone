@@ -92,7 +92,7 @@ struct UserProfile: View {
                         Text("Let everything go, see what stays back. That’s yours.")
                         
                         HStack(spacing: 5) {
-                            Text("8")
+                            Text("999")
                                 .foregroundColor(.primary)
                                 .fontWeight(.semibold)
                             Text("Follower")
