@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TopBar: View {
-    @Binding var x: CGFloat
+    @Binding var x1: CGFloat
     @State var width = UIScreen.main.bounds.width
     
     var body: some View {
@@ -16,7 +16,7 @@ struct TopBar: View {
             HStack {
                 Button {
                     withAnimation {
-                        x = 0
+                        x1 = 0
                     }
                 } label: {
                     Image(systemName: "line.horizontal.3")
@@ -39,7 +39,9 @@ struct TopBar: View {
                 .foregroundColor(.gray)
                 .opacity(0.3)
             
-        }.background(.white)
+        }
+        .background(.white)
+        .zIndex(1)
     }
 }
 

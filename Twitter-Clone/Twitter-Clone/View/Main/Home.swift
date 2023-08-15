@@ -13,10 +13,11 @@ struct Home: View {
     @State var text = ""
     
     @State var x = -UIScreen.main.bounds.width
-    @State var x1 = -UIScreen.main.bounds.width + 90
+    @Binding var x1: CGFloat
     
     @State var width = UIScreen.main.bounds.width
     @State var width1 = UIScreen.main.bounds.width - 90
+    @State var beenThere: Bool = false
     
     var body: some View {
         VStack {
@@ -41,31 +42,58 @@ struct Home: View {
                         .tag(0)
                         .gesture(DragGesture().onChanged({ val in
                             withAnimation {
-                                if (val.translation.width < 0) {
-                                    x = -width + val.translation.width
+                                if (val.translation.width < 0 && !beenThere) {
+                                    if (x1 > -width1) {
+                                        x1 = val.translation.width
+                                    }else {
+                                        x = -width + val.translation.width
+                                    }
+                                }else {
+                                    self.beenThere = true
+                                    if (val.translation.width > 0) {
+                                        if(x1 < 0) {
+                                            x1 = -width1 + val.translation.width
+                                        }
+                                    }else {
+                                        if (x1 > -width1 + 0.1) {
+                                            if(abs(abs(x1) - abs(val.translation.width)) < UIScreen.main.bounds.width - 150) {
+                                                x1 = val.translation.width
+                                            }else {
+                                                x1 = -width1
+                                            }
+                                        }else {
+                                            x1 = -width1
+                                        }
+                                    }
                                 }
                             }
                         }).onEnded({ val in
                             withAnimation {
+                                self.beenThere = false
                                 if(val.translation.width < 0) {
                                     if(val.translation.width < -width/3) {
                                         x = -2 * width
                                     }else {
                                         x = -width
                                     }
+                                }else {
+                                    if (val.translation.width > 0) {
+                                        if (-x1 < 2 * width1/3) {
+                                            x1 = 0
+                                        }else {
+                                            x1 = -width1
+                                        }
+                                    }else {
+                                        if (-x1 > width1/3) {
+                                            x1 = -width1
+                                        }else {
+                                            x1 = 0
+                                        }
+                                    }
                                 }
                             }
                         }))
-                    SlideMenu()
-                        .shadow(color: Color.black.opacity(x1 != 0 ? 0.1 : 0), radius: 5, x: 5, y: 0)
-                        .offset(x: x1)
-                        .background(Color.black.opacity(x1 != -width1 ? 0.5 : 0))
-                        .ignoresSafeArea(.all, edges: .vertical)
-                        .onTapGesture {
-                            withAnimation {
-                                x1 = -width1
-                            }
-                        }
+                        .zIndex(0)
                     SearchView()
                         .onTapGesture {
                             self.selectedIndex = 1
@@ -107,6 +135,7 @@ struct Home: View {
                                 }
                             }
                         }))
+                        .zIndex(0)
                     NotificationsView()
                         .onTapGesture {
                             self.selectedIndex = 2
@@ -148,6 +177,7 @@ struct Home: View {
                                 }
                             }
                         }))
+                        .zIndex(0)
                     MessagesView()
                         .onTapGesture {
                             self.selectedIndex = 3
@@ -185,6 +215,7 @@ struct Home: View {
                                 }
                             }
                         }))
+                        .zIndex(0)
                 //}
                 VStack {
                     Spacer()
@@ -210,12 +241,7 @@ struct Home: View {
             .sheet(isPresented: $showCreateTweet) {
                 CreateTweetView(text: text)
             }
-        }
+        }.padding(.top, 60)
     }
 }
 
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
-    }
-}
