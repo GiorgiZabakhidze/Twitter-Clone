@@ -28,16 +28,6 @@ struct Home: View {
                             self.selectedIndex = 0
                         }
                         .navigationBarHidden(true)
-                        .tabItem({
-                            if (selectedIndex == 0) {
-                                Image("house")
-                                    
-                                    .renderingMode(.template)
-                                    .foregroundColor(Color("bg"))
-                            }else {
-                                Image("house")
-                            }
-                        })
                         .offset(x: x + width)
                         .tag(0)
                         .gesture(DragGesture().onChanged({ val in
@@ -99,15 +89,6 @@ struct Home: View {
                             self.selectedIndex = 1
                         }
                         .navigationBarHidden(true)
-                        .tabItem({
-                            if (selectedIndex != 1) {
-                                Image("search")
-                                    .renderingMode(.template)
-                                    .foregroundColor(Color("bg"))
-                            }else {
-                                Image("search")
-                            }
-                        })
                         .offset(x: x + 2 * width)
                         .tag(1)
                         .gesture(DragGesture().onChanged({ val in
@@ -141,15 +122,6 @@ struct Home: View {
                             self.selectedIndex = 2
                         }
                         .navigationBarHidden(true)
-                        .tabItem({
-                            if (selectedIndex != 2) {
-                                Image("notification")
-                                    .renderingMode(.template)
-                                    .foregroundColor(Color("bg"))
-                            }else {
-                                Image("notification")
-                            }
-                        })
                         .offset(x: x + 3 *  width)
                         .tag(2)
                         .gesture(DragGesture().onChanged({ val in
@@ -183,15 +155,6 @@ struct Home: View {
                             self.selectedIndex = 3
                         }
                         .navigationBarHidden(true)
-                        .tabItem({
-                            if (selectedIndex != 3) {
-                                Image("message")
-                                    .renderingMode(.template)
-                                    .foregroundColor(Color("bg"))
-                            }else {
-                                Image("message")
-                            }
-                        })
                         .offset(x: x + 4 * width)
                         .tag(3)
                         .gesture(DragGesture().onChanged({ val in
@@ -216,32 +179,35 @@ struct Home: View {
                             }
                         }))
                         .zIndex(0)
-                //}
-                VStack {
-                    Spacer()
-                    
-                    HStack {
+                    //}
+                    VStack {
                         Spacer()
                         
-                        Button {
-                            self.showCreateTweet.toggle()
-                        } label: {
-                            Image("twitter-newtweet")
-                                .renderingMode(.template)
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .padding()
-                                .background(Color("bg"))
-                                .foregroundColor(.white)
-                                .clipShape(Circle())
-                        }
-                    }.padding()
-                }.padding(.bottom, 65)
-            }
-            .sheet(isPresented: $showCreateTweet) {
-                CreateTweetView(text: text)
-            }
-        }.padding(.top, 60)
+                        HStack {
+                            Spacer()
+                            
+                            Button {
+                                self.showCreateTweet.toggle()
+                            } label: {
+                                Image("twitter-newtweet")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding()
+                                    .background(Color("bg"))
+                                    .foregroundColor(.white)
+                                    .clipShape(Circle())
+                            }
+                        }.padding()
+                    }.padding(.bottom, 65)
+//                }
+                .sheet(isPresented: $showCreateTweet) {
+                    CreateTweetView(text: text)
+                }
+            }.padding(.top, 60)
+            
+            CustomTabView(selectedIndex: $selectedIndex, x: $x)
+        }
     }
 }
 
