@@ -73,7 +73,6 @@ struct CustomTabView: View {
                     Image("message")
                 }
             }
-
         }
     }
 }

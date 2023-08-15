@@ -22,7 +22,7 @@ struct Home: View {
     @State var minDis: CGFloat = 20
     
     var body: some View {
-        VStack {
+        VStack() {
             ZStack {
                 Feed()
                     .navigationBarHidden(true)
@@ -93,6 +93,7 @@ struct Home: View {
                     .offset(x: x + 2 * width)
                     .tag(1)
                     .gesture(DragGesture().onChanged({ val in
+                        UIApplication.shared.endEditing()
                         withAnimation {
                             if (val.translation.width < 0) {
                                 x = -2 * width + val.translation.width
@@ -206,7 +207,9 @@ struct Home: View {
             }.padding(.top, 60)
             
             CustomTabView(selectedIndex: $selectedIndex, x: $x)
+                
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 
