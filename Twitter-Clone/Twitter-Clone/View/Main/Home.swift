@@ -160,7 +160,7 @@ struct Home: View {
                     .gesture(DragGesture().onChanged({ val in
                         withAnimation {
                             if (val.translation.width < 0) {
-                                x = -4 * width + val.translation.width / 4
+                                x = -4 * width + val.translation.width / 20
                             }else {
                                 x = -4 * width + val.translation.width
                             }
