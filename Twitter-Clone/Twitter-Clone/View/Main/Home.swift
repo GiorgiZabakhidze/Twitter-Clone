@@ -164,6 +164,27 @@ struct Home: View {
                         })
                         .offset(x: x + 4 * width)
                         .tag(3)
+                        .gesture(DragGesture().onChanged({ val in
+                            withAnimation {
+                                if (val.translation.width < 0) {
+                                    x = -4 * width + val.translation.width / 4
+                                }else {
+                                    x = -4 * width + val.translation.width
+                                }
+                            }
+                        }).onEnded({ val in
+                            withAnimation {
+                                if(val.translation.width < 0) {
+                                    x = -4 * width
+                                }else {
+                                    if (val.translation.width > width/3) {
+                                        x = -3 * width
+                                    }else {
+                                        x = -4 * width
+                                    }
+                                }
+                            }
+                        }))
                 //}
                 VStack {
                     Spacer()
