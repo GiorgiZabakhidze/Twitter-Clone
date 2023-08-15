@@ -15,7 +15,7 @@ struct LogInView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        if (!emailDone && !email.contains("@")) {
+        if (!emailDone) {
             VStack {
                 VStack {
                     ZStack {
@@ -109,12 +109,12 @@ struct LogInView: View {
                 Spacer(minLength: 0)
                 
                 VStack {
-                    Button {
-                        self.emailDone = true
+                    NavigationLink {
+                        MainView()
+                            .navigationBarHidden(true)
                     } label: {
-                        NavigationLink {
-                            MainView()
-                                .navigationBarHidden(true)
+                        Button {
+                            self.emailDone = true
                         } label: {
                             Capsule()
                                 .frame(width: 360, height: 40, alignment: .center)
@@ -123,9 +123,8 @@ struct LogInView: View {
                                     Text("Log in")
                                         .foregroundColor(.white)
                                 }
+                            }
                         }
-
-                    }
                     .padding(.bottom, 4)
                     
                     Text("Forgot Password?")
