@@ -10,11 +10,15 @@ import SwiftUI
 struct CustomTabView: View {
     @Binding var selectedIndex: Int
     @Binding var x: CGFloat
+    @State var width = UIScreen.main.bounds.width
     
     var body: some View {
         HStack(spacing: 60) {
             Button {
                 selectedIndex = 0
+                withAnimation {
+                    x = -width
+                }
             } label: {
                 if (selectedIndex == 0) {
                     Image("house")
@@ -27,6 +31,9 @@ struct CustomTabView: View {
             
             Button {
                 selectedIndex = 1
+                withAnimation {
+                    x = -2 * width
+                }
             } label: {
                 if (selectedIndex == 1) {
                     Image("search")
@@ -39,6 +46,9 @@ struct CustomTabView: View {
             
             Button {
                 selectedIndex = 2
+                withAnimation {
+                    x = -3 * width
+                }
             } label: {
                 if (selectedIndex == 2) {
                     Image("notification")
@@ -51,6 +61,9 @@ struct CustomTabView: View {
             
             Button {
                 selectedIndex = 3
+                withAnimation {
+                    x = -4 * width
+                }
             } label: {
                 if (selectedIndex == 3) {
                     Image("message")
