@@ -92,16 +92,22 @@ struct WelcomeView: View {
                             .background(.white)
                     }
                     
-                    RoundedRectangle(cornerRadius: 36)
-                        .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
-                        .frame(width: 320, height: 60, alignment: .center)
-                        .overlay(
-                            Text("Create Account")
-                                .fontWeight(.bold)
-                                .font(.title3)
-                                .foregroundColor(.white)
-                                .padding()
-                        )
+                    NavigationLink {
+                        RegisterView()
+                            .navigationBarHidden(true)
+                    } label: {
+                        RoundedRectangle(cornerRadius: 36)
+                            .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
+                            .frame(width: 320, height: 60, alignment: .center)
+                            .overlay(
+                                Text("Create Account")
+                                    .fontWeight(.bold)
+                                    .font(.title3)
+                                    .foregroundColor(.white)
+                                    .padding()
+                            )
+                    }
+
                     
                 }.padding()
                 
@@ -128,8 +134,14 @@ struct WelcomeView: View {
                     
                     HStack(spacing: 2) {
                         Text("Have an Account Already? ")
-                        Text("Log In")
-                            .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
+                        NavigationLink {
+                            LogInView()
+                                .navigationBarHidden(true)
+                        } label: {
+                            Text("Log In")
+                                .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
+                        }
+
                     }
                 }
                 
