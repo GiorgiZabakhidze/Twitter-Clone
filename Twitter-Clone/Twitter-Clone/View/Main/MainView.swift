@@ -36,6 +36,8 @@ struct MainView: View {
                                     }else {
                                         x1 = -width1
                                     }
+                                }else {
+                                    
                                 }
                             }
                         }).onEnded({ val in

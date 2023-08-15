@@ -150,6 +150,7 @@ struct SlideMenu: View {
                 .frame(width: width - 90)
                 .background(Color.white)
                 .ignoresSafeArea(.all, edges: .vertical)
+                .ignoresSafeArea(.all, edges: .horizontal)
                 
                 Spacer(minLength: 0)
                 

@@ -17,7 +17,10 @@ struct Home: View {
     
     @State var width = UIScreen.main.bounds.width
     @State var width1 = UIScreen.main.bounds.width - 90
+    
     @State var beenThere: Bool = false
+    @State var dragging: Bool = false
+    @State var minDis: CGFloat = 20
     
     var body: some View {
         VStack {
@@ -27,36 +30,39 @@ struct Home: View {
                     .offset(x: x + width)
                     .tag(0)
                     .gesture(DragGesture().onChanged({ val in
-                        withAnimation {
-                            if (val.translation.width < 0 && !beenThere) {
-                                if (x1 > -width1) {
-                                    x1 = val.translation.width
-                                }else {
-                                    x = -width + val.translation.width
-                                }
-                            }else {
-                                self.beenThere = true
-                                if (val.translation.width > 0) {
-                                    if(x1 < 0) {
-                                        x1 = -width1 + val.translation.width
+                        dragging = true
+                        if (abs(val.translation.width) > minDis) {
+                            withAnimation {
+                                if (val.translation.width < 0 && !beenThere) {
+                                    if (x1 > -width1) {
+                                        x1 = val.translation.width
+                                    }else {
+                                        x = -width
                                     }
                                 }else {
-                                    if (x1 > -width1 + 0.1) {
-                                        if(abs(abs(x1) - abs(val.translation.width)) < UIScreen.main.bounds.width - 150) {
-                                            x1 = val.translation.width
+                                    self.beenThere = true
+                                    if (val.translation.width >= 0) {
+                                        if(x1 < 0) {
+                                            x1 = -width1 + val.translation.width
+                                        }
+                                    }else {
+                                        if (x1 > -width1) {
+                                            if(abs(abs(x1) - abs(val.translation.width)) < UIScreen.main.bounds.width - 150) {
+                                                x1 = val.translation.width
+                                            }else {
+                                                x1 = -width1
+                                            }
                                         }else {
                                             x1 = -width1
                                         }
-                                    }else {
-                                        x1 = -width1
                                     }
                                 }
                             }
                         }
-                    }).onEnded({ val in
+                    })
+                    .onEnded({ val in
                         withAnimation {
-                            self.beenThere = false
-                            if(val.translation.width < 0) {
+                            if(val.translation.width < 0 && !beenThere) {
                                 if(val.translation.width < -width/3) {
                                     x = -2 * width
                                     selectedIndex = 1
@@ -64,7 +70,7 @@ struct Home: View {
                                     x = -width
                                 }
                             }else {
-                                if (val.translation.width > 0) {
+                                if (val.translation.width >= 0) {
                                     if (-x1 < 2 * width1/3) {
                                         x1 = 0
                                     }else {
@@ -78,15 +84,17 @@ struct Home: View {
                                     }
                                 }
                             }
+                            beenThere = false
                         }
-                    }))
+                    })
+                        
+                    )
                     .zIndex(0)
                 SearchView()
                     .navigationBarHidden(true)
                     .offset(x: x + 2 * width)
                     .tag(1)
                     .gesture(DragGesture().onChanged({ val in
-                        
                         withAnimation {
                             if (val.translation.width < 0) {
                                 x = -2 * width + val.translation.width
