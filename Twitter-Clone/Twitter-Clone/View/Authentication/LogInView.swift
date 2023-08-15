@@ -112,13 +112,19 @@ struct LogInView: View {
                     Button {
                         self.emailDone = true
                     } label: {
-                        Capsule()
-                            .frame(width: 360, height: 40, alignment: .center)
-                            .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
-                            .overlay {
-                                Text("Log in")
-                                    .foregroundColor(.white)
-                            }
+                        NavigationLink {
+                            MainView()
+                                .navigationBarHidden(true)
+                        } label: {
+                            Capsule()
+                                .frame(width: 360, height: 40, alignment: .center)
+                                .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
+                                .overlay {
+                                    Text("Log in")
+                                        .foregroundColor(.white)
+                                }
+                        }
+
                     }
                     .padding(.bottom, 4)
                     
