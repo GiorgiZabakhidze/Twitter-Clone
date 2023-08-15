@@ -24,6 +24,7 @@
 		CE8137A22A8940A5006C66B0 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8137A12A8940A5006C66B0 /* UserProfile.swift */; };
 		CE8137A42A8944D1006C66B0 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8137A32A8944D1006C66B0 /* BlurView.swift */; };
 		CEA99CDA2A8A5AFB009C5A75 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA99CD92A8A5AFB009C5A75 /* TabButton.swift */; };
+		CEAB38402A8BD90A007B9C04 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB383F2A8BD90A007B9C04 /* WelcomeView.swift */; };
 		CEB401AE2A8B8309005C95AF /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB401AD2A8B8309005C95AF /* CustomTabView.swift */; };
 		CEB772D92A87A43D00A2C8F4 /* searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772D82A87A43D00A2C8F4 /* searchUserCell.swift */; };
 		CEB772DB2A87A83400A2C8F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772DA2A87A83400A2C8F4 /* Extensions.swift */; };
@@ -56,6 +57,7 @@
 		CE8137A12A8940A5006C66B0 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		CE8137A32A8944D1006C66B0 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		CEA99CD92A8A5AFB009C5A75 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		CEAB383F2A8BD90A007B9C04 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		CEB401AD2A8B8309005C95AF /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CEB772D82A87A43D00A2C8F4 /* searchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserCell.swift; sourceTree = "<group>"; };
 		CEB772DA2A87A83400A2C8F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		CE1626812A8644DF0080C802 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				CEAB383F2A8BD90A007B9C04 /* WelcomeView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				CE1626982A86A4400080C802 /* TweetCellView.swift in Sources */,
 				CE16269A2A86BDD00080C802 /* SearchCell.swift in Sources */,
 				CE1626922A865E430080C802 /* CreateTweetView.swift in Sources */,
+				CEAB38402A8BD90A007B9C04 /* WelcomeView.swift in Sources */,
 				CEB772E52A87E6BF00A2C8F4 /* SlideMenu.swift in Sources */,
 				CEB772DF2A87C5BF00A2C8F4 /* MessagesCellView.swift in Sources */,
 				CE16268C2A864E630080C802 /* SearchView.swift in Sources */,
