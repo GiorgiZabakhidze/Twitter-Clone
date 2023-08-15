@@ -19,7 +19,6 @@ struct Home: View {
     @State var width1 = UIScreen.main.bounds.width - 90
     
     @State var beenThere: Bool = false
-    @State var dragging: Bool = false
     @State var minDis: CGFloat = 20
     
     var body: some View {
@@ -30,14 +29,13 @@ struct Home: View {
                     .offset(x: x + width)
                     .tag(0)
                     .gesture(DragGesture().onChanged({ val in
-                        dragging = true
                         if (abs(val.translation.width) > minDis) {
                             withAnimation {
                                 if (val.translation.width < 0 && !beenThere) {
                                     if (x1 > -width1) {
                                         x1 = val.translation.width
                                     }else {
-                                        x = -width
+                                        x = -width + val.translation.width
                                     }
                                 }else {
                                     self.beenThere = true
@@ -84,7 +82,7 @@ struct Home: View {
                                     }
                                 }
                             }
-                            beenThere = false
+                            self.beenThere = false
                         }
                     })
                         
