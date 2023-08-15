@@ -12,10 +12,16 @@ struct Home: View {
     @State var showCreateTweet = false
     @State var text = ""
     
+    @State var x = -UIScreen.main.bounds.width
+    @State var x1 = -UIScreen.main.bounds.width + 90
+    
+    @State var width = UIScreen.main.bounds.width
+    @State var width1 = UIScreen.main.bounds.width - 90
+    
     var body: some View {
         VStack {
             ZStack {
-                TabView {
+//                TabView {
                     Feed()
                         .onTapGesture {
                             self.selectedIndex = 0
@@ -31,7 +37,35 @@ struct Home: View {
                                 Image("house")
                             }
                         })
+                        .offset(x: x + width)
                         .tag(0)
+                        .gesture(DragGesture().onChanged({ val in
+                            withAnimation {
+                                if (val.translation.width < 0) {
+                                    x = -width + val.translation.width
+                                }
+                            }
+                        }).onEnded({ val in
+                            withAnimation {
+                                if(val.translation.width < 0) {
+                                    if(val.translation.width < -width/3) {
+                                        x = -2 * width
+                                    }else {
+                                        x = -width
+                                    }
+                                }
+                            }
+                        }))
+                    SlideMenu()
+                        .shadow(color: Color.black.opacity(x1 != 0 ? 0.1 : 0), radius: 5, x: 5, y: 0)
+                        .offset(x: x1)
+                        .background(Color.black.opacity(x1 != -width1 ? 0.5 : 0))
+                        .ignoresSafeArea(.all, edges: .vertical)
+                        .onTapGesture {
+                            withAnimation {
+                                x1 = -width1
+                            }
+                        }
                     SearchView()
                         .onTapGesture {
                             self.selectedIndex = 1
@@ -46,7 +80,33 @@ struct Home: View {
                                 Image("search")
                             }
                         })
+                        .offset(x: x + 2 * width)
                         .tag(1)
+                        .gesture(DragGesture().onChanged({ val in
+                            withAnimation {
+                                if (val.translation.width < 0) {
+                                    x = -2 * width + val.translation.width
+                                }else {
+                                    x = -2 * width + val.translation.width
+                                }
+                            }
+                        }).onEnded({ val in
+                            withAnimation {
+                                if(val.translation.width < 0) {
+                                    if(val.translation.width < -width/3) {
+                                        x = -3 * width
+                                    }else {
+                                        x = -2 * width
+                                    }
+                                }else {
+                                    if (val.translation.width > width/3) {
+                                        x = -width
+                                    }else {
+                                        x = -2 * width
+                                    }
+                                }
+                            }
+                        }))
                     NotificationsView()
                         .onTapGesture {
                             self.selectedIndex = 2
@@ -61,7 +121,33 @@ struct Home: View {
                                 Image("notification")
                             }
                         })
+                        .offset(x: x + 3 *  width)
                         .tag(2)
+                        .gesture(DragGesture().onChanged({ val in
+                            withAnimation {
+                                if (val.translation.width < 0) {
+                                    x = -3 * width + val.translation.width
+                                }else {
+                                    x = -3 * width + val.translation.width
+                                }
+                            }
+                        }).onEnded({ val in
+                            withAnimation {
+                                if(val.translation.width < 0) {
+                                    if(val.translation.width < -width/3) {
+                                        x = -4 * width
+                                    }else {
+                                        x = -3 * width
+                                    }
+                                }else {
+                                    if (val.translation.width > width/3) {
+                                        x = -2 * width
+                                    }else {
+                                        x = -3 * width
+                                    }
+                                }
+                            }
+                        }))
                     MessagesView()
                         .onTapGesture {
                             self.selectedIndex = 3
@@ -76,8 +162,9 @@ struct Home: View {
                                 Image("message")
                             }
                         })
+                        .offset(x: x + 4 * width)
                         .tag(3)
-                }
+                //}
                 VStack {
                     Spacer()
                     
