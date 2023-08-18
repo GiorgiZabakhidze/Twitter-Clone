@@ -18,6 +18,12 @@ const tweetSchema = new mongoose.Schema({
         trim: true
     },
 
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        requiref: true
+    },
+
     image: {
         type: Buffer
     },
