@@ -11,5 +11,5 @@ app.use(express.json())
 app.use(userRouter)
 
 app.listen(port, () => {
-    console.log("The Server Is Up On Port" + port)
+    console.log("The Server Is Up On Port " + port)
 })
