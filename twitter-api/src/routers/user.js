@@ -1,7 +1,19 @@
 const express = require('express')
 const User = require('../models/user')
+const multer = require('multer')
+const sharp = require('sharp')
+const auth = require('../middleware/auth')
+
 //Original Router
 const router = new express.Router()
+
+//Helpers
+const upload = multer({
+    limits: {
+        fileSize: 100000000
+    }
+})
+
 
 //Endpoints
 //Create New User
@@ -24,7 +36,7 @@ router.get('/users', async (req, res) => {
         const users = await User.find({})
 
         res.send(users)
-        
+
     }catch (err) {
         res.status(500).send(err)
     }
@@ -74,6 +86,42 @@ router.get('/users/:id', async (req, res) => {
         res.send(user)
     }catch (err) {
         res.status(500).send(err)
+    }
+})
+
+//Post User Profile Image
+router.post('/users/me/avatar', auth, upload.single('avatar'), async (req, res) => {
+    const buffer = await sharp(req.file.buffer).resize({width: 250, height: 250}).png().toBuffer()
+
+    if(req.user.avatar != null) {
+        req.user.avatar = null
+        req.user.avatarExists = false
+    }
+
+    req.user.avatar = buffer
+    req.user.avatarExists = true
+
+    await req.user.save()
+
+    res.send(buffer)
+}, (error, req, res, next) => {
+    res.status(400).send({error: error.message})
+})
+
+//Fetching the Profile Picture to Display
+router.get('/users/:id/avatar', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+
+        if(!user || !user.avatar) {
+            throw new Error('User Does not Exists or Does not have avatar')
+        }
+
+        res.set('Content-Type', 'image/jpg')
+
+        res.send(user.avatar)
+    }catch (err) {
+        res.status(404).send(err)
     }
 })
 
