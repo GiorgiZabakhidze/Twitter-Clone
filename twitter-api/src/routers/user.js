@@ -125,4 +125,46 @@ router.get('/users/:id/avatar', async (req, res) => {
     }
 })
 
+//Route for Following
+router.put('/users/:id/followe', auth, async (req, res) => {
+    if(req.user.id != req.params.id) {
+        try {
+            const user = await User.findById(req.params.id)
+            if(!user.followers.includes(req.user.id)) {
+                await user.updateOne({ $push: { followers: req.user.id } })
+                await req.user.updateOne({ $push: { followings: req.params.id } })
+                res.status(200).json("User has been Followed..")
+            }else {
+                res.status(403).json("You Already Follow This User..")
+            }
+        }catch (err) {
+            res.status(500).json(err)
+        }
+    }else {
+        res.status(403).json("You Can not Follow Yourself..")
+    }
+})
+
+//Route for Unfollowing
+router.put('/users/:id/unfollow', auth, async (req, res) => {
+    if(req.user.id != req.params.id) {
+        try {
+            const user = await User.findById(req.params.id)
+
+            if(user.followers.includes(req.user.id)) {
+                await user.updateOne({ $pull: { followers: req.user.id } })
+                await req.user.updateOne({ $pull: { followings: req.params.id } })
+                res.status(200).json("The User Has Been Unfollowed..")
+            }else {
+                res.status(403).json("Can Not UnFollow, Because You Do Not Follow This User")
+            }
+        }catch (err) {
+            res.status(500).json(err)
+        }
+    }else {
+        res.status(403).json("You Can not Unfollow Yourself..")
+    }
+})
+
+
 module.exports = router
