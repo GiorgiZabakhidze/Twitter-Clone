@@ -80,6 +80,21 @@ router.get('/tweets', async (req, res) => {
     }
 })
 
+//Ferch a centain user's Tweets
+router.get('/tweets/:id', async (req, res) => {
+    try {
+        const tweets = await Tweet.find({ user: req.params.id })
+
+        if(!tweets) {
+            return res.status(404).send()
+        }
+
+        res.status(200).send(tweets)
+    }catch (err) {
+        res.status(500).send(err)
+    }
+})
+
 //Like a Tweet
 router.put('/tweets/:id/like', auth, async (req, res) => {
     try {

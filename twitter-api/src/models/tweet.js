@@ -36,6 +36,20 @@ const tweetSchema = new mongoose.Schema({
     timestamps: true
 })
 
+tweetSchema.methods.toJSON = function() {
+    const tweet = this
+
+    const tweetObject = tweet.toObject()
+
+    if(tweetObject.image) {
+
+        tweetObject.image = "true"
+
+    }
+
+    return tweetObject
+}
+
 const Tweet = mongoose.model("Tweet", tweetSchema)
 
 module.exports = Tweet
