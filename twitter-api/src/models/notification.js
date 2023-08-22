@@ -28,6 +28,6 @@ const notificationSchema = new mongoose.Schema({
     }
 })
 
-const notificatoin = mongoose.model('Notification', notificationSchema)
+const notification = mongoose.model('Notification', notificationSchema)
 
 module.exports = notification
