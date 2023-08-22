@@ -74,7 +74,7 @@ const userSchema = new mongoose.Schema({
         default: []
     },
 
-    followings: {
+    following: {
         type: Array,
         default: []
     }

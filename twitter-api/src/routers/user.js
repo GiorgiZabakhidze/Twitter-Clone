@@ -126,13 +126,13 @@ router.get('/users/:id/avatar', async (req, res) => {
 })
 
 //Route for Following
-router.put('/users/:id/followe', auth, async (req, res) => {
+router.put('/users/:id/follow', auth, async (req, res) => {
     if(req.user.id != req.params.id) {
         try {
             const user = await User.findById(req.params.id)
             if(!user.followers.includes(req.user.id)) {
                 await user.updateOne({ $push: { followers: req.user.id } })
-                await req.user.updateOne({ $push: { followings: req.params.id } })
+                await req.user.updateOne({ $push: { following: req.params.id } })
                 res.status(200).json("User has been Followed..")
             }else {
                 res.status(403).json("You Already Follow This User..")
@@ -153,7 +153,7 @@ router.put('/users/:id/unfollow', auth, async (req, res) => {
 
             if(user.followers.includes(req.user.id)) {
                 await user.updateOne({ $pull: { followers: req.user.id } })
-                await req.user.updateOne({ $pull: { followings: req.params.id } })
+                await req.user.updateOne({ $pull: { following: req.params.id } })
                 res.status(200).json("The User Has Been Unfollowed..")
             }else {
                 res.status(403).json("Can Not UnFollow, Because You Do Not Follow This User")
@@ -166,5 +166,32 @@ router.put('/users/:id/unfollow', auth, async (req, res) => {
     }
 })
 
+//Update User
+router.patch('/users/me', auth, async (req, res) => {
+    const updates = Object.keys(req.body)
+
+    const allowedUpdates = ['name', 'email', 'password', 'website', 'bio', 'location']
+
+    const isValidOperation = updates.every( (update) => allowedUpdates.includes(update) )
+
+    if(!isValidOperation) {
+        return res.status(400).send({
+            error: "Invalid Request!"
+        })
+    }
+
+    try {
+        const user = req.user
+
+        updates.forEach((update) => {user[update] = req.body[update]})
+
+        await user.save()
+
+        res.send(user)
+
+    }catch (err) {
+        res.status(400).send(err)
+    }
+})
 
 module.exports = router
