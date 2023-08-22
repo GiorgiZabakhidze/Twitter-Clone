@@ -80,11 +80,24 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-//The relationship bewteenthe tweets and user
+//The relationship bewteen the tweets and user
 userSchema.virtual('tweets', {
     ref: 'Tweet',
     localField: '_id',
     foreignField: 'user'
+})
+
+//The relationship between the notifications and user
+userSchema.virtual('notificationSent', {
+    ref: 'Notification',
+    localField: '_id',
+    foreignField: 'notSenderId'
+})
+
+userSchema.virtual('notificationReceived', {
+    ref: 'Notification',
+    localField: '_id',
+    foreignField: 'notReceiverId'
 })
 
 //To delete Password prior to Get
