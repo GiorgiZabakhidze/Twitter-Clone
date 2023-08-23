@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @StateObject var viewModel = AuthViewModel()
+    
     @State var name = ""
     @State var email = ""
     @State var password = ""
@@ -43,7 +45,7 @@ struct RegisterView: View {
             VStack(alignment: .leading, spacing: nil) {
                 CustomAuthTextField(placeholder: "Name", text: $name)
                 CustomAuthTextField(placeholder: "Phone Number or Email", text: $email)
-                SecureAuthTextField(placeholder: "Password", text: $password)
+                SecureAuthTextField(placeholder: "password", text: $password)
             }
             
             Spacer(minLength: 0)
@@ -56,7 +58,7 @@ struct RegisterView: View {
                     Spacer()
                     
                     Button {
-                        
+                        self.viewModel.register(name: name, username: name, email: email, password: password)
                     } label: {
                         Capsule()
                             .frame(width: 60, height: 30, alignment: .center)
