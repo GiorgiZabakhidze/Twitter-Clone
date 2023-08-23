@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LogInView: View {
+    
+    @StateObject var viewModel = AuthViewModel()
+    
     @State var email = ""
     @State var password = ""
     @State var emailDone = false
@@ -109,22 +112,18 @@ struct LogInView: View {
                 Spacer(minLength: 0)
                 
                 VStack {
-                    NavigationLink {
-                        MainView()
-                            .navigationBarHidden(true)
+                    Button {
+                        self.emailDone = true
+                        self.viewModel.login(email: email, password: password)
                     } label: {
-                        Button {
-                            self.emailDone = true
-                        } label: {
-                            Capsule()
-                                .frame(width: 360, height: 40, alignment: .center)
-                                .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
-                                .overlay {
-                                    Text("Log in")
-                                        .foregroundColor(.white)
-                                }
+                        Capsule()
+                            .frame(width: 360, height: 40, alignment: .center)
+                            .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
+                            .overlay {
+                                Text("Log in")
+                                    .foregroundColor(.white)
                             }
-                        }
+                    }
                     .padding(.bottom, 4)
                     
                     Text("Forgot Password?")

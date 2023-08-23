@@ -23,6 +23,20 @@ public class AuthServices {
     
     public static var requestDomain = ""
     
+    static func login(email: String, password: String, completion: @escaping (_ result: Result<Data?, AuthenticationError>) -> Void) {
+        
+        let urlString = URL(string: "http://localhost:3000/users/login")!
+        
+        makeRequest(urlString: urlString, reqBody: ["email": email, "password": password]) { result in
+            switch result {
+                case .success(let data):
+                    completion(.success(data))
+                case .failure(let error):
+                    completion(.failure(.invalidCredentials))
+            }
+        }
+    }
+    
     static func register(name: String, username: String, email: String, password: String, completion: @escaping (_ result: Result<Data?, AuthenticationError>) -> Void) {
         
         let urlString = URL(string: "http://localhost:3000/users")!
