@@ -84,7 +84,16 @@ class AuthViewModel: ObservableObject {
     }
     
     func logout() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
         
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+        
+        DispatchQueue.main.async {
+            self.isAuthenticated = false
+        }
     }
 }
 
