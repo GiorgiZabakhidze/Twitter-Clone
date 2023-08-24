@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-//    let user: User
+    let user: User
     
     @State var width1 = UIScreen.main.bounds.width - 90
     
@@ -66,11 +66,5 @@ struct MainView: View {
             .navigationBarHidden(true)
             .navigationTitle("")
         }
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }

@@ -13,10 +13,9 @@ struct ContentView: View {
     
     var body: some View {
         if (viewModel.isAuthenticated) {
-//            if let user = viewModel.currentUser {
-//                MainView(user: user)
-//            }
-            MainView()
+            if let user = viewModel.currentUser {
+                MainView(user: user)
+            }
         }else {
             WelcomeView()
         }
