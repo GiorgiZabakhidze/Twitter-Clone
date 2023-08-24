@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
+    
+//    let user: User
+    
     @State var width1 = UIScreen.main.bounds.width - 90
     
     @State var x1 = -UIScreen.main.bounds.width + 90

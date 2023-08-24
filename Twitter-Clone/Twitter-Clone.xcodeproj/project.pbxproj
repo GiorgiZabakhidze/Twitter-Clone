@@ -120,7 +120,6 @@
 				CE16267A2A86445D0080C802 /* ViewModel */,
 				CE1626792A8644520080C802 /* View */,
 				CE16266A2A8643240080C802 /* Twitter_CloneApp.swift */,
-				CE16266C2A8643240080C802 /* ContentView.swift */,
 				CE16266E2A8643250080C802 /* Assets.xcassets */,
 				CE1626702A8643250080C802 /* Twitter_Clone.entitlements */,
 				CE1626712A8643250080C802 /* Preview Content */,
@@ -218,6 +217,7 @@
 		CE1626812A8644DF0080C802 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				CE16266C2A8643240080C802 /* ContentView.swift */,
 				CEAB383F2A8BD90A007B9C04 /* WelcomeView.swift */,
 				CEAB38472A8BF6DF007B9C04 /* LogInView.swift */,
 				CEAB38412A8BE444007B9C04 /* RegisterView.swift */,
