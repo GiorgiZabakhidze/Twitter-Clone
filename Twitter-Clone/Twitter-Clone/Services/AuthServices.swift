@@ -66,7 +66,7 @@ public class AuthServices {
         }
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("applicatoin/json", forHTTPHeaderField: "accept")
+        request.addValue("applicatoin/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, res, err in
             guard err == nil else {
@@ -92,4 +92,45 @@ public class AuthServices {
         task.resume()
         
     }
+    
+    //Fetch User
+    static func fetchUser(id: String, completion: @escaping (_ result: Result<Data, AuthenticationError>) -> Void) {
+        let urlStirng = URL(string: "http://localhost:3000/users/\(id)")!
+        
+        var request = URLRequest(url: urlStirng)
+        
+        let session = URLSession.shared
+        
+        request.httpMethod = "GET"
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, res, err in
+            guard err == nil else {
+                return
+            }
+            
+            guard let data = data else {
+                return
+                completion(.failure(.invalidCredentials))
+            }
+            
+            completion(.success(data))
+            
+            do {
+                
+                if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] {
+                    
+                }
+                
+            }catch let err {
+                completion(.failure(.invalidCredentials))
+                print(err)
+            }
+        }
+        
+        task.resume()
+    }
+    
 }

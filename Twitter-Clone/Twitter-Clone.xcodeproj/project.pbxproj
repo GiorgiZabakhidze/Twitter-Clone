@@ -155,7 +155,7 @@
 		CE16267A2A86445D0080C802 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CE8EE6492A95D7A900DA1E21 /* AuthViewModel.swift */,
+				CE63358E2A97C3510093F598 /* Authentication */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -272,6 +272,14 @@
 				CEB401AD2A8B8309005C95AF /* CustomTabView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		CE63358E2A97C3510093F598 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				CE8EE6492A95D7A900DA1E21 /* AuthViewModel.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
