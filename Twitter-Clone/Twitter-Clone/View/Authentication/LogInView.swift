@@ -9,12 +9,12 @@ import SwiftUI
 
 struct LogInView: View {
     
-    @EnvironmentObject var viewModel: AuthViewModel
     
     @State var email = ""
     @State var password = ""
     @State var emailDone = false
     
+    @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {

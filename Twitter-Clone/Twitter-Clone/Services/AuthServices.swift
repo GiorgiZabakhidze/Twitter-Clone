@@ -5,8 +5,8 @@
 //  Created by Macbook Pro on 23/8/23.
 //
 
-import Foundation
 import SwiftUI
+import Foundation
 
 enum NetworkError: Error {
     case invalidURL
@@ -23,15 +23,15 @@ public class AuthServices {
     
     public static var requestDomain = ""
     
-    static func login(email: String, password: String, completion: @escaping (_ result: Result<Data?, AuthenticationError>) -> Void) {
+    static func login(email: String, password: String, completion: @escaping (_ result: Result<Data, AuthenticationError>) -> Void) {
         
         let urlString = URL(string: "http://localhost:3000/users/login")!
         
         makeRequest(urlString: urlString, reqBody: ["email": email, "password": password]) { result in
             switch result {
                 case .success(let data):
-                    completion(.success(data))
-                case .failure(let error):
+                    completion(.success(data!))
+                case .failure(_):
                     completion(.failure(.invalidCredentials))
             }
         }
@@ -66,7 +66,7 @@ public class AuthServices {
         }
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("applicatoin/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, res, err in
             guard err == nil else {
@@ -77,6 +77,8 @@ public class AuthServices {
                 completion(.failure(.noData))
                 return
             }
+            
+            completion(.success(data))
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
@@ -95,9 +97,9 @@ public class AuthServices {
     
     //Fetch User
     static func fetchUser(id: String, completion: @escaping (_ result: Result<Data, AuthenticationError>) -> Void) {
-        let urlStirng = URL(string: "http://localhost:3000/users/\(id)")!
+        let urlString = URL(string: "http://localhost:3000/users/\(id)")!
         
-        var request = URLRequest(url: urlStirng)
+        var request = URLRequest(url: urlString)
         
         let session = URLSession.shared
         
@@ -112,14 +114,12 @@ public class AuthServices {
             }
             
             guard let data = data else {
-                return
-                completion(.failure(.invalidCredentials))
+                return completion(.failure(.invalidCredentials))
             }
             
             completion(.success(data))
             
             do {
-                
                 if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] {
                     
                 }

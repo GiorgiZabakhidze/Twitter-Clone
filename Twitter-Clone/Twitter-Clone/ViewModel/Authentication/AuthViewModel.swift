@@ -15,7 +15,8 @@ class AuthViewModel: ObservableObject {
     init() {
         let defaults = UserDefaults.standard
         let token = defaults.object(forKey: "jsonwebtoken")
-        
+        print(token)
+//        logout()
         if (token != nil) {
             isAuthenticated = true
 
@@ -31,31 +32,42 @@ class AuthViewModel: ObservableObject {
     static let shared = AuthViewModel()
     
     func login(email: String, password: String) {
-        
         let defaults = UserDefaults.standard
         
+        AuthServices.requestDomain = "http://localhost:3000/users/login"
         AuthServices.login(email: email, password: password) { result in
             switch result {
                 case .success(let data):
-                    guard let user = try? JSONDecoder().decode(APIResponse.self, from: data as! Data) else { return }
-                DispatchQueue.main.async {
-                    defaults.set(user.token, forKey: "jsonwebtoken")
-                    defaults.set(user.user.id, forKey: "userid")
-                    self.isAuthenticated = true
-                    self.currentUser = user.user
-                    print("Logged In..")
-                }
+                    do {
+                        
+                        let response = try JSONDecoder().decode(APIResponse.self, from: data)
+                        
+                        DispatchQueue.main.async {
+                            // Process user data
+                            let defaults = UserDefaults.standard
+                            defaults.set(response.token?.tokens![0].token, forKey: "jsonwebtoken")
+                            defaults.set(response.user.id, forKey: "userid")
+                            self.isAuthenticated = true
+                            self.currentUser = response.user
+                            print("Logged In..")
+                        }
+                    
+                    } catch {
+                        print("Decoding Error: \(error)")
+                    }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print("Network Error: \(error.localizedDescription)")
             }
         }
     }
+
     
     func register(name: String, username: String, email: String, password: String) {
         AuthServices.register(name: name, username: username, email: email, password: password) { result in
             switch result {
                 case .success(let data):
-                    guard let user = try? JSONDecoder().decode(APIResponse.self, from: data as! Data) else {
+                    guard let user = try? JSONDecoder().decode(User.self, from: data as! Data) else {
+                        print("rr")
                         return
                     }
                 case .failure(let error):
@@ -65,6 +77,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func fetchUser(userId: String) {
+        AuthServices.requestDomain = "http://localhost:3000/users/\(userId)"
         AuthServices.fetchUser(id: userId) { result in
             switch result {
                 case.success(let data):
