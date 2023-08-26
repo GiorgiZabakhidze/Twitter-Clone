@@ -8,19 +8,32 @@
 import SwiftUI
 
 struct CreateTweetView: View {
+    
+    @Binding var show: Bool
     @State var text = ""
+    
+    @ObservedObject var viewModel = CreateTweetViewModel()
     
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    
+                    self.show.toggle()
                 } label: {
                     Text("Cancel")
                 }
+                
                 Spacer()
+                
                 Button {
                     
+                    if !text.isEmpty {
+                        self.show.toggle()
+                        self.viewModel.uploadPost(text: text)
+                    }else {
+                        print("Cannot Post Empty Tweet")
+                    }
+            
                 } label: {
                     Text("Tweet").padding()
                 }
@@ -29,13 +42,9 @@ struct CreateTweetView: View {
                 .clipShape(Capsule())
 
             }
+            
             MultilineTextField(text: $text)
         }.padding()
     }
 }
 
-struct CretaeTweetView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateTweetView()
-    }
-}

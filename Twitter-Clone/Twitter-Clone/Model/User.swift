@@ -36,7 +36,7 @@ struct Token: Decodable {
 struct User: Decodable, Identifiable {
     var _id: String
     var id: String {
-         _id
+         return _id
     }
     let name: String
     let username: String
