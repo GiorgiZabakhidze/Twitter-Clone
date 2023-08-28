@@ -114,6 +114,7 @@ struct LogInView: View {
                 VStack {
                     Button {
                         self.emailDone = true
+                        self.email = self.email.lowercased()
                         self.viewModel.login(email: email, password: password)
                     } label: {
                         Capsule()
