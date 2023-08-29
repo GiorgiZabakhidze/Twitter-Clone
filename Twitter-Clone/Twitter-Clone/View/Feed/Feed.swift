@@ -30,6 +30,6 @@ struct Feed: View {
             .padding(.horizontal)
             .zIndex(0)
         }
+                   
     }
 }
-

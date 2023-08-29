@@ -139,7 +139,6 @@ struct UserProfile: View {
                     
                     VStack(spacing: 18) {
                         
-                        
                     }
                     .padding(.top)
                     .zIndex(0)

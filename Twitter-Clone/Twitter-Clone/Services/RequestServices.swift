@@ -28,7 +28,7 @@ public class RequestServices {
             print(error)
         }
         
-        //Authntication Part in the HTTP request
+        //Authetication Part in the HTTP request
         let token = UserDefaults.standard.string(forKey: "jsonwebtoken")!
         
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")

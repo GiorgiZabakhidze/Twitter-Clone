@@ -21,7 +21,7 @@ class FeedViewModel: ObservableObject {
         RequestServices.fetchTweets { res in
             switch res {
                 case .success(let data):
-                guard let tweets = try? JSONDecoder().decode([Tweet].self, from: data as! Data) else { return }
+                    guard let tweets = try? JSONDecoder().decode([Tweet].self, from: data as! Data) else { return }
                     DispatchQueue.main.async {
                         self.tweets = tweets
                     }
