@@ -9,20 +9,22 @@ import SwiftUI
 
 struct Feed: View {
     
+    @ObservedObject var viewModel = FeedViewModel()
+    
     let user: User
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 18) {
+            LazyVStack(spacing: 18) {
                 
-                TweetCellView(tweet: sampleText, tweetImage: "post")
-                
-                Divider()
-        
-                ForEach(1...20, id: \.self) { _ in
-                    TweetCellView(tweet: sampleText)
+                ForEach(viewModel.tweets) { tweet in
+                    
+                    TweetCellView(tweet: tweet.text)
+                    
                     Divider()
+                    
                 }
+                
             }
             .padding(.top)
             .padding(.horizontal)

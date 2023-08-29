@@ -57,4 +57,33 @@ public class RequestServices {
         task.resume()
         
     }
+    
+    static func fetchTweets(completion: @escaping (_ result: Result<Data?, NetworkError>) -> Void) {
+        let url = URL(string: requestDomain)!
+        
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            completion(.success(data))
+        }
+        
+        task.resume()
+    }
+    
 }
