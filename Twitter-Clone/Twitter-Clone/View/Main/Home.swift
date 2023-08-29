@@ -21,10 +21,12 @@ struct Home: View {
     @State var beenThere: Bool = false
     @State var minDis: CGFloat = 20
     
+    let user: User
+    
     var body: some View {
         VStack() {
             ZStack {
-                Feed()
+                Feed(user: user)
                     .navigationBarHidden(true)
                     .offset(x: x + width)
                     .tag(0)

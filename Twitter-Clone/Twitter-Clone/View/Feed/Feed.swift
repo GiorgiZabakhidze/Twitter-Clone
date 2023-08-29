@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Feed: View {
+    
+    let user: User
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 18) {
@@ -28,8 +31,3 @@ struct Feed: View {
     }
 }
 
-struct Feed_Previews: PreviewProvider {
-    static var previews: some View {
-        Feed()
-    }
-}
