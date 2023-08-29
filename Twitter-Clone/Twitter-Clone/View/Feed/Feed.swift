@@ -19,7 +19,7 @@ struct Feed: View {
                 
                 ForEach(viewModel.tweets) { tweet in
                     
-                    TweetCellView(tweet: tweet.text)
+                    TweetCellView(viewModel: TweetCellViewModel(tweet: tweet))
                     
                     Divider()
                     
