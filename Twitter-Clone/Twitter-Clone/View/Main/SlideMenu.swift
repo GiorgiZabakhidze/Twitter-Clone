@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SlideMenu: View {
+    
+    @ObservedObject var viewModel: AuthViewModel
+    
     @State var show = false
     
     var menuButtons = ["Profile", "Lists", "Topics", "Bookmarks", "Moments"]
@@ -20,23 +23,41 @@ struct SlideMenu: View {
         VStack {
             HStack(spacing: 0){
                 VStack(alignment: .leading) {
-                    Image("profile_pic")
-                        .resizable()
-                        .frame(width: 60,height: 60)
-                        .clipShape(Circle())
+                    
+                    NavigationLink {
+                        UserProfile(user: viewModel.currentUser!)
+                    } label: {
+                        Image("profile_pic")
+                            .resizable()
+                            .frame(width: 60,height: 60)
+                            .clipShape(Circle())
+                    }
+
+                    
                     HStack(alignment: .top, spacing: 12) {
                         VStack(alignment: .leading, spacing: 12) {
-                             Text("zabaxa")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                            Text("@Giorgi_Zabakhidze")
-                                .foregroundColor(.gray)
+                            
+                            NavigationLink {
+                                UserProfile(user: viewModel.currentUser!)
+                            } label: {
+                                Text(viewModel.currentUser!.name)
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.black)
+                                
+                                Text("@\(viewModel.currentUser!.username)")
+                                    .foregroundColor(.gray)
+                            }
+
                             
                             HStack(spacing: 20) {
+                                
                                 FollowView(count: 999, title: "Followers")
+                                
                                 FollowView(count: 16, title: "Following")
+                                
                             }.padding(.top, 10)
+                            
                             Divider()
                                 .padding(.top, 10)
                             
@@ -159,8 +180,3 @@ struct SlideMenu: View {
     }
 }
 
-struct SlideMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        SlideMenu()
-    }
-}
