@@ -72,6 +72,8 @@ struct UserProfile: View {
                         
                         NavigationLink {
                             EditProfileView()
+                                .navigationBarHidden(true)
+                                .navigationBarTitle("")
                         } label: {
                             Text("Edit Profile")
                                 .foregroundColor(.blue)
@@ -79,7 +81,8 @@ struct UserProfile: View {
                                 .padding(.horizontal)
                                 .background(Capsule()
                                     .stroke(Color.blue, lineWidth: 1.5))
-                        }.navigationBarTitle("")
+                        }
+                        
 
 
                     }

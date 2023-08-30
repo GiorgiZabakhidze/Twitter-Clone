@@ -17,6 +17,11 @@ struct EditProfileView: View {
     
     @State var imagePickerPresented: Bool = false
     
+    @State var name = ""
+    @State var location = ""
+    @State var bio = ""
+    @State var website = ""
+    
     
     var body: some View {
         VStack {
@@ -28,6 +33,8 @@ struct EditProfileView: View {
                         Text("Cancel")
                             .foregroundColor(.black)
                     }
+                    
+                    Spacer()
                     
                     Button {
                         
@@ -48,55 +55,136 @@ struct EditProfileView: View {
                 }
             }
             
-            Image("banner")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width, height: 180, alignment: .center)
-                .cornerRadius(0)
-                
-            if profileImage == nil {
-                Button {
-                    self.imagePickerPresented.toggle()
-                } label: {
-                    KFImage(URL(string: "http://localhost:3000/users/id/avatar"))
-                        .resizable()
-                        .placeholder {
-                            Image("Profile")
+            VStack {
+                Image("banner")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width, height: 180, alignment: .center)
+                    .cornerRadius(0)
+                    
+                HStack {
+                    if profileImage == nil {
+                        Button {
+                            self.imagePickerPresented.toggle()
+                        } label: {
+                            KFImage(URL(string: "http://localhost:3000/users/id/avatar"))
                                 .resizable()
+                                .placeholder {
+                                    Image("Profile")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 75, height: 75)
+                                        .clipShape(Circle())
+                                }
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 75, height: 75)
                                 .clipShape(Circle())
+                                .padding(8)
+                                .background(Color.white)
+                                .clipShape(Circle())
+                                .offset(y: -20)
+                                .padding(.leading, 12)
                         }
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 75, height: 75)
-                        .clipShape(Circle())
-                        .padding(8)
-                        .background(Color.white)
-                        .clipShape(Circle())
-                        .offset(y: -20)
-                        .padding(.leading, 12)
-                }
-                .sheet(isPresented: $imagePickerPresented) {
-                    loadImage()
-                } content: {
-                    ImagePicker(image: $selectedImage)
-                }
+                        .sheet(isPresented: $imagePickerPresented) {
+                            loadImage()
+                        } content: {
+                            ImagePicker(image: $selectedImage)
+                        }
 
 
-            }else if let image = profileImage {
+                    }else if let image = profileImage {
+//                        VStack {
+//                            HStack(alignment: .top) {
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 75, height: 75)
+                                    .clipShape(Circle())
+                                    .padding(8)
+                                    .background(Color.white)
+                                    .clipShape(Circle())
+                                    .offset(y: -20)
+                                    .padding(.leading, 12)
+//                            }.padding()
+//                        }.padding(.leading, 12)
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.top, -25)
+                .padding(.bottom, -10)
+                
                 VStack {
-                    HStack(alignment: .top) {
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 75, height: 75)
-                            .clipShape(Circle())
-                            .padding(8)
-                            .background(Color.white)
-                            .clipShape(Circle())
-                            .offset(y: -20)
-                    }.padding()
-                }.padding(.leading, 12)
+                    Divider()
+                        .padding(.horizontal, 8)
+                    
+                    HStack {
+                        ZStack {
+                            HStack {
+                                Text("Name")
+                                    .foregroundColor(.black)
+                                    .fontWeight(.heavy)
+                                Spacer()
+                            }
+                            
+                            CustomProfileTextField(message: $name, placeholder: "Add Your Name")
+                                .padding(.leading, 90)
+                        }
+                    }.padding(.horizontal)
+                    
+                    Divider()
+                        .padding(.horizontal, 8)
+                    
+                    HStack {
+                        ZStack {
+                            HStack {
+                                Text("Location")
+                                    .foregroundColor(.black)
+                                    .fontWeight(.heavy)
+                                Spacer()
+                            }
+                            
+                            CustomProfileTextField(message: $name, placeholder: "Add Your Location")
+                                .padding(.leading, 90)
+                        }
+                    }.padding(.horizontal)
+                    
+                    Divider()
+                        .padding(.horizontal, 8)
+                    
+                    HStack {
+                        ZStack(alignment: .topLeading) {
+                            HStack {
+                                Text("Bio")
+                                    .foregroundColor(.black)
+                                    .fontWeight(.heavy)
+                                Spacer()
+                            }
+                            
+                            CustomProfileBioTextField(bio: $bio)
+                                .padding(.leading, 86)
+                                .padding(.top, -6)
+                        }
+                    }.padding(.horizontal)
+                    
+                    Divider()
+                        .padding(.horizontal, 8)
+                    
+                    HStack {
+                        ZStack {
+                            HStack {
+                                Text("Website")
+                                    .foregroundColor(.black)
+                                    .fontWeight(.heavy)
+                                Spacer()
+                            }
+                            
+                            CustomProfileTextField(message: $name, placeholder: "Add Your Website")
+                                .padding(.leading, 90)
+                        }
+                    }.padding(.horizontal)
+                }
+                
             }
             
             Spacer()
