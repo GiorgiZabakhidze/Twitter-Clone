@@ -70,8 +70,8 @@ struct UserProfile: View {
                         
                         Spacer()
                         
-                        Button {
-                            
+                        NavigationLink {
+                            EditProfileView()
                         } label: {
                             Text("Edit Profile")
                                 .foregroundColor(.blue)
@@ -79,7 +79,8 @@ struct UserProfile: View {
                                 .padding(.horizontal)
                                 .background(Capsule()
                                     .stroke(Color.blue, lineWidth: 1.5))
-                        }
+                        }.navigationBarTitle("")
+
 
                     }
                     .padding(.top, -25)
