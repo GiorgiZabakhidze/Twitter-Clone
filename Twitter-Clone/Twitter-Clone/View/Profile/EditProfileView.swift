@@ -17,10 +17,20 @@ struct EditProfileView: View {
     
     @State var imagePickerPresented: Bool = false
     
-    @State var name = ""
-    @State var location = ""
-    @State var bio = ""
-    @State var website = ""
+    @Binding var user: User
+    
+    @State var name: String
+    @State var location: String
+    @State var bio: String
+    @State var website: String
+    
+    init(user: Binding<User>) {
+        self._user = user
+        self._name = State(initialValue: self._user.name.wrappedValue ?? "")
+        self._location = State(initialValue: self._user.location.wrappedValue ?? "")
+        self._bio = State(initialValue: self._user.bio.wrappedValue ?? "")
+        self._website = State(initialValue: self._user.website.wrappedValue ?? "")
+    }
     
     
     var body: some View {
@@ -111,6 +121,9 @@ struct EditProfileView: View {
                     
                     Spacer()
                 }
+                .onAppear {
+                    KingfisherManager.shared.cache.clearCache()
+                }
                 .padding(.top, -25)
                 .padding(.bottom, -10)
                 
@@ -144,7 +157,7 @@ struct EditProfileView: View {
                                 Spacer()
                             }
                             
-                            CustomProfileTextField(message: $name, placeholder: "Add Your Location")
+                            CustomProfileTextField(message: $location, placeholder: "Add Your Location")
                                 .padding(.leading, 90)
                         }
                     }.padding(.horizontal)
@@ -179,7 +192,7 @@ struct EditProfileView: View {
                                 Spacer()
                             }
                             
-                            CustomProfileTextField(message: $name, placeholder: "Add Your Website")
+                            CustomProfileTextField(message: $website, placeholder: "Add Your Website")
                                 .padding(.leading, 90)
                         }
                     }.padding(.horizontal)

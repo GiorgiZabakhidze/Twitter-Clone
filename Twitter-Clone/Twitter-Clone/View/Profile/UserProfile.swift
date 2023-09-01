@@ -11,11 +11,21 @@ struct UserProfile: View {
     
     let user: User
     
+    @ObservedObject var viewModel: ProfileViewModel
+    
+    
+    @State var EditProfileShow: Bool = false
     @State var offset: CGFloat = 0
     @State var titleOffset: CGFloat = 0
     @State var currentTab = "Tweets"
     @State var tabBarOffset: CGFloat = 0
     @Namespace var animation
+    
+    
+    init(user: User) {
+        self.user = user
+        self.viewModel = ProfileViewModel(user: user)
+    }
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -70,10 +80,8 @@ struct UserProfile: View {
                         
                         Spacer()
                         
-                        NavigationLink {
-                            EditProfileView()
-                                .navigationBarHidden(true)
-                                .navigationBarTitle("")
+                        Button {
+                            self.EditProfileShow.toggle()
                         } label: {
                             Text("Edit Profile")
                                 .foregroundColor(.blue)
@@ -82,6 +90,13 @@ struct UserProfile: View {
                                 .background(Capsule()
                                     .stroke(Color.blue, lineWidth: 1.5))
                         }
+                        .sheet(isPresented: $EditProfileShow) {
+                            
+                        } content: {
+                            EditProfileView(user: $viewModel.user)
+                        }
+
+
                         
 
 

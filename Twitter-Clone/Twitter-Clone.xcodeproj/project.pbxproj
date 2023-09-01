@@ -26,6 +26,7 @@
 		CE2FDA752A9E47320054E41E /* CreateTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FDA722A9E47320054E41E /* CreateTweetViewModel.swift */; };
 		CE2FDA762A9E47320054E41E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FDA742A9E47320054E41E /* AuthViewModel.swift */; };
 		CE2FDA792A9E47DF0054E41E /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FDA782A9E47DF0054E41E /* FeedViewModel.swift */; };
+		CE40CF512AA1FDE9008640F8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40CF502AA1FDE9008640F8 /* ProfileViewModel.swift */; };
 		CE6335902A9A880C0093F598 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63358F2A9A880C0093F598 /* Tweet.swift */; };
 		CE6335952A9A8A1A0093F598 /* RequestServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6335942A9A8A1A0093F598 /* RequestServices.swift */; };
 		CE74C0EF2A9E3B2600795629 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74C0EE2A9E3B2600795629 /* ImageUploader.swift */; };
@@ -76,6 +77,7 @@
 		CE2FDA722A9E47320054E41E /* CreateTweetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTweetViewModel.swift; sourceTree = "<group>"; };
 		CE2FDA742A9E47320054E41E /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CE2FDA782A9E47DF0054E41E /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		CE40CF502AA1FDE9008640F8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		CE63358F2A9A880C0093F598 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		CE6335942A9A8A1A0093F598 /* RequestServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServices.swift; sourceTree = "<group>"; };
 		CE74C0EE2A9E3B2600795629 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		CE2FDA702A9E47320054E41E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CE40CF4F2AA1FDB8008640F8 /* Profile */,
 				CE2FDA712A9E47320054E41E /* PostTweet */,
 				CE2FDA732A9E47320054E41E /* Authentication */,
 				CE2FDA772A9E47BB0054E41E /* Feed */,
@@ -329,6 +332,14 @@
 				CE2AF3A12A9E51200047201E /* TweetCellViewModel.swift */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		CE40CF4F2AA1FDB8008640F8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CE40CF502AA1FDE9008640F8 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +436,7 @@
 				CEAB38402A8BD90A007B9C04 /* WelcomeView.swift in Sources */,
 				CEB772E52A87E6BF00A2C8F4 /* SlideMenu.swift in Sources */,
 				CEAB38422A8BE444007B9C04 /* RegisterView.swift in Sources */,
+				CE40CF512AA1FDE9008640F8 /* ProfileViewModel.swift in Sources */,
 				CEB772DF2A87C5BF00A2C8F4 /* MessagesCellView.swift in Sources */,
 				CE16268C2A864E630080C802 /* SearchView.swift in Sources */,
 				CE16266D2A8643240080C802 /* ContentView.swift in Sources */,

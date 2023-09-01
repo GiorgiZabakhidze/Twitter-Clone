@@ -10,11 +10,12 @@ import SwiftUI
 struct NotificationsView: View {
     var body: some View {
         VStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 ForEach(0..<9) { _ in
                     NotificationsCellView()
                 }
             }
+            
         }
     }
 }

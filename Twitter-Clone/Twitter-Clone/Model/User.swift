@@ -38,7 +38,7 @@ struct User: Decodable, Identifiable {
     var id: String {
          return _id
     }
-    let name: String
+    var name: String
     let username: String
     let email: String
     var followers: [String]?

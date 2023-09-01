@@ -12,48 +12,52 @@ struct Home: View {
     @State var showCreateTweet = false
     @State var text = ""
     
-    @State var x = -UIScreen.main.bounds.width
-    @Binding var x1: CGFloat
+    @State var windowStartingPoint = -UIScreen.main.bounds.width
+    @Binding var slideManuOffset: CGFloat
     
-    @State var width = UIScreen.main.bounds.width
-    @State var width1 = UIScreen.main.bounds.width - 90
+    @State var widndowFrameWidth = UIScreen.main.bounds.width
+    @State var slideManuWidth = UIScreen.main.bounds.width - 90
     
     @State var beenThere: Bool = false
-    @State var minDis: CGFloat = 20
+    static let minDistanceToStartScrolling: CGFloat = 20
     
     let user: User
     
     var body: some View {
-        VStack() {
+        VStack {
             ZStack {
                 Feed(user: user)
                     .navigationBarHidden(true)
-                    .offset(x: x + width)
+                    .offset(x: windowStartingPoint + widndowFrameWidth)
                     .tag(0)
-                    .gesture(DragGesture().onChanged({ val in
-                        if (abs(val.translation.width) > minDis) {
+                    .gesture(DragGesture().onChanged({ currentFrame in
+                        let shouldScroll: Bool = abs(currentFrame.translation.width) > Home.minDistanceToStartScrolling
+                        if shouldScroll {
+                        
                             withAnimation {
-                                if (val.translation.width < 0 && !beenThere) {
-                                    if (x1 > -width1) {
-                                        x1 = val.translation.width
+                                let scroledRight: Bool = currentFrame.translation.width < 0
+                                
+                                if (scroledRight && !beenThere) {
+                                    if (slideManuOffset > -slideManuWidth) {
+                                        slideManuOffset = currentFrame.translation.width
                                     }else {
-                                        x = -width + val.translation.width
+                                        windowStartingPoint = -widndowFrameWidth + currentFrame.translation.width
                                     }
-                                }else {
+                                } else {
                                     self.beenThere = true
-                                    if (val.translation.width >= 0) {
-                                        if(x1 < 0) {
-                                            x1 = -width1 + val.translation.width
+                                    if (currentFrame.translation.width >= 0) {
+                                        if(slideManuOffset < 0) {
+                                            slideManuOffset = -slideManuWidth + currentFrame.translation.width
                                         }
                                     }else {
-                                        if (x1 > -width1) {
-                                            if(abs(abs(x1) - abs(val.translation.width)) < UIScreen.main.bounds.width - 150) {
-                                                x1 = val.translation.width
+                                        if (slideManuOffset > -slideManuWidth) {
+                                            if(abs(abs(slideManuOffset) - abs(currentFrame.translation.width)) < UIScreen.main.bounds.width - 150) {
+                                                slideManuOffset = currentFrame.translation.width
                                             }else {
-                                                x1 = -width1
+                                                slideManuOffset = -slideManuWidth
                                             }
                                         }else {
-                                            x1 = -width1
+                                            slideManuOffset = -slideManuWidth
                                         }
                                     }
                                 }
@@ -63,24 +67,24 @@ struct Home: View {
                     .onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0 && !beenThere) {
-                                if(val.translation.width < -width/3) {
-                                    x = -2 * width
+                                if(val.translation.width < -widndowFrameWidth/3) {
+                                    windowStartingPoint = -2 * widndowFrameWidth
                                     selectedIndex = 1
                                 }else {
-                                    x = -width
+                                    windowStartingPoint = -widndowFrameWidth
                                 }
                             }else {
                                 if (val.translation.width >= 0) {
-                                    if (-x1 < 2 * width1/3) {
-                                        x1 = 0
+                                    if (-slideManuOffset < 2 * slideManuWidth/3) {
+                                        slideManuOffset = 0
                                     }else {
-                                        x1 = -width1
+                                        slideManuOffset = -slideManuWidth
                                     }
                                 }else {
-                                    if (-x1 > width1/3) {
-                                        x1 = -width1
+                                    if (-slideManuOffset > slideManuWidth/3) {
+                                        slideManuOffset = -slideManuWidth
                                     }else {
-                                        x1 = 0
+                                        slideManuOffset = 0
                                     }
                                 }
                             }
@@ -92,32 +96,32 @@ struct Home: View {
                     .zIndex(0)
                 SearchView()
                     .navigationBarHidden(true)
-                    .offset(x: x + 2 * width)
+                    .offset(x: windowStartingPoint + 2 * widndowFrameWidth)
                     .tag(1)
                     .gesture(DragGesture().onChanged({ val in
                         UIApplication.shared.endEditing()
                         withAnimation {
                             if (val.translation.width < 0) {
-                                x = -2 * width + val.translation.width
+                                windowStartingPoint = -2 * widndowFrameWidth + val.translation.width
                             }else {
-                                x = -2 * width + val.translation.width
+                                windowStartingPoint = -2 * widndowFrameWidth + val.translation.width
                             }
                         }
                     }).onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0) {
-                                if(val.translation.width < -width/3) {
-                                    x = -3 * width
+                                if(val.translation.width < -widndowFrameWidth/3) {
+                                    windowStartingPoint = -3 * widndowFrameWidth
                                     selectedIndex = 2
                                 }else {
-                                    x = -2 * width
+                                    windowStartingPoint = -2 * widndowFrameWidth
                                 }
                             }else {
-                                if (val.translation.width > width/3) {
-                                    x = -width
+                                if (val.translation.width > widndowFrameWidth/3) {
+                                    windowStartingPoint = -widndowFrameWidth
                                     selectedIndex = 0
                                 }else {
-                                    x = -2 * width
+                                    windowStartingPoint = -2 * widndowFrameWidth
                                 }
                             }
                         }
@@ -125,58 +129,59 @@ struct Home: View {
                     .zIndex(0)
                 NotificationsView()
                     .navigationBarHidden(true)
-                    .offset(x: x + 3 *  width)
+                    .offset(x: windowStartingPoint + 3 *  widndowFrameWidth)
                     .tag(2)
                     .gesture(DragGesture().onChanged({ val in
                         withAnimation {
                             if (val.translation.width < 0) {
-                                x = -3 * width + val.translation.width
+                                windowStartingPoint = -3 * widndowFrameWidth + val.translation.width
                             }else {
-                                x = -3 * width + val.translation.width
+                                windowStartingPoint = -3 * widndowFrameWidth + val.translation.width
                             }
                         }
                     }).onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0) {
-                                if(val.translation.width < -width/3) {
-                                    x = -4 * width
+                                if(val.translation.width < -widndowFrameWidth/3) {
+                                    windowStartingPoint = -4 * widndowFrameWidth
                                     selectedIndex = 3
                                 }else {
-                                    x = -3 * width
+                                    windowStartingPoint = -3 * widndowFrameWidth
                                 }
                             }else {
-                                if (val.translation.width > width/3) {
-                                    x = -2 * width
+                                if (val.translation.width > widndowFrameWidth/3) {
+                                    windowStartingPoint = -2 * widndowFrameWidth
                                     selectedIndex = 1
                                 }else {
-                                    x = -3 * width
+                                    windowStartingPoint = -3 * widndowFrameWidth
                                 }
                             }
                         }
                     }))
                     .zIndex(0)
-                    MessagesView()
+                
+                MessagesView()
                     .navigationBarHidden(true)
-                    .offset(x: x + 4 * width)
+                    .offset(x: windowStartingPoint + 4 * widndowFrameWidth)
                     .tag(3)
                     .gesture(DragGesture().onChanged({ val in
                         withAnimation {
                             if (val.translation.width < 0) {
-                                x = -4 * width + val.translation.width / 20
+                                windowStartingPoint = -4 * widndowFrameWidth + val.translation.width / 20
                             }else {
-                                x = -4 * width + val.translation.width
+                                windowStartingPoint = -4 * widndowFrameWidth + val.translation.width
                             }
                         }
                     }).onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0) {
-                                x = -4 * width
+                                windowStartingPoint = -4 * widndowFrameWidth
                             }else {
-                                if (val.translation.width > width/3) {
-                                    x = -3 * width
+                                if (val.translation.width > widndowFrameWidth/3) {
+                                    windowStartingPoint = -3 * widndowFrameWidth
                                     selectedIndex = 2
                                 }else {
-                                    x = -4 * width
+                                    windowStartingPoint = -4 * widndowFrameWidth
                                 }
                             }
                         }
@@ -208,7 +213,7 @@ struct Home: View {
                 }
             }.padding(.top, 60)
             
-            CustomTabView(selectedIndex: $selectedIndex, x: $x)
+            CustomTabView(selectedIndex: $selectedIndex, x: $windowStartingPoint)
                 
         }
         .ignoresSafeArea(.keyboard)
