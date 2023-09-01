@@ -10,6 +10,8 @@ import SwiftUI
 class EditProfileViewModel: ObservableObject {
     var user: User
     
+    @Published var UploadComlete: Bool = false
+    
     init(user: User) {
         self.user = user
     }
@@ -23,7 +25,8 @@ class EditProfileViewModel: ObservableObject {
         self.user.name = userNewName
         self.user.location = userNewLocation
         self.user.bio = userNewBio
-        self.user.website = userNewWebsite 
+        self.user.website = userNewWebsite
+        self.UploadComlete.toggle()
     }
      
 }

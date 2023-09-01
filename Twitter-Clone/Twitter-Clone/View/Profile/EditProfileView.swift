@@ -50,7 +50,6 @@ struct EditProfileView: View {
                     
                     Button {
                         self.viewModel.save(name: name, location: location, bio: bio, website: website)
-                        self.presMode.wrappedValue.dismiss()
                     } label: {
                         Text("Save")
                             .foregroundColor(.black)
@@ -205,6 +204,16 @@ struct EditProfileView: View {
             
             Spacer()
             
+        }
+        .onReceive(viewModel.$UploadComlete) { complete in
+            if complete {
+                self.presMode.wrappedValue.dismiss()
+                
+                self.user.name = viewModel.user.name
+                self.user.location = viewModel.user.location
+                self.user.bio = viewModel.user.bio
+                self.user.website = viewModel.user.website
+            }
         }
         
     }

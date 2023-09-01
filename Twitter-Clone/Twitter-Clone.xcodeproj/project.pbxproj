@@ -209,8 +209,8 @@
 			isa = PBXGroup;
 			children = (
 				CE8137A12A8940A5006C66B0 /* UserProfile.swift */,
-				CE8137A32A8944D1006C66B0 /* BlurView.swift */,
 				CE9CA38E2A9FD0C60076A7CC /* EditProfileView.swift */,
+				CE8137A32A8944D1006C66B0 /* BlurView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
