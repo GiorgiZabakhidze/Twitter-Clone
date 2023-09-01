@@ -17,6 +17,7 @@ struct EditProfileView: View {
     
     @State var imagePickerPresented: Bool = false
     
+    @ObservedObject var viewModel: EditProfileViewModel
     @Binding var user: User
     
     @State var name: String
@@ -26,6 +27,7 @@ struct EditProfileView: View {
     
     init(user: Binding<User>) {
         self._user = user
+        self.viewModel = EditProfileViewModel(user: self._user.wrappedValue)
         self._name = State(initialValue: self._user.name.wrappedValue ?? "")
         self._location = State(initialValue: self._user.location.wrappedValue ?? "")
         self._bio = State(initialValue: self._user.bio.wrappedValue ?? "")
@@ -47,7 +49,8 @@ struct EditProfileView: View {
                     Spacer()
                     
                     Button {
-                        
+                        self.viewModel.save(name: name, location: location, bio: bio, website: website)
+                        self.presMode.wrappedValue.dismiss()
                     } label: {
                         Text("Save")
                             .foregroundColor(.black)
