@@ -49,7 +49,7 @@ struct EditProfileView: View {
                     Spacer()
                     
                     Button {
-                        self.viewModel.save(name: name, location: location, bio: bio, website: website)
+                        self.viewModel.uploadUserData(name: name, location: location, bio: bio, website: website)
                     } label: {
                         Text("Save")
                             .foregroundColor(.black)

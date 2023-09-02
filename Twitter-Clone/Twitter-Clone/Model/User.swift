@@ -41,9 +41,9 @@ struct User: Decodable, Identifiable {
     var name: String
     let username: String
     let email: String
-    var followers: [String]?
-    var following: [String]?
-    var tokens: [TokenDetails]?
+    var followers: [String]
+    var following: [String]
+    var tokens: [TokenDetails]
     var __v: Int
     var avatar: String?
     var avatarExists: Bool?

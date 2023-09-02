@@ -96,10 +96,6 @@ struct UserProfile: View {
                             EditProfileView(user: $viewModel.user)
                         }
 
-
-                        
-
-
                     }
                     .padding(.top, -25)
                     .padding(.bottom, -10)
