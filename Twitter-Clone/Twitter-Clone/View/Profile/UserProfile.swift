@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct UserProfile: View {
     
@@ -68,7 +69,14 @@ struct UserProfile: View {
                 
                 VStack {
                     HStack {
-                        Image("profile_pic")
+                        KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.user.id)/avatar"))
+                            .placeholder {
+                                Image("twitter-profile-2")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 75, height: 75)
+                                    .clipShape(Circle())
+                            }
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 75, height: 75)

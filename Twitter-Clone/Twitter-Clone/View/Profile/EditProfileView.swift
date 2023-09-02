@@ -85,7 +85,7 @@ struct EditProfileView: View {
                         Button {
                             self.imagePickerPresented.toggle()
                         } label: {
-                            KFImage(URL(string: "http://localhost:3000/users/id/avatar"))
+                            KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.user.id)/avatar"))
                                 .resizable()
                                 .placeholder {
                                     Image("Profile")
