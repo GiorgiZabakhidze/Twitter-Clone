@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomProfileBioTextField: View {
     
     @Binding var bio: String
+    @FocusState var isFocused: Bool
     
     var body: some View {
         VStack {
@@ -22,11 +23,15 @@ struct CustomProfileBioTextField: View {
                     }
                     .padding(.top, 8)
                     .padding(.leading, 4)
+                    .onTapGesture {
+                        self.isFocused = true
+                    }
                     .zIndex(1)
                 }
                 
                 TextEditor(text: $bio)
                     .foregroundColor(.blue)
+                    .focused($isFocused)
             }
         }
         .frame(height: 90)
