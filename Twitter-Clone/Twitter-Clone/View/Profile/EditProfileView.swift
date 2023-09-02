@@ -49,6 +49,12 @@ struct EditProfileView: View {
                     Spacer()
                     
                     Button {
+                        
+                        if selectedImage != nil {
+                            self.viewModel.uploadProfileImage(text: "text", image: selectedImage)
+                            KingfisherManager.shared.cache.clearCache()
+                        }
+                        
                         self.viewModel.uploadUserData(name: name, location: location, bio: bio, website: website)
                     } label: {
                         Text("Save")
