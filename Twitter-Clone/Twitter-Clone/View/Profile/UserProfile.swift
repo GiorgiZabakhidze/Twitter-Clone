@@ -18,6 +18,10 @@ struct UserProfile: View {
         return viewModel.user.isCurrentUser!
     }
     
+    var isFollowed: Bool {
+        return viewModel.user.isFollowed!
+    }
+    
     
     @State var EditProfileShow: Bool = false
     @State var offset: CGFloat = 0
@@ -110,16 +114,21 @@ struct UserProfile: View {
                             }
                         }else {
                             Button {
-                                
+                                isFollowed ? self.viewModel.unfollow() : self.viewModel.follow()
                             } label: {
-                                Text("Follow")
-                                    .foregroundColor(.white)
+                                Text(isFollowed ? "Following" : "Follow")
+                                    .foregroundColor(isFollowed ? .black : .white)
                                     .padding(.vertical, 10)
                                     .padding(.horizontal)
                                     .background(
                                         ZStack {
+                                            
                                             Capsule()
-                                                .foregroundColor(.black)
+                                                .stroke(Color.black, lineWidth: isFollowed ? 1.5 : 0)
+                                                .foregroundColor(isFollowed ? .white : .black)
+                                            
+                                            Capsule()
+                                                .foregroundColor(isFollowed ? .white : .black)
                                         }
                                     )
                             }

@@ -51,4 +51,5 @@ struct User: Decodable, Identifiable {
     var bio: String?
     var website: String?
     var isCurrentUser: Bool? = false
+    var isFollowed: Bool? = false
 }
