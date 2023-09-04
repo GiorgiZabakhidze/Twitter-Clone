@@ -14,6 +14,10 @@ struct UserProfile: View {
     
     @ObservedObject var viewModel: ProfileViewModel
     
+    var isCurrentUser: Bool {
+        return viewModel.user.isCurrentUser!
+    }
+    
     
     @State var EditProfileShow: Bool = false
     @State var offset: CGFloat = 0
@@ -88,20 +92,38 @@ struct UserProfile: View {
                         
                         Spacer()
                         
-                        Button {
-                            self.EditProfileShow.toggle()
-                        } label: {
-                            Text("Edit Profile")
-                                .foregroundColor(.blue)
-                                .padding(.vertical, 10)
-                                .padding(.horizontal)
-                                .background(Capsule()
-                                    .stroke(Color.blue, lineWidth: 1.5))
-                        }
-                        .sheet(isPresented: $EditProfileShow) {
-                            
-                        } content: {
-                            EditProfileView(user: $viewModel.user)
+                        if (self.isCurrentUser) {
+                            Button {
+                                self.EditProfileShow.toggle()
+                            } label: {
+                                Text("Edit Profile")
+                                    .foregroundColor(.blue)
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal)
+                                    .background(Capsule()
+                                        .stroke(Color.blue, lineWidth: 1.5))
+                            }
+                            .sheet(isPresented: $EditProfileShow) {
+                                
+                            } content: {
+                                EditProfileView(user: $viewModel.user)
+                            }
+                        }else {
+                            Button {
+                                
+                            } label: {
+                                Text("Follow")
+                                    .foregroundColor(.white)
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal)
+                                    .background(
+                                        ZStack {
+                                            Capsule()
+                                                .foregroundColor(.black)
+                                        }
+                                    )
+                            }
+
                         }
 
                     }
