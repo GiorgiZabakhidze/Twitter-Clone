@@ -15,6 +15,7 @@ class TweetCellViewModel: ObservableObject {
     init(tweet: Tweet) {
         self.tweet = tweet
         self.fetchUser(userId: tweet.user)
+        self.checkIfTweetIsLiked()
     }
     
     func fetchUser(userId: String) {
@@ -31,6 +32,32 @@ class TweetCellViewModel: ObservableObject {
                     print(error.localizedDescription)
             }
         }
+    }
+    
+    func like() {
+        RequestServices.requestDomain = "http://localhost:3000/tweets/\(self.tweet.id)/like"
+        
+        RequestServices.likeProcess(id: self.tweet.id) { result in
+            print(result)
+            print("The Tweet Has Been Liked")
+        }
+        
+        self.tweet.isLiked = true
+    }
+    
+    func unlike() {
+        RequestServices.requestDomain = "http://localhost:3000/tweets/\(self.tweet.id)/unlike"
+        
+        RequestServices.likeProcess(id: self.tweet.id) { result in
+            print(result)
+            print("The Tweet Has Been unLiked")
+        }
+        
+        self.tweet.isLiked = false
+    }
+    
+    func checkIfTweetIsLiked() {
+        self.tweet.isLiked = Bool(self.tweet.likes.contains(AuthViewModel.shared.currentUser!.id))
     }
     
 }

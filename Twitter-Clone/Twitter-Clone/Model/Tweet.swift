@@ -12,10 +12,11 @@ struct Tweet: Identifiable, Decodable {
     var id: String {
         return _id
     }
-    let text: String
-    let user: String
+    var text: String
+    var user: String
     let username: String
     let userId: String
-    let image: String?
-    let likes: [String]?
+    var image: String?
+    var likes: [String]
+    var isLiked: Bool? = false
 }

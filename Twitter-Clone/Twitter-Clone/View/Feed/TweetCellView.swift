@@ -12,9 +12,15 @@ struct TweetCellView: View {
     
     @ObservedObject var viewModel: TweetCellViewModel
 
+    var isLiked: Bool {
+        return self.viewModel.tweet.isLiked!
+    }
+    
+    
     init(viewModel: TweetCellViewModel) {
         self.viewModel = viewModel
     }
+    
     
     var body: some View {
         ScrollView {
@@ -85,9 +91,9 @@ struct TweetCellView: View {
                     }.foregroundColor(.gray)
                     
                     Button {
-                        
+                        isLiked ? self.viewModel.unlike() : self.viewModel.like()
                     } label: {
-                        Image("twitter-like-outline")
+                        Image(isLiked ? "twitter-like" : "twitter-like-outline")
                             .resizable()
                             .renderingMode(.template)
                             .frame(width: 18, height: 15)
