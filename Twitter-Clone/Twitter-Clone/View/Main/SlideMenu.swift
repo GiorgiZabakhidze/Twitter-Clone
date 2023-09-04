@@ -28,7 +28,11 @@ struct SlideMenu: View {
                     NavigationLink {
                         UserProfile(user: viewModel.currentUser!)
                     } label: {
-                        Image("profile_pic")
+                        KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.currentUser!.id)/avatar"))
+                            .placeholder {
+                                Image("Profile")
+                                    .resizable()
+                            }
                             .resizable()
                             .frame(width: 60,height: 60)
                             .clipShape(Circle())

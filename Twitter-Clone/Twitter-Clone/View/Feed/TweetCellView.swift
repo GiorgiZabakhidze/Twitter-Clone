@@ -20,11 +20,23 @@ struct TweetCellView: View {
         ScrollView {
             VStack {
                 HStack(alignment: .top, spacing: 10) {
-                    Image("profile_pic")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 55, height: 55)
-                        .clipShape(Circle())
+                    
+                    if let user = viewModel.user {
+                        NavigationLink {
+                            UserProfile(user: user)
+                        } label: {
+                            KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.tweet.userId)/avatar"))
+                                .placeholder {
+                                    Image("Profile")
+                                        .resizable()
+                                }
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 55, height: 55)
+                                .clipShape(Circle())
+                        }
+
+                    }
                     
                     VStack(alignment: .leading, spacing: 10) {
                         Text("\(self.viewModel.tweet.username) ")
