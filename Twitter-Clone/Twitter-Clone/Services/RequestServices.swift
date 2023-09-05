@@ -12,7 +12,7 @@ public class RequestServices {
     
     public static func postTweet(text: String, user: String, username: String, userId: String, completion: @escaping (_ result: [String : Any]?) -> Void) {
         
-        let params = ["text": text, "userId": userId, "user": user, "username": username] as [String : Any]
+        let params = ["text": text, "user": user, "username": username, "userId": userId] as [String : Any]
         
         let url = URL(string: requestDomain)!
         

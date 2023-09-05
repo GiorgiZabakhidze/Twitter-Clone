@@ -14,7 +14,7 @@ class TweetCellViewModel: ObservableObject {
     
     init(tweet: Tweet) {
         self.tweet = tweet
-        self.fetchUser(userId: tweet.user)
+        self.fetchUser(userId: tweet.userId)
         self.checkIfTweetIsLiked()
     }
     

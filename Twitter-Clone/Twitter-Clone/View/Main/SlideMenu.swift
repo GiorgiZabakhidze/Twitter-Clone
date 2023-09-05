@@ -20,6 +20,8 @@ struct SlideMenu: View {
     
     var width = UIScreen.main.bounds.width
     
+    @Binding var x1: CGFloat
+    
     var body: some View {
         VStack {
             HStack(spacing: 0){
@@ -27,6 +29,11 @@ struct SlideMenu: View {
                     
                     NavigationLink {
                         UserProfile(user: viewModel.currentUser!)
+                            .onAppear {
+                                withAnimation {
+                                    self.x1 = -UIScreen.main.bounds.width + 90
+                                }
+                            }
                     } label: {
                         KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.currentUser!.id)/avatar"))
                             .placeholder {
@@ -36,6 +43,7 @@ struct SlideMenu: View {
                             .resizable()
                             .frame(width: 60,height: 60)
                             .clipShape(Circle())
+                            
                     }
 
                     

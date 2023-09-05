@@ -21,7 +21,7 @@ struct MainView: View {
                 ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
                     TopBar(x1: $x1)
                     Home(slideManuOffset: $x1, user: user)
-                    SlideMenu(viewModel: AuthViewModel.shared)
+                    SlideMenu(viewModel: AuthViewModel.shared, x1: $x1)
                         .shadow(color: Color.black.opacity(x1 != 0 ? 0.1 : 0), radius: 5, x: 5, y: 0)
                         .offset(x: x1)
                         .background(Color.black.opacity(x1 != -width1 ? 0.5 : 0))

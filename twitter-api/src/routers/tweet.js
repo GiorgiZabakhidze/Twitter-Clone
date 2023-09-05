@@ -18,7 +18,7 @@ const upload = multer({
 router.post('/tweets', auth, async (req, res) => {
     const tweet = new Tweet({
         ...req.body,
-        user: req.user._id
+        user: req.user.name
     })
 
     try {

@@ -45,7 +45,7 @@ struct TweetCellView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("\(self.viewModel.tweet.username) ")
+                        Text("\(self.viewModel.tweet.user)")
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                         +
@@ -97,7 +97,7 @@ struct TweetCellView: View {
                             .resizable()
                             .renderingMode(.template)
                             .frame(width: 18, height: 15)
-                    }.foregroundColor(.gray)
+                    }.foregroundColor(isLiked ? Color("bg") : .gray)
                     
                     Button {
                         
@@ -109,6 +109,7 @@ struct TweetCellView: View {
                     }.foregroundColor(.gray)
                 }
                 .padding(.top, 4)
+                .padding(.leading, 30)
             }
 
         }

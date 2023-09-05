@@ -28,6 +28,7 @@ struct UserProfile: View {
     @State var titleOffset: CGFloat = 0
     @State var currentTab = "Tweets"
     @State var tabBarOffset: CGFloat = 0
+    
     @Namespace var animation
     
     
