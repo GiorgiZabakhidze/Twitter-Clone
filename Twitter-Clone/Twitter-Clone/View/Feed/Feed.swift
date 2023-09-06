@@ -14,21 +14,29 @@ struct Feed: View {
     let user: User
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            LazyVStack(spacing: 18) {
-                
-                ForEach(viewModel.tweets) {
+        
+        RefreshableScrollView(content:
+            ScrollView(showsIndicators: false) {
+                LazyVStack(spacing: 18) {
                     
-                    TweetCellView(viewModel: TweetCellViewModel(tweet: $0))
-                    
-                    Divider()
+                    ForEach(viewModel.tweets) {
+                        
+                        TweetCellView(viewModel: TweetCellViewModel(tweet: $0))
+                        
+                        Divider()
+                        
+                    }
                     
                 }
-                
+                .padding(.top)
+                .padding(.horizontal)
+                .zIndex(0)
+        }) { control in
+            DispatchQueue.main.async {
+                self.viewModel.fetchTweets()
+                control.endRefreshing()
+                print("y")
             }
-            .padding(.top)
-            .padding(.horizontal)
-            .zIndex(0)
         }
                    
     }

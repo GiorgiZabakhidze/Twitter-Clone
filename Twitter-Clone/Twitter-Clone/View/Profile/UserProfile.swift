@@ -241,8 +241,10 @@ struct UserProfile: View {
                     
                     VStack(spacing: 18) {
                         
-                        ForEach(viewModel.tweets) { tweet in
-                            TweetCellView(viewModel: TweetCellViewModel(tweet: tweet))
+                        ScrollView(showsIndicators: false) {
+                            ForEach(viewModel.tweets) {
+                                TweetCellView(viewModel: TweetCellViewModel(tweet: $0))
+                            }
                         }
                         
                     }

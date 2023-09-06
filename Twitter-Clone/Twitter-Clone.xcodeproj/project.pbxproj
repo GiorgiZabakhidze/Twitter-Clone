@@ -40,6 +40,7 @@
 		CE9CA3912A9FDB300076A7CC /* CustomProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CA3902A9FDB300076A7CC /* CustomProfileTextField.swift */; };
 		CE9CA3932A9FE9DC0076A7CC /* CustomProfileBioTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CA3922A9FE9DC0076A7CC /* CustomProfileBioTextField.swift */; };
 		CEA99CDA2A8A5AFB009C5A75 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA99CD92A8A5AFB009C5A75 /* TabButton.swift */; };
+		CEAA8B6B2AA8EDFE005FEB4F /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA8B6A2AA8EDFE005FEB4F /* RefreshableScrollView.swift */; };
 		CEAB38402A8BD90A007B9C04 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB383F2A8BD90A007B9C04 /* WelcomeView.swift */; };
 		CEAB38422A8BE444007B9C04 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB38412A8BE444007B9C04 /* RegisterView.swift */; };
 		CEAB38442A8BE5B9007B9C04 /* CustomAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB38432A8BE5B9007B9C04 /* CustomAuthTextField.swift */; };
@@ -92,6 +93,7 @@
 		CE9CA3902A9FDB300076A7CC /* CustomProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileTextField.swift; sourceTree = "<group>"; };
 		CE9CA3922A9FE9DC0076A7CC /* CustomProfileBioTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileBioTextField.swift; sourceTree = "<group>"; };
 		CEA99CD92A8A5AFB009C5A75 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		CEAA8B6A2AA8EDFE005FEB4F /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		CEAB383F2A8BD90A007B9C04 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		CEAB38412A8BE444007B9C04 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		CEAB38432A8BE5B9007B9C04 /* CustomAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthTextField.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				CEAB38452A8BE7B3007B9C04 /* SecureAuthTextField.swift */,
 				CE9CA3902A9FDB300076A7CC /* CustomProfileTextField.swift */,
 				CE9CA3922A9FE9DC0076A7CC /* CustomProfileBioTextField.swift */,
+				CEAA8B6A2AA8EDFE005FEB4F /* RefreshableScrollView.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				CE1626962A86666F0080C802 /* MultilineTextField.swift in Sources */,
 				CE16266B2A8643240080C802 /* Twitter_CloneApp.swift in Sources */,
 				CE16268E2A864E750080C802 /* NotificationsView.swift in Sources */,
+				CEAA8B6B2AA8EDFE005FEB4F /* RefreshableScrollView.swift in Sources */,
 				CE9CA3932A9FE9DC0076A7CC /* CustomProfileBioTextField.swift in Sources */,
 				CEA99CDA2A8A5AFB009C5A75 /* TabButton.swift in Sources */,
 				CEB401AE2A8B8309005C95AF /* CustomTabView.swift in Sources */,
