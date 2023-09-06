@@ -11,6 +11,9 @@ class EditProfileViewModel: ObservableObject {
     var user: User
     
     @Published var UploadComlete: Bool = false
+    @Published var tweets = [Tweet]()
+    
+    var isUserNameChanged: Bool = false
     
     init(user: User) {
         self.user = user
@@ -50,8 +53,23 @@ class EditProfileViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.save(name: name, location: location, bio: bio, website: website)
                 self.UploadComlete = true
+                
+                if self.user.name != name {
+                    self.isUserNameChanged = true
+                }
             }
             
+        }
+        
+        if isUserNameChanged {
+            if tweets.count > 0 {
+                let tweetUrl = URL(string: "http://localhost:3000/tweets/change/\(userId)")!
+                
+                AuthServices.makePatchRequestWithAuth(urlString: tweetUrl, reqBody: ["user": name]) { result in
+                    print(result)
+                }
+            }
+            self.isUserNameChanged = false
         }
     }
     

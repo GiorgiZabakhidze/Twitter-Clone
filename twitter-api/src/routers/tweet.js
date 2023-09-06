@@ -83,13 +83,36 @@ router.get('/tweets', async (req, res) => {
 //Ferch a centain user's Tweets
 router.get('/tweets/:id', async (req, res) => {
     try {
-        const tweets = await Tweet.find({ user: req.params.id })
+        const tweets = await Tweet.find({ userId: req.params.id })
 
         if(!tweets) {
             return res.status(404).send()
         }
 
         res.status(200).send(tweets)
+    }catch (err) {
+        res.status(500).send(err)
+    }
+})
+
+//Change Certain Tweet's user Property
+router.patch('/tweets/change/:id', auth, async (req, res) => {
+    try {
+        const tweets = await Tweet.find({ userId: req.params.id })
+
+        if(!tweets) {
+            return res.status(404).send()
+        }
+
+        tweets.forEach(async (tweet) => {
+            tweet.user = req.body.user
+            await tweet.save()
+        })
+
+        
+
+        res.status(200).send(tweets)
+
     }catch (err) {
         res.status(500).send(err)
     }

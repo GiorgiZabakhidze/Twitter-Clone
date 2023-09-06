@@ -14,7 +14,7 @@ struct TabButton: View {
     
     var body: some View {
         Button {
-    
+            self.currentTab = title
         } label: {
             LazyVStack(spacing: 12) {
                 Text(title)
