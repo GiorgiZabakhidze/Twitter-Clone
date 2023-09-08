@@ -13,6 +13,10 @@ struct SearchView: View {
     
     @ObservedObject var viewModel = SearchViewModel()
     
+    var users: [User] {
+        return text.isEmpty ? viewModel.users : viewModel.filteredUsers(text)
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             SearchBar(text: $text, isEditing: $isEditing)
@@ -20,23 +24,17 @@ struct SearchView: View {
             
             ScrollView {
                 
-                if (!isEditing || text == "") {
-                    LazyVStack {
-                        ForEach(0..<20) { i in
-                            SearchCell(tag: "Hello", tweets: String(i))
-                                .padding(.leading)
-                        }
-                    }
-                }else {
-                    LazyVStack {
-                        ForEach(self.viewModel.users) { user in
+                LazyVStack {
+                    ForEach(users) { user in
+                        NavigationLink {
+                            UserProfile(user: user)
+                        } label: {
                             searchUserCell(user: user)
                                 .padding(.leading)
                         }
+
                     }
                 }
-                
-//                Spacer()
             }
         }
     }
