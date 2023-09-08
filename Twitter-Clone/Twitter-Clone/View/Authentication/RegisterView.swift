@@ -12,6 +12,7 @@ struct RegisterView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     @State var name = ""
+    @State var username = ""
     @State var email = ""
     @State var password = ""
     @Environment(\.presentationMode) var presentationMode
@@ -45,6 +46,7 @@ struct RegisterView: View {
             
             VStack(alignment: .leading, spacing: nil) {
                 CustomAuthTextField(placeholder: "Name", text: $name)
+                CustomAuthTextField(placeholder: "Username", text: $username)
                 CustomAuthTextField(placeholder: "Phone Number or Email", text: $email)
                 SecureAuthTextField(placeholder: "password", text: $password)
             }
@@ -59,13 +61,14 @@ struct RegisterView: View {
                     Spacer()
                     
                     Button {
-                        self.viewModel.register(name: name, username: name, email: email, password: password)
+                        self.viewModel.register(name: name, username: username, email: email, password: password)
+                        presentationMode.wrappedValue.dismiss()
                     } label: {
                         Capsule()
-                            .frame(width: 60, height: 30, alignment: .center)
+                            .frame(width: 110, height: 30, alignment: .center)
                             .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
                             .overlay {
-                                Text("Next")
+                                Text("Register")
                                     .foregroundColor(.white)
                             }
                     }

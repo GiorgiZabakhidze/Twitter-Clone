@@ -20,6 +20,8 @@ struct SlideMenu: View {
     
     var width = UIScreen.main.bounds.width
     
+    @State var IsCreateNewAccauntPresented: Bool = false
+    
     @Binding var x1: CGFloat
     
     var body: some View {
@@ -159,10 +161,19 @@ struct SlideMenu: View {
                     
                     VStack(alignment: .leading) {
                         Button {
-                            
+                            self.IsCreateNewAccauntPresented.toggle()
                         } label: {
                             Text("Create a New Account")
                                 .foregroundColor(Color("bg"))
+                        }
+                        .sheet(isPresented: $IsCreateNewAccauntPresented) {
+                            RegisterView()
+                                .onAppear {
+                                    withAnimation {
+                                        self.x1 = -UIScreen.main.bounds.width + 90
+                                    }
+                                }
+                                .padding(.top, 15)
                         }
                         
                         Button {
