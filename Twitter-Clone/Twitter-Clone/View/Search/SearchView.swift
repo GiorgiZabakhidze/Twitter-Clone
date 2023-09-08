@@ -24,7 +24,7 @@ struct SearchView: View {
             
             ScrollView {
                 
-                LazyVStack {
+                LazyVStack(alignment: .leading) {
                     ForEach(users) { user in
                         NavigationLink {
                             UserProfile(user: user)

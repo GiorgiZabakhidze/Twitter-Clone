@@ -29,23 +29,39 @@ struct SlideMenu: View {
             HStack(spacing: 0){
                 VStack(alignment: .leading) {
                     
-                    NavigationLink {
-                        UserProfile(user: viewModel.currentUser!)
-                            .onAppear {
-                                withAnimation {
-                                    self.x1 = -UIScreen.main.bounds.width + 90
+                    HStack {
+                        NavigationLink {
+                            UserProfile(user: viewModel.currentUser!)
+                                .onAppear {
+                                    withAnimation {
+                                        self.x1 = -UIScreen.main.bounds.width + 90
+                                    }
                                 }
+                        } label: {
+                            KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.currentUser!.id)/avatar"))
+                                .placeholder {
+                                    Image("Profile")
+                                        .resizable()
+                                }
+                                .resizable()
+                                .frame(width: 60,height: 60)
+                                .clipShape(Circle())
+                                
+                        }
+                        
+                        Spacer()
+                        
+                        Button {
+                            withAnimation {
+                                AuthViewModel.shared.logout()
                             }
-                    } label: {
-                        KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.currentUser!.id)/avatar"))
-                            .placeholder {
-                                Image("Profile")
-                                    .resizable()
-                            }
-                            .resizable()
-                            .frame(width: 60,height: 60)
-                            .clipShape(Circle())
-                            
+                        } label: {
+                            Text("Log Out")
+                                .foregroundColor(.red)
+                                .padding(.trailing, 4)
+                        }
+
+                        
                     }
 
                     
@@ -67,9 +83,9 @@ struct SlideMenu: View {
                             
                             HStack(spacing: 20) {
                                 
-                                FollowView(count: 999, title: "Followers")
+                                FollowView(count: self.viewModel.currentUser!.followers.count, title: "Followers")
                                 
-                                FollowView(count: 16, title: "Following")
+                                FollowView(count: self.viewModel.currentUser!.following.count, title: "Following")
                                 
                             }.padding(.top, 10)
                             
@@ -181,7 +197,7 @@ struct SlideMenu: View {
                         } label: {
                             Text("Add an Existing Account")
                                 .foregroundColor(Color("bg"))
-                        }
+                        }.padding(.top, 1)
                         
                         Spacer(minLength: 0)
 

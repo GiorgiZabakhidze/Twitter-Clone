@@ -60,7 +60,7 @@ struct UserProfile: View {
                                 Text(user.name)
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
-                                Text("3 Tweets")
+                                Text("\(self.viewModel.tweets.count) Tweets")
                                     .foregroundColor(.white)
                             }
                             .offset(y: 120)
@@ -184,14 +184,14 @@ struct UserProfile: View {
                             }
                             
                             HStack(spacing: 5) {
-                                Text("999")
+                                Text("\(self.viewModel.user.followers.count)")
                                     .foregroundColor(.primary)
                                     .fontWeight(.semibold)
-                                
+//
                                 Text("Follower")
                                     .foregroundColor(.gray)
-                                
-                                Text("16")
+//
+                                Text("\(self.viewModel.user.following.count)")
                                     .foregroundColor(.primary)
                                     .fontWeight(.semibold)
                                     .padding(.leading, 10)
