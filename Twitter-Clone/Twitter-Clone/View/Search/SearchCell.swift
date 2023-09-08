@@ -12,11 +12,15 @@ struct SearchCell: View {
     var tweets = ""
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(tag)
-                .fontWeight(.heavy)
-            Text(tweets + " Tweets")
-                .fontWeight(.light)
+        HStack {
+            VStack(alignment: .leading, spacing: 5) {
+                Text(tag)
+                    .fontWeight(.heavy)
+                Text(tweets + " Tweets")
+                    .fontWeight(.light)
+            }
+            
+            Spacer()
         }
     }
 }

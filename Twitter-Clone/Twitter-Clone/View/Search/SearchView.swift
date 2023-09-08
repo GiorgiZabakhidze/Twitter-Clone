@@ -18,14 +18,25 @@ struct SearchView: View {
             SearchBar(text: $text, isEditing: $isEditing)
                 .padding(.horizontal)
             
-            if (!isEditing || text == "") {
-                List(0..<9) { i in
-                    SearchCell(tag: "Heloua", tweets: String(i))
-                }.listStyle(PlainListStyle())
-            }else {
-                List(0..<5) { _ in
-                    searchUserCell()
-                }.listStyle(PlainListStyle())
+            ScrollView {
+                
+                if (!isEditing || text == "") {
+                    LazyVStack {
+                        ForEach(0..<20) { i in
+                            SearchCell(tag: "Hello", tweets: String(i))
+                                .padding(.leading)
+                        }
+                    }
+                }else {
+                    LazyVStack {
+                        ForEach(self.viewModel.users) { user in
+                            searchUserCell(user: user)
+                                .padding(.leading)
+                        }
+                    }
+                }
+                
+//                Spacer()
             }
         }
     }

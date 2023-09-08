@@ -6,27 +6,33 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct searchUserCell: View {
+    
+    let user: User
+    
     var body: some View {
         HStack {
-            Image("profile_pic")
+            KFImage(URL(string: "htttp://localhost:3000/users/\(self.user.avatar)/avatar"))
+                .placeholder {
+                    Image("Profile")
+                        .resizable()
+                }
                 .resizable()
                 .scaledToFit()
                 .frame(width: 44, height: 44)
                 .clipShape(Circle())
+            
             VStack(alignment: .leading) {
-                Text("zabaxa")
+                Text(self.user.name)
                     .fontWeight(.heavy)
-                Text("@Giorgi_Zabakhidze")
+                    .foregroundColor(.black)
+                Text("@\(self.user.username)")
+                    .foregroundColor(.black)
             }
+            
             Spacer(minLength: 0)
         }
-    }
-}
-
-struct searchUserCell_Previews: PreviewProvider {
-    static var previews: some View {
-        searchUserCell()
     }
 }
