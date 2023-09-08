@@ -11,6 +11,8 @@ struct SearchView: View {
     @State var text = ""
     @State var isEditing = false
     
+    @ObservedObject var viewModel = SearchViewModel()
+    
     var body: some View {
         VStack(alignment: .leading) {
             SearchBar(text: $text, isEditing: $isEditing)

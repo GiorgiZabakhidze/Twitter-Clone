@@ -96,12 +96,12 @@ public class AuthServices {
     }
     
     //Fetch User
-    static func fetchUser(id: String, completion: @escaping (_ result: Result<Data, AuthenticationError>) -> Void) {
-        let urlString = URL(string: "http://localhost:3000/users/\(id)")!
-        
-        var request = URLRequest(url: urlString)
+    static func fetchUser(completion: @escaping (_ result: Result<Data, AuthenticationError>) -> Void) {
+        let urlString = URL(string: requestDomain)!
         
         let session = URLSession.shared
+        
+        var request = URLRequest(url: urlString)
         
         request.httpMethod = "GET"
         
