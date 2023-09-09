@@ -39,10 +39,20 @@ class ProfileViewModel: ObservableObject {
     }
     
     func follow() {
+        
+        guard let authedUser = AuthViewModel.shared.currentUser else {
+            return
+        }
+        
         RequestServices.requestDomain = "http://localhost:3000/users/\(self.user.id)/follow"
         
         RequestServices.followingProcess(id: self.user.id) { result in
             print(result)
+        }
+        
+        RequestServices.requestDomain = "http://localhost:3000/notifications"
+        
+        RequestServices.sendNotification(username: authedUser.username, notSenderId: authedUser.id, notReceiverId: self.user.id, notificationType: "follow", postText: "") { result in
             print("User Has Been Followed")
         }
         

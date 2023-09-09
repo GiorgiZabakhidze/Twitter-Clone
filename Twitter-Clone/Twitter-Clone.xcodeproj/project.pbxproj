@@ -47,6 +47,7 @@
 		CEAB38442A8BE5B9007B9C04 /* CustomAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB38432A8BE5B9007B9C04 /* CustomAuthTextField.swift */; };
 		CEAB38462A8BE7B3007B9C04 /* SecureAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB38452A8BE7B3007B9C04 /* SecureAuthTextField.swift */; };
 		CEAB38482A8BF6DF007B9C04 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB38472A8BF6DF007B9C04 /* LogInView.swift */; };
+		CEB4013C2AACA2B600D45A6C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4013B2AACA2B600D45A6C /* Notification.swift */; };
 		CEB401AE2A8B8309005C95AF /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB401AD2A8B8309005C95AF /* CustomTabView.swift */; };
 		CEB772D92A87A43D00A2C8F4 /* searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772D82A87A43D00A2C8F4 /* searchUserCell.swift */; };
 		CEB772DB2A87A83400A2C8F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772DA2A87A83400A2C8F4 /* Extensions.swift */; };
@@ -101,6 +102,7 @@
 		CEAB38432A8BE5B9007B9C04 /* CustomAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthTextField.swift; sourceTree = "<group>"; };
 		CEAB38452A8BE7B3007B9C04 /* SecureAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureAuthTextField.swift; sourceTree = "<group>"; };
 		CEAB38472A8BF6DF007B9C04 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		CEB4013B2AACA2B600D45A6C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		CEB401AD2A8B8309005C95AF /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CEB772D82A87A43D00A2C8F4 /* searchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserCell.swift; sourceTree = "<group>"; };
 		CEB772DA2A87A83400A2C8F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				CE8EE6472A95D79100DA1E21 /* User.swift */,
 				CE63358F2A9A880C0093F598 /* Tweet.swift */,
+				CEB4013B2AACA2B600D45A6C /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				CE2FDA792A9E47DF0054E41E /* FeedViewModel.swift in Sources */,
 				CE6335952A9A8A1A0093F598 /* RequestServices.swift in Sources */,
 				CE6335902A9A880C0093F598 /* Tweet.swift in Sources */,
+				CEB4013C2AACA2B600D45A6C /* Notification.swift in Sources */,
 				CEB772E92A87ECDE00A2C8F4 /* MenuButton.swift in Sources */,
 				CE96372A2A9D26CC001A5CA1 /* ImagePicker.swift in Sources */,
 				CE1626982A86A4400080C802 /* TweetCellView.swift in Sources */,

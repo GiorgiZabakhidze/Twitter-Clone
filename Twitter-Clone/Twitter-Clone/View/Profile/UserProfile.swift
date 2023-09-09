@@ -243,7 +243,7 @@ struct UserProfile: View {
                         
                         ScrollView(showsIndicators: false) {
                             ForEach(viewModel.tweets) {
-                                TweetCellView(viewModel: TweetCellViewModel(tweet: $0))
+                                TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
                             }
                         }
                         

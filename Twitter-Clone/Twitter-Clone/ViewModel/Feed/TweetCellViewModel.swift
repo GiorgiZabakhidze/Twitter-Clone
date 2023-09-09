@@ -12,8 +12,11 @@ class TweetCellViewModel: ObservableObject {
     @Published var tweet: Tweet
     @Published var user: User?
     
-    init(tweet: Tweet) {
+    let currentUser: User
+    
+    init(tweet: Tweet, currentUser: User) {
         self.tweet = tweet
+        self.currentUser = currentUser
         self.fetchUser(userId: tweet.userId)
         self.checkIfTweetIsLiked()
     }
@@ -40,6 +43,13 @@ class TweetCellViewModel: ObservableObject {
         RequestServices.likeProcess(id: self.tweet.id) { result in
             print(result)
             print("The Tweet Has Been Liked")
+        }
+        
+        RequestServices.requestDomain = "http://localhost:3000/notifications"
+        
+        RequestServices.sendNotification(username: self.currentUser.username, notSenderId: self.currentUser.id, notReceiverId: self.tweet.id, notificationType: "like", postText: self.tweet.text) { result in
+            
+            print("Tweet Has Been Liked")
         }
         
         self.tweet.isLiked = true

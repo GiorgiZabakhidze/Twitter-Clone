@@ -5,7 +5,7 @@ const Notification = require('../models/notification')
 const router = new express.Router()
 
 //Create Notification
-router.post('/notification', auth, async (req, res) => {
+router.post('/notifications', auth, async (req, res) => {
     const notification = new Notification({
         ...req.body,
         user: req.user._id
@@ -22,7 +22,7 @@ router.post('/notification', auth, async (req, res) => {
 })
 
 //Fetch Notifications
-router.get('/notification', async (req, res) => {
+router.get('/notifications', async (req, res) => {
     try {
         const notifications = await Notification.find({})
         
@@ -33,7 +33,7 @@ router.get('/notification', async (req, res) => {
 })
 
 //Fetch a Single User's Notification
-router.get('/notification/:id', async (req, res) => {
+router.get('/notifications/:id', async (req, res) => {
     try {
         const notifications = await Notification.find({ notReceiverId: req.params.id})
         
