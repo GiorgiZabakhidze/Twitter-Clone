@@ -25,6 +25,10 @@ class SearchViewModel: ObservableObject {
                     
                     DispatchQueue.main.async {
                         self.users = users
+                        
+                        for i in 0..<users.count {
+                            UserDefaults.standard.set(users[i].username, forKey: users[i].id)
+                        }
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

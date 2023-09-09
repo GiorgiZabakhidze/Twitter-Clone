@@ -13,6 +13,8 @@ struct NotificationsCellView: View {
     let notification: Notification
     var notificationType: String
     
+    let username = UserDefaults.standard.string(forKey: "username")!
+    
     @State var width = UIScreen.main.bounds.width
     
     var body: some View {
@@ -37,7 +39,7 @@ struct NotificationsCellView: View {
                         .scaledToFit()
                         .frame(width: 44, height: 44)
                         .clipShape(Circle())
-                    Text("\(self.notification.notSenderId) ")
+                    Text("@\(UserDefaults.standard.string(forKey: "\(self.notification.notReceiverId)")!) ")
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     +
