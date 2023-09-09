@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct Notification: Decodable {
+struct Notification: Decodable, Identifiable {
     let _id: String
+    var id: String {
+        return _id
+    }
     let username: String
     let notSenderId: String
     let notReceiverId: String

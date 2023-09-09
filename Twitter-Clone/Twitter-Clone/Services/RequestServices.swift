@@ -206,4 +206,34 @@ public class RequestServices {
         
     }
     
+    static func FetchUserNotifications(userId: String, completion: @escaping (_ result: Result<Data?, NetworkError>) -> Void) {
+        let url = URL(string: "http://localhost:3000/notifications/\(userId)")!
+        
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+//
+//        let token = UserDefaults.standard.string(forKey: "jsonwebtoken")!
+//
+//        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, res, err in
+            guard err == nil else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            completion(.success(data))
+        }
+        
+        task.resume()
+    }
+    
 }

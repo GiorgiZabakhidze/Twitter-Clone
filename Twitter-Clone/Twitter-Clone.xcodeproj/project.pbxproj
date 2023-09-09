@@ -48,6 +48,7 @@
 		CEAB38462A8BE7B3007B9C04 /* SecureAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB38452A8BE7B3007B9C04 /* SecureAuthTextField.swift */; };
 		CEAB38482A8BF6DF007B9C04 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB38472A8BF6DF007B9C04 /* LogInView.swift */; };
 		CEB4013C2AACA2B600D45A6C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4013B2AACA2B600D45A6C /* Notification.swift */; };
+		CEB4013F2AACDDB400D45A6C /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4013E2AACDDB400D45A6C /* NotificationsViewModel.swift */; };
 		CEB401AE2A8B8309005C95AF /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB401AD2A8B8309005C95AF /* CustomTabView.swift */; };
 		CEB772D92A87A43D00A2C8F4 /* searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772D82A87A43D00A2C8F4 /* searchUserCell.swift */; };
 		CEB772DB2A87A83400A2C8F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772DA2A87A83400A2C8F4 /* Extensions.swift */; };
@@ -103,6 +104,7 @@
 		CEAB38452A8BE7B3007B9C04 /* SecureAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureAuthTextField.swift; sourceTree = "<group>"; };
 		CEAB38472A8BF6DF007B9C04 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		CEB4013B2AACA2B600D45A6C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		CEB4013E2AACDDB400D45A6C /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
 		CEB401AD2A8B8309005C95AF /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CEB772D82A87A43D00A2C8F4 /* searchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserCell.swift; sourceTree = "<group>"; };
 		CEB772DA2A87A83400A2C8F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		CE2FDA702A9E47320054E41E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CEB4013D2AACDD9C00D45A6C /* Notifications */,
 				CE491EAE2AABB17C00E1678D /* Search */,
 				CE40CF4F2AA1FDB8008640F8 /* Profile */,
 				CE2FDA712A9E47320054E41E /* PostTweet */,
@@ -360,6 +363,14 @@
 				CE491EAF2AABB18C00E1678D /* SearchViewModel.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		CEB4013D2AACDD9C00D45A6C /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CEB4013E2AACDDB400D45A6C /* NotificationsViewModel.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +491,7 @@
 				CEAA8B6B2AA8EDFE005FEB4F /* RefreshableScrollView.swift in Sources */,
 				CE9CA3932A9FE9DC0076A7CC /* CustomProfileBioTextField.swift in Sources */,
 				CEA99CDA2A8A5AFB009C5A75 /* TabButton.swift in Sources */,
+				CEB4013F2AACDDB400D45A6C /* NotificationsViewModel.swift in Sources */,
 				CEB401AE2A8B8309005C95AF /* CustomTabView.swift in Sources */,
 				CEAB38462A8BE7B3007B9C04 /* SecureAuthTextField.swift in Sources */,
 				CEB772DD2A87AE9D00A2C8F4 /* NotificationsCellView.swift in Sources */,

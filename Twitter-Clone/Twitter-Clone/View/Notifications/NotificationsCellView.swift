@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NotificationsCellView: View {
+    
+    let notification: Notification
+    var notificationType: String
+    
     @State var width = UIScreen.main.bounds.width
     
     var body: some View {
@@ -23,16 +28,20 @@ struct NotificationsCellView: View {
                     .foregroundColor(Color("bg"))
                     .padding(.top, 4)
                 VStack(alignment: .leading, spacing: 2) {
-                    Image("profile_pic")
+                    KFImage(URL(string: "http://localhost:3000/users/\(self.notification.notReceiverId)/avatar"))
+                        .placeholder {
+                            Image("Profile")
+                                .resizable()
+                        }
                         .resizable()
                         .scaledToFit()
                         .frame(width: 44, height: 44)
                         .clipShape(Circle())
-                    Text("zabaxa ")
+                    Text("\(self.notification.notSenderId) ")
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     +
-                    Text("followed you")
+                    Text(notificationType == "follow" ? "followed you" : "Liked Your Post")
                         .foregroundColor(.black)
                 }
                 Spacer(minLength: 8)
@@ -41,8 +50,4 @@ struct NotificationsCellView: View {
     }
 }
 
-struct NotificationsCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        NotificationsCellView()
-    }
-}
+

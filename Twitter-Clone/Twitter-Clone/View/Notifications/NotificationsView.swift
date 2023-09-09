@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct NotificationsView: View {
+    
+    @ObservedObject var viewModel = NotificationsViewModel()
+    
     var body: some View {
         RefreshableScrollView(content:
             VStack {
                 ScrollView(showsIndicators: false) {
-                    ForEach(0..<9) { _ in
-                        NotificationsCellView()
+                    ForEach(viewModel.notifications) { not in
+                        NotificationsCellView(notification: not, notificationType: not.notificationType)
                     }
                 }
                 
@@ -24,8 +27,3 @@ struct NotificationsView: View {
     }
 }
 
-struct NotificationsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NotificationsView()
-    }
-}
