@@ -13,7 +13,7 @@ struct NotificationsCellView: View {
     let notification: Notification
     var notificationType: String
     
-    let username = UserDefaults.standard.string(forKey: "username")!
+    let username = UserDefaults.standard.string(forKey: "username")
     
     @State var width = UIScreen.main.bounds.width
     
@@ -25,7 +25,7 @@ struct NotificationsCellView: View {
                 .opacity(0.3)
             
             HStack(alignment: .top) {
-                Image("twitter-profile-2")
+                Image(notificationType == "follow" ? "twitter-profile-2" : "twitter-like")
                     .renderingMode(.template)
                     .foregroundColor(Color("bg"))
                     .padding(.top, 4)

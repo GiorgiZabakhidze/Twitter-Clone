@@ -12,6 +12,8 @@ struct SlideMenu: View {
     
     @ObservedObject var viewModel: AuthViewModel
     
+    let user: User
+    
     @State var show = false
     
     var menuButtons = ["Profile", "Lists", "Topics", "Bookmarks", "Moments"]
@@ -21,6 +23,7 @@ struct SlideMenu: View {
     var width = UIScreen.main.bounds.width
     
     @State var IsCreateNewAccauntPresented: Bool = false
+    @State var  isAddAnExistingAccountPresented: Bool = false
     
     @Binding var x1: CGFloat
     
@@ -83,9 +86,9 @@ struct SlideMenu: View {
                             
                             HStack(spacing: 20) {
                                 
-                                FollowView(count: self.viewModel.currentUser!.followers.count, title: "Followers")
+                                FollowView(count: self.user.followers.count, title: "Followers")
                                 
-                                FollowView(count: self.viewModel.currentUser!.following.count, title: "Following")
+                                FollowView(count: self.user.following.count, title: "Following")
                                 
                             }.padding(.top, 10)
                             
@@ -186,18 +189,28 @@ struct SlideMenu: View {
                             RegisterView()
                                 .onAppear {
                                     withAnimation {
-                                        self.x1 = -UIScreen.main.bounds.width + 90
+                                        self.x1 = -width + 90
                                     }
                                 }
                                 .padding(.top, 15)
                         }
                         
                         Button {
-                            
+                            self.isAddAnExistingAccountPresented.toggle()
                         } label: {
                             Text("Add an Existing Account")
                                 .foregroundColor(Color("bg"))
-                        }.padding(.top, 1)
+                        }
+                        .padding(.top, 1)
+                        .sheet(isPresented: $isAddAnExistingAccountPresented) {
+                            LogInView()
+                                .onAppear {
+                                    withAnimation {
+                                        self.x1 = -width + 90
+                                    }
+                                }
+                                .padding(.top, 15)
+                        }
                         
                         Spacer(minLength: 0)
 

@@ -12,6 +12,8 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticated: Bool = false
     @Published var currentUser: User?
     
+    var isNewIdSet: Bool = false
+    
     init() {
         let defaults = UserDefaults.standard
         let token = defaults.object(forKey: "jsonwebtoken")
@@ -31,7 +33,7 @@ class AuthViewModel: ObservableObject {
     
     static let shared = AuthViewModel()
     
-    func login(email: String, password: String) {
+    func login(email: String, password: String, completion: @escaping () -> Void) {
         let defaults = UserDefaults.standard
         
         AuthServices.requestDomain = "http://localhost:3000/users/login"
@@ -44,19 +46,25 @@ class AuthViewModel: ObservableObject {
                         
                         DispatchQueue.main.async {
                             // Process user data
-                            let defaults = UserDefaults.standard
                             defaults.set(response.token?.tokens![0].token, forKey: "jsonwebtoken")
                             defaults.set(response.user.id, forKey: "userid")
+                            self.isNewIdSet = true
+                            print("isNewIdSet: \(self.isNewIdSet)")
                             self.isAuthenticated = true
                             self.currentUser = response.user
                             print("Logged In..")
+                            completion()
                         }
-                    
+
                     } catch {
                         print("Decoding Error: \(error)")
+                        self.isNewIdSet = false
+                        completion()
                     }
                 case .failure(let error):
+                    self.isNewIdSet = false
                     print("Network Error: \(error.localizedDescription)")
+                    completion()
             }
         }
     }

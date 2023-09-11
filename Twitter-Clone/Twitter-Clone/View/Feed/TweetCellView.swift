@@ -45,7 +45,7 @@ struct TweetCellView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("\(self.viewModel.tweet.user)")
+                        Text("\(self.viewModel.tweet.user) ")
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                         +

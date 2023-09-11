@@ -22,8 +22,7 @@ struct SearchView: View {
             SearchBar(text: $text, isEditing: $isEditing)
                 .padding(.horizontal)
             
-            ScrollView {
-                
+            RefreshableScrollView(content:
                 LazyVStack(alignment: .leading) {
                     ForEach(users) { user in
                         NavigationLink {
@@ -34,7 +33,8 @@ struct SearchView: View {
                         }
 
                     }
-                }
+            }) { control in
+                control.endRefreshing()
             }
         }
     }
