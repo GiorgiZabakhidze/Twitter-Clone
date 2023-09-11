@@ -214,10 +214,10 @@ public class RequestServices {
         var request = URLRequest(url: url)
         
         request.httpMethod = "GET"
-//
-//        let token = UserDefaults.standard.string(forKey: "jsonwebtoken")!
-//
-//        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let token = UserDefaults.standard.string(forKey: "jsonwebtoken")!
+
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")

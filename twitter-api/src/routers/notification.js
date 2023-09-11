@@ -32,7 +32,7 @@ router.get('/notifications', async (req, res) => {
     }
 })
 
-//Fetch a Single User's Notification
+//Fetch a Single User's Notifications
 router.get('/notifications/:id', async (req, res) => {
     try {
         const notifications = await Notification.find({ notReceiverId: req.params.id})

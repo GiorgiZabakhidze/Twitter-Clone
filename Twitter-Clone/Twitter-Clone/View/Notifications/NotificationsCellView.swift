@@ -30,7 +30,7 @@ struct NotificationsCellView: View {
                     .foregroundColor(Color("bg"))
                     .padding(.top, 4)
                 VStack(alignment: .leading, spacing: 2) {
-                    KFImage(URL(string: "http://localhost:3000/users/\(self.notification.notReceiverId)/avatar"))
+                    KFImage(URL(string: "http://localhost:3000/users/\(self.notification.notSenderId)/avatar"))
                         .placeholder {
                             Image("Profile")
                                 .resizable()
@@ -39,7 +39,7 @@ struct NotificationsCellView: View {
                         .scaledToFit()
                         .frame(width: 44, height: 44)
                         .clipShape(Circle())
-                    Text("@\(UserDefaults.standard.string(forKey: "\(self.notification.notReceiverId)")!) ")
+                    Text("@\(UserDefaults.standard.string(forKey: "\(self.notification.notSenderId)")!) ")
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     +
