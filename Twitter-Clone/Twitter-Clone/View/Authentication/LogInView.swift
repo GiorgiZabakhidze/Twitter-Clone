@@ -53,9 +53,12 @@ struct LogInView: View {
                         .padding(.horizontal)
                         .padding(.top)
                     
+                        
                     if (!emailDone) {
                         CustomAuthTextField(placeholder: "Phone, Email or @username", text: $email)
                     }else {
+                        CustomAuthTextField(placeholder: email, text: $email, locked: .constant(true))
+                        
                         SecureAuthTextField(placeholder: "Password", text: $password)
                     }
                     
@@ -98,8 +101,6 @@ struct LogInView: View {
                                 }
                             }
                         }
-                        
-                        
                     } label: {
                         Capsule()
                             .frame(width: 360, height: 40, alignment: .center)
@@ -114,6 +115,7 @@ struct LogInView: View {
                     if (emailDone) {
                         Text("Forgot Password?")
                             .foregroundColor(.blue)
+                            .padding(.bottom, 3)
                     }
 
                 }
