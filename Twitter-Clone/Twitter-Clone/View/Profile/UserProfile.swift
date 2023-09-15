@@ -144,7 +144,8 @@ struct UserProfile: View {
                     
                     HStack {
                         VStack(alignment: .leading, spacing:  8) {
-                            Text(self.viewModel.user.name)
+                            let name = UserDefaults.standard.string(forKey: AuthViewModel.shared.currentUser!.id)!
+                            Text(name)
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.primary)
@@ -189,10 +190,10 @@ struct UserProfile: View {
                                 Text("\(self.viewModel.user.followers.count)")
                                     .foregroundColor(.primary)
                                     .fontWeight(.semibold)
-//
+                                
                                 Text("Follower")
                                     .foregroundColor(.gray)
-//
+                                
                                 Text("\(self.viewModel.user.following.count)")
                                     .foregroundColor(.primary)
                                     .fontWeight(.semibold)

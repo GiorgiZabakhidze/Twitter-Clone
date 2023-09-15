@@ -81,7 +81,8 @@ struct SlideMenu: View {
                                         }
                                     }
                             } label: {
-                                Text(viewModel.currentUser!.name)
+                                var name = UserDefaults.standard.string(forKey: AuthViewModel.shared.currentUser!.id)!
+                                Text(name)
                                     .font(.title3)
                                     .fontWeight(.bold)
                                     .foregroundColor(.black)

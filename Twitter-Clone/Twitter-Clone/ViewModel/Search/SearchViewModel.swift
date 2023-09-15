@@ -13,6 +13,7 @@ class SearchViewModel: ObservableObject {
     
     init() {
         fetchUsers()
+        findUserById()
     }
     
     func fetchUsers() {
@@ -27,7 +28,7 @@ class SearchViewModel: ObservableObject {
                         self.users = users
                         
                         for i in 0..<users.count {
-                            UserDefaults.standard.set(users[i].username, forKey: users[i].id)
+                            UserDefaults.standard.set(users[i].name, forKey: users[i].id)
                         }
                     }
                 case .failure(let error):
@@ -48,5 +49,15 @@ class SearchViewModel: ObservableObject {
     
     func followingUsers() -> [User] {
         return users.filter({ $0.followers.contains(AuthViewModel.shared.currentUser!.id) })
+    }
+    
+    func findUserById() -> [User] {
+        print("Find user By Id: ")
+        print(AuthViewModel.shared.currentUser!.id)
+        for user in users.filter({ $0._id == AuthViewModel.shared.currentUser!.id }) {
+            print(user.name)
+            print(AuthViewModel.shared.currentUser!.id)
+        }
+        return users.filter({ $0._id == AuthViewModel.shared.currentUser!.id })
     }
 }
