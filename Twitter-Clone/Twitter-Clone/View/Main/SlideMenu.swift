@@ -12,6 +12,8 @@ struct SlideMenu: View {
     
     @ObservedObject var viewModel: AuthViewModel
     
+    @ObservedObject var searchViewModel = SearchViewModel()
+    
     let user: User
     
     @State var show = false
@@ -73,6 +75,11 @@ struct SlideMenu: View {
                             
                             NavigationLink {
                                 UserProfile(user: viewModel.currentUser!)
+                                    .onAppear {
+                                        withAnimation {
+                                            self.x1 = -UIScreen.main.bounds.width + 90
+                                        }
+                                    }
                             } label: {
                                 Text(viewModel.currentUser!.name)
                                     .font(.title3)
@@ -86,9 +93,18 @@ struct SlideMenu: View {
                             
                             HStack(spacing: 20) {
                                 
-                                FollowView(count: self.user.followers.count, title: "Followers")
-                                
-                                FollowView(count: self.user.following.count, title: "Following")
+                                NavigationLink {
+                                    FollowersView()
+                                } label: {
+                                    FollowView(count: self.searchViewModel.followerUsers().count, title: "Followers")
+                                }
+
+                                NavigationLink {
+                                    FollowingsView()
+                                } label: {
+                                    FollowView(count: self.searchViewModel.followingUsers().count, title: "Following")
+                                }
+
                                 
                             }.padding(.top, 10)
                             

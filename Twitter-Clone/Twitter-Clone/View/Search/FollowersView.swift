@@ -1,46 +1,43 @@
 //
-//  SearchView.swift
+//  FollowersView.swift
 //  Twitter-Clone
 //
-//  Created by Macbook Pro on 11/8/23.
+//  Created by Macbook Pro on 16/9/23.
 //
 
 import SwiftUI
 
-struct SearchView: View {
-    @State var text = ""
-    @State var isEditing = false
-    
+struct FollowersView: View {
     @ObservedObject var viewModel = SearchViewModel()
     
     var users: [User] {
-        return text.isEmpty ? viewModel.users : viewModel.filteredUsers(text)
+        return viewModel.followerUsers()
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            SearchBar(text: $text, isEditing: $isEditing)
-                .padding(.horizontal)
-            
+        VStack(alignment: .center) {
+            Text("\(users.count) Followers")
+                .fontWeight(.heavy)
+                .foregroundColor(Color("bg"))
             RefreshableScrollView(content:
-                LazyVStack(alignment: .leading) {
+                LazyVStack {
                     ForEach(users) { user in
                         NavigationLink {
                             UserProfile(user: user)
                         } label: {
                             searchUserCell(user: user)
-                                .padding(.leading)
                         }
                     }
-            }) { control in
+            }.padding(.leading)
+            ){ control in
                 control.endRefreshing()
             }
         }
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
+struct FollowersView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        FollowersView()
     }
 }

@@ -41,4 +41,12 @@ class SearchViewModel: ObservableObject {
         
         return users.filter({ $0.name.lowercased().contains(lowercaseQuery) || $0.username.lowercased().contains(lowercaseQuery) })
     }
+    
+    func followerUsers() -> [User] {
+        return users.filter({ $0.following.contains(AuthViewModel.shared.currentUser!.id) })
+    }
+    
+    func followingUsers() -> [User] {
+        return users.filter({ $0.followers.contains(AuthViewModel.shared.currentUser!.id) })
+    }
 }
