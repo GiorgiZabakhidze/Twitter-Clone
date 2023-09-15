@@ -31,7 +31,6 @@ struct UserProfile: View {
     
     @Namespace var animation
     
-    
     init(user: User) {
         self.user = user
         self.viewModel = ProfileViewModel(user: user)
@@ -80,7 +79,7 @@ struct UserProfile: View {
                     HStack {
                         KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.user.id)/avatar"))
                             .placeholder {
-                                Image("twitter-profile-2")
+                                Image("Profile")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 75, height: 75)
@@ -94,6 +93,9 @@ struct UserProfile: View {
                             .background(Color.white.clipShape(Circle()))
                             .offset(y: offset < 0 ? getOffset() - 20 : -20)
                             .scaleEffect(getScale())
+                            .onTapGesture {
+                                self.EditProfileShow.toggle()
+                            }
                         
                         Spacer()
                         
@@ -109,7 +111,7 @@ struct UserProfile: View {
                                         .stroke(Color.blue, lineWidth: 1.5))
                             }
                             .sheet(isPresented: $EditProfileShow) {
-                                
+                                UserProfile(user: user)
                             } content: {
                                 EditProfileView(user: $viewModel.user)
                             }
