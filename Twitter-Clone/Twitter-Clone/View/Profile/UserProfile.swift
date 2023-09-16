@@ -14,6 +14,8 @@ struct UserProfile: View {
     
     @ObservedObject var viewModel: ProfileViewModel
     
+    @ObservedObject var searchViewModel = SearchViewModel()
+    
     var isCurrentUser: Bool {
         return viewModel.user.isCurrentUser!
     }
@@ -187,20 +189,32 @@ struct UserProfile: View {
                             }
                             
                             HStack(spacing: 5) {
-                                Text("\(self.viewModel.user.followers.count)")
-                                    .foregroundColor(.primary)
-                                    .fontWeight(.semibold)
+                                NavigationLink {
+                                    FollowersView()
+                                        .padding(.top, -85)
+                                } label: {
+                                    Text("\(self.searchViewModel.followerUsers().count)")
+                                        .foregroundColor(.primary)
+                                        .fontWeight(.semibold)
+                                    
+                                    Text("Follower")
+                                        .foregroundColor(.gray)
+                                }.navigationBarTitle("")
+
                                 
-                                Text("Follower")
-                                    .foregroundColor(.gray)
-                                
-                                Text("\(self.viewModel.user.following.count)")
-                                    .foregroundColor(.primary)
-                                    .fontWeight(.semibold)
-                                    .padding(.leading, 10)
-                                
-                                Text("Following")
-                                    .foregroundColor(.gray)
+                                NavigationLink {
+                                    FollowingsView()
+                                        .padding(.top, -85)
+                                } label: {
+                                    Text("\(self.searchViewModel.followingUsers().count)")
+                                        .foregroundColor(.primary)
+                                        .fontWeight(.semibold)
+                                        .padding(.leading, 10)
+                                    
+                                    Text("Following")
+                                        .foregroundColor(.gray)
+                                }.navigationBarTitle("")
+
                             }
                         }
                         .padding(.leading, 8)

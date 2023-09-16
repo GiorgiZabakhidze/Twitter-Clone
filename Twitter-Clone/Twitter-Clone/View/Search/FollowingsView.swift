@@ -29,10 +29,12 @@ struct FollowingsView: View {
                             searchUserCell(user: user)
                         }
                     }
-            }.padding(.leading)
+                }
+                .padding(.leading)
+                .padding(.top)
             ){ control in
                 control.endRefreshing()
-            }
+            }.padding(.top)
         }
     }
 }

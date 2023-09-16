@@ -86,10 +86,20 @@ struct SlideMenu: View {
                                     .font(.title3)
                                     .fontWeight(.bold)
                                     .foregroundColor(.black)
+                            }.padding(.leading, 2)
+                            
+                            NavigationLink {
+                                UserProfile(user: viewModel.currentUser!)
+                                    .onAppear {
+                                        withAnimation {
+                                            self.x1 = -UIScreen.main.bounds.width + 90
+                                        }
+                                    }
+                            } label: {
                                 
                                 Text("@\(viewModel.currentUser!.username)")
                                     .foregroundColor(.gray)
-                            }
+                            }.padding(.top, -10)
 
                             
                             HStack(spacing: 20) {
@@ -107,10 +117,10 @@ struct SlideMenu: View {
                                 }
 
                                 
-                            }.padding(.top, 10)
+                            }.padding(.top, 2)
                             
                             Divider()
-                                .padding(.top, 10)
+                                .padding(.top, 2)
                             
                         }
                         
@@ -128,11 +138,27 @@ struct SlideMenu: View {
                     
                     VStack(alignment: .leading) {
                         ForEach(menuButtons, id:\.self) { item in
-                            Button {
-                                
+                            NavigationLink {
+                                if (item == "Profile") {
+                                    UserProfile(user: viewModel.currentUser!)
+                                        .onAppear {
+                                            withAnimation {
+                                                self.x1 = -UIScreen.main.bounds.width + 90
+                                            }
+                                        }
+                                }else if (item == "Lists") {
+
+                                }else if (item == "Topics") {
+
+                                }else if (item == "Bookmarks") {
+
+                                }else { //item == "Moments"
+
+                                }
                             } label: {
                                 MenuButton(title: item)
                             }
+
                         }
                         
                         Divider()

@@ -17,9 +17,9 @@ struct NotificationsView: View {
                 ScrollView(showsIndicators: false) {
                     ForEach(viewModel.notifications) { not in
                         NotificationsCellView(notification: not, notificationType: not.notificationType)
+                        
                     }
                 }
-                
         }) { control in
             print("x")
             control.endRefreshing()

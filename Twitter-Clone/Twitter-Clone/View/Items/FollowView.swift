@@ -18,7 +18,6 @@ struct FollowView: View {
                 .foregroundColor(.black)
             Text(title)
                 .foregroundColor(.gray)
-            
         }
     }
 }

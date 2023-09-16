@@ -12,6 +12,8 @@ struct CustomTabView: View {
     @Binding var x: CGFloat
     @State var width = UIScreen.main.bounds.width
     
+    @ObservedObject var viewModel = NotificationsViewModel()
+    
     var body: some View {
         HStack(spacing: 60) {
             Button {

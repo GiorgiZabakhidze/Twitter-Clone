@@ -23,6 +23,8 @@ struct Home: View {
     
     let user: User
     
+    @ObservedObject var viewModel = NotificationsViewModel()
+    
     var body: some View {
         VStack {
             ZStack {
@@ -128,6 +130,9 @@ struct Home: View {
                     }))
                     .zIndex(0)
                 NotificationsView()
+//                    .onAppear {
+//                        viewModel.fetchUserNotifications()
+//                    }
                     .navigationBarHidden(true)
                     .offset(x: windowStartingPoint + 3 *  widndowFrameWidth)
                     .tag(2)
