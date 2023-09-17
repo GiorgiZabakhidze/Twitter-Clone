@@ -15,8 +15,8 @@ struct Home: View {
     @State var windowStartingPoint = -UIScreen.main.bounds.width
     @Binding var slideManuOffset: CGFloat
     
-    @State var widndowFrameWidth = UIScreen.main.bounds.width
-    @State var slideManuWidth = UIScreen.main.bounds.width - 90
+    @State var windowFrameWidth = UIScreen.main.bounds.width
+    @State var slideMenuWidth = UIScreen.main.bounds.width - 90
     
     @State var beenThere: Bool = false
     static let minDistanceToStartScrolling: CGFloat = 20
@@ -30,7 +30,7 @@ struct Home: View {
             ZStack {
                 Feed(user: user)
                     .navigationBarHidden(true)
-                    .offset(x: windowStartingPoint + widndowFrameWidth)
+                    .offset(x: windowStartingPoint + windowFrameWidth)
                     .tag(0)
                     .gesture(DragGesture().onChanged({ currentFrame in
                         let shouldScroll: Bool = abs(currentFrame.translation.width) > Home.minDistanceToStartScrolling
@@ -40,26 +40,26 @@ struct Home: View {
                                 let scroledRight: Bool = currentFrame.translation.width < 0
                                 
                                 if (scroledRight && !beenThere) {
-                                    if (slideManuOffset > -slideManuWidth) {
+                                    if (slideManuOffset > -slideMenuWidth) {
                                         slideManuOffset = currentFrame.translation.width
                                     }else {
-                                        windowStartingPoint = -widndowFrameWidth + currentFrame.translation.width
+                                        windowStartingPoint = -windowFrameWidth + currentFrame.translation.width
                                     }
                                 } else {
                                     self.beenThere = true
                                     if (currentFrame.translation.width >= 0) {
                                         if(slideManuOffset < 0) {
-                                            slideManuOffset = -slideManuWidth + currentFrame.translation.width
+                                            slideManuOffset = -slideMenuWidth + currentFrame.translation.width
                                         }
                                     }else {
-                                        if (slideManuOffset > -slideManuWidth) {
+                                        if (slideManuOffset > -slideMenuWidth) {
                                             if(abs(abs(slideManuOffset) - abs(currentFrame.translation.width)) < UIScreen.main.bounds.width - 150) {
                                                 slideManuOffset = currentFrame.translation.width
                                             }else {
-                                                slideManuOffset = -slideManuWidth
+                                                slideManuOffset = -slideMenuWidth
                                             }
                                         }else {
-                                            slideManuOffset = -slideManuWidth
+                                            slideManuOffset = -slideMenuWidth
                                         }
                                     }
                                 }
@@ -69,22 +69,22 @@ struct Home: View {
                     .onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0 && !beenThere) {
-                                if(val.translation.width < -widndowFrameWidth/3) {
-                                    windowStartingPoint = -2 * widndowFrameWidth
+                                if(val.translation.width < -windowFrameWidth/3) {
+                                    windowStartingPoint = -2 * windowFrameWidth
                                     selectedIndex = 1
                                 }else {
-                                    windowStartingPoint = -widndowFrameWidth
+                                    windowStartingPoint = -windowFrameWidth
                                 }
                             }else {
                                 if (val.translation.width >= 0) {
-                                    if (-slideManuOffset < 2 * slideManuWidth/3) {
+                                    if (-slideManuOffset < 2 * slideMenuWidth/3) {
                                         slideManuOffset = 0
                                     }else {
-                                        slideManuOffset = -slideManuWidth
+                                        slideManuOffset = -slideMenuWidth
                                     }
                                 }else {
-                                    if (-slideManuOffset > slideManuWidth/3) {
-                                        slideManuOffset = -slideManuWidth
+                                    if (-slideManuOffset > slideMenuWidth/3) {
+                                        slideManuOffset = -slideMenuWidth
                                     }else {
                                         slideManuOffset = 0
                                     }
@@ -98,32 +98,32 @@ struct Home: View {
                     .zIndex(0)
                 SearchView()
                     .navigationBarHidden(true)
-                    .offset(x: windowStartingPoint + 2 * widndowFrameWidth)
+                    .offset(x: windowStartingPoint + 2 * windowFrameWidth)
                     .tag(1)
                     .gesture(DragGesture().onChanged({ val in
                         UIApplication.shared.endEditing()
                         withAnimation {
                             if (val.translation.width < 0) {
-                                windowStartingPoint = -2 * widndowFrameWidth + val.translation.width
+                                windowStartingPoint = -2 * windowFrameWidth + val.translation.width
                             }else {
-                                windowStartingPoint = -2 * widndowFrameWidth + val.translation.width
+                                windowStartingPoint = -2 * windowFrameWidth + val.translation.width
                             }
                         }
                     }).onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0) {
-                                if(val.translation.width < -widndowFrameWidth/3) {
-                                    windowStartingPoint = -3 * widndowFrameWidth
+                                if(val.translation.width < -windowFrameWidth/3) {
+                                    windowStartingPoint = -3 * windowFrameWidth
                                     selectedIndex = 2
                                 }else {
-                                    windowStartingPoint = -2 * widndowFrameWidth
+                                    windowStartingPoint = -2 * windowFrameWidth
                                 }
                             }else {
-                                if (val.translation.width > widndowFrameWidth/3) {
-                                    windowStartingPoint = -widndowFrameWidth
+                                if (val.translation.width > windowFrameWidth/3) {
+                                    windowStartingPoint = -windowFrameWidth
                                     selectedIndex = 0
                                 }else {
-                                    windowStartingPoint = -2 * widndowFrameWidth
+                                    windowStartingPoint = -2 * windowFrameWidth
                                 }
                             }
                         }
@@ -134,31 +134,31 @@ struct Home: View {
 //                        viewModel.fetchUserNotifications()
 //                    }
                     .navigationBarHidden(true)
-                    .offset(x: windowStartingPoint + 3 *  widndowFrameWidth)
+                    .offset(x: windowStartingPoint + 3 *  windowFrameWidth)
                     .tag(2)
                     .gesture(DragGesture().onChanged({ val in
                         withAnimation {
                             if (val.translation.width < 0) {
-                                windowStartingPoint = -3 * widndowFrameWidth + val.translation.width
+                                windowStartingPoint = -3 * windowFrameWidth + val.translation.width
                             }else {
-                                windowStartingPoint = -3 * widndowFrameWidth + val.translation.width
+                                windowStartingPoint = -3 * windowFrameWidth + val.translation.width
                             }
                         }
                     }).onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0) {
-                                if(val.translation.width < -widndowFrameWidth/3) {
-                                    windowStartingPoint = -4 * widndowFrameWidth
+                                if(val.translation.width < -windowFrameWidth/3) {
+                                    windowStartingPoint = -4 * windowFrameWidth
                                     selectedIndex = 3
                                 }else {
-                                    windowStartingPoint = -3 * widndowFrameWidth
+                                    windowStartingPoint = -3 * windowFrameWidth
                                 }
                             }else {
-                                if (val.translation.width > widndowFrameWidth/3) {
-                                    windowStartingPoint = -2 * widndowFrameWidth
+                                if (val.translation.width > windowFrameWidth/3) {
+                                    windowStartingPoint = -2 * windowFrameWidth
                                     selectedIndex = 1
                                 }else {
-                                    windowStartingPoint = -3 * widndowFrameWidth
+                                    windowStartingPoint = -3 * windowFrameWidth
                                 }
                             }
                         }
@@ -167,26 +167,26 @@ struct Home: View {
                 
                 MessagesView()
                     .navigationBarHidden(true)
-                    .offset(x: windowStartingPoint + 4 * widndowFrameWidth)
+                    .offset(x: windowStartingPoint + 4 * windowFrameWidth)
                     .tag(3)
                     .gesture(DragGesture().onChanged({ val in
                         withAnimation {
                             if (val.translation.width < 0) {
-                                windowStartingPoint = -4 * widndowFrameWidth + val.translation.width / 20
+                                windowStartingPoint = -4 * windowFrameWidth + val.translation.width / 20
                             }else {
-                                windowStartingPoint = -4 * widndowFrameWidth + val.translation.width
+                                windowStartingPoint = -4 * windowFrameWidth + val.translation.width
                             }
                         }
                     }).onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0) {
-                                windowStartingPoint = -4 * widndowFrameWidth
+                                windowStartingPoint = -4 * windowFrameWidth
                             }else {
-                                if (val.translation.width > widndowFrameWidth/3) {
-                                    windowStartingPoint = -3 * widndowFrameWidth
+                                if (val.translation.width > windowFrameWidth/3) {
+                                    windowStartingPoint = -3 * windowFrameWidth
                                     selectedIndex = 2
                                 }else {
-                                    windowStartingPoint = -4 * widndowFrameWidth
+                                    windowStartingPoint = -4 * windowFrameWidth
                                 }
                             }
                         }
@@ -210,6 +210,7 @@ struct Home: View {
                                 .foregroundColor(.white)
                                 .clipShape(Circle())
                         }
+                        .opacity(CreateTweetOpacity())
                     }.padding()
                 }
                 .padding(.bottom, 35)
@@ -222,6 +223,20 @@ struct Home: View {
                 
         }
         .ignoresSafeArea(.keyboard)
+    }
+}
+
+extension Home {
+    func CreateTweetOpacity() -> Double {
+        print("x: \(windowStartingPoint)")
+        print("width: \(windowFrameWidth)")
+        if (windowStartingPoint >= -windowFrameWidth - 20) {
+            return 1
+        }else if ( windowStartingPoint < -windowFrameWidth - 20 && windowStartingPoint > -1.5 * windowFrameWidth) {
+            return (windowStartingPoint + 2*windowFrameWidth) / windowFrameWidth
+        }else {
+            return 0
+        }
     }
 }
 

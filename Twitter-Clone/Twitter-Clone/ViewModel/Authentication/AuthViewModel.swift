@@ -44,6 +44,7 @@ class AuthViewModel: ObservableObject {
                         
                         let response = try JSONDecoder().decode(APIResponse.self, from: data)
                         
+                        defaults.setValue(response.user.name, forKey: response.user.id)
                         DispatchQueue.main.async {
                             // Process user data
                             defaults.set(response.token?.tokens![0].token, forKey: "jsonwebtoken")
@@ -94,7 +95,6 @@ class AuthViewModel: ObservableObject {
                     }
                     DispatchQueue.main.async {
                         UserDefaults.standard.setValue(user.id, forKey: "userid")
-                        UserDefaults.standard.setValue(user.username, forKey: "username")
                         self.isAuthenticated = true
                         self.currentUser = user
                         print(user)

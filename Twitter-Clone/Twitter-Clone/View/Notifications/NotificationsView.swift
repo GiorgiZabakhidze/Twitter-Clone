@@ -16,7 +16,9 @@ struct NotificationsView: View {
             VStack {
                 ScrollView(showsIndicators: false) {
                     ForEach(viewModel.notifications) { not in
-                        NotificationsCellView(notification: not, notificationType: not.notificationType)
+                        if (not.notSenderId != AuthViewModel.shared.currentUser!.id) {
+                            NotificationsCellView(notification: not, notificationType: not.notificationType)
+                        }
                         
                     }
                 }

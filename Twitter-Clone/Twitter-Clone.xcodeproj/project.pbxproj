@@ -177,8 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				CE1626862A86452C0080C802 /* Main */,
-				CE1626852A8645270080C802 /* Feed */,
 				CE1626842A86451F0080C802 /* Search */,
+				CE1626852A8645270080C802 /* Feed */,
 				CE1626832A8645180080C802 /* Notifications */,
 				CE1626822A86450F0080C802 /* Messages */,
 				CE1626812A8644DF0080C802 /* Authentication */,
