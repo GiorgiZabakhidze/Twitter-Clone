@@ -146,7 +146,7 @@ struct UserProfile: View {
                     
                     HStack {
                         VStack(alignment: .leading, spacing:  8) {
-                            let name = UserDefaults.standard.string(forKey: AuthViewModel.shared.currentUser!.id)!
+                            let name = UserDefaults.standard.string(forKey: user.id)!
                             Text(name)
                                 .font(.title2)
                                 .fontWeight(.bold)
@@ -188,34 +188,32 @@ struct UserProfile: View {
                                 
                             }
                             
-                            HStack(spacing: 5) {
+                            HStack(spacing: 20) {
+                                
                                 NavigationLink {
-                                    FollowersView()
-                                        .padding(.top, -85)
+                                    VStack {
+                                        FollowersView()
+                                            .padding(.top, -85)
+                                        
+                                        Spacer(minLength: 0)
+                                    }
                                 } label: {
-                                    Text("\(self.searchViewModel.followerUsers().count)")
-                                        .foregroundColor(.primary)
-                                        .fontWeight(.semibold)
-                                    
-                                    Text("Follower")
-                                        .foregroundColor(.gray)
+                                    FollowView(count: self.searchViewModel.followerUsers().count, title: "Followers")
+                                }.navigationBarTitle("")
+
+                                NavigationLink {
+                                    VStack {
+                                        FollowingsView()
+                                            .padding(.top, -85)
+                                        
+                                        Spacer(minLength: 0)
+                                    }
+                                } label: {
+                                    FollowView(count: self.searchViewModel.followingUsers().count, title: "Following")
                                 }.navigationBarTitle("")
 
                                 
-                                NavigationLink {
-                                    FollowingsView()
-                                        .padding(.top, -85)
-                                } label: {
-                                    Text("\(self.searchViewModel.followingUsers().count)")
-                                        .foregroundColor(.primary)
-                                        .fontWeight(.semibold)
-                                        .padding(.leading, 10)
-                                    
-                                    Text("Following")
-                                        .foregroundColor(.gray)
-                                }.navigationBarTitle("")
-
-                            }
+                            }.padding(.top, 2)
                         }
                         .padding(.leading, 8)
                         .overlay(GeometryReader{ proxy -> Color in
@@ -257,31 +255,35 @@ struct UserProfile: View {
                     .zIndex(1)
                     
                     if currentTab == "Tweets" {
-                        VStack(spacing: 18) {
-                            
-                            ScrollView(showsIndicators: false) {
-                                ForEach(viewModel.tweets) {
-                                    TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                        withAnimation {
+                            VStack(spacing: 18) {
+                                
+                                ScrollView(showsIndicators: false) {
+                                    ForEach(viewModel.tweets) {
+                                        TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                                    }
                                 }
+                                
                             }
-                            
+                            .padding(.top)
+                            .zIndex(0)
                         }
-                        .padding(.top)
-                        .zIndex(0)
                     }else if currentTab == "Tweets & Likes" {
                         
                     }else if currentTab == "Media" {
                         
                     }else { //currentTab == "Likes"
-                        VStack(spacing: 18) {
-                            ScrollView(showsIndicators: false) {
-                                ForEach(viewModel.userLikedTweets) {
-                                    TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                        withAnimation {
+                            VStack(spacing: 18) {
+                                ScrollView(showsIndicators: false) {
+                                    ForEach(viewModel.userLikedTweets) {
+                                        TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                                    }
                                 }
                             }
+                            .padding(.top)
+                            .zIndex(0)
                         }
-                        .padding(.top)
-                        .zIndex(0)
                     }
                 }
                 .padding(.horizontal, 10)

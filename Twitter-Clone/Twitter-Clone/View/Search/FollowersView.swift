@@ -19,6 +19,8 @@ struct FollowersView: View {
             Text("\(users.count) Followers")
                 .fontWeight(.heavy)
                 .foregroundColor(Color("bg"))
+                .padding(.top)
+            
             RefreshableScrollView(content:
                 LazyVStack {
                     ForEach(users) { user in
@@ -28,10 +30,12 @@ struct FollowersView: View {
                             searchUserCell(user: user)
                         }
                     }
-            }.padding(.leading)
+                }.padding(.leading)
             ){ control in
                 control.endRefreshing()
             }
+            
+            Spacer(minLength: 0)
         }
     }
 }
