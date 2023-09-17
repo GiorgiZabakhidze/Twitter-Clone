@@ -10,10 +10,12 @@ import SwiftUI
 class ProfileViewModel: ObservableObject {
     @Published var user: User
     @Published var tweets = [Tweet]()
+    @Published var userLikedTweets = [Tweet]()
     
     init(user: User) {
         self.user = user
         FetchTweets()
+        FetchUserLikedTweets()
         checkIfUserIsCurrentUser()
         CheckIfUserIsFollowed()
     }
@@ -72,6 +74,22 @@ class ProfileViewModel: ObservableObject {
     
     func CheckIfUserIsFollowed() {
         self.user.isFollowed = Bool(self.user.followers.contains(AuthViewModel.shared.currentUser!._id))
+    }
+    
+    func FetchUserLikedTweets(){
+        RequestServices.requestDomain = "http://localhost:3000/tweets/liked/\(self.user.id)"
+        
+        RequestServices.fetchTweets { result in
+            switch result {
+                case .success(let data):
+                    guard let userLikedTweets = try? JSONDecoder().decode([Tweet].self, from: data as! Data) else { return }
+                    DispatchQueue.main.async {
+                        self.userLikedTweets = userLikedTweets
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
     }
     
 }

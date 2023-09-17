@@ -256,17 +256,33 @@ struct UserProfile: View {
                     }.frame(width: 0, height: 0), alignment: .top)
                     .zIndex(1)
                     
-                    VStack(spacing: 18) {
+                    if currentTab == "Tweets" {
+                        VStack(spacing: 18) {
+                            
+                            ScrollView(showsIndicators: false) {
+                                ForEach(viewModel.tweets) {
+                                    TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                                }
+                            }
+                            
+                        }
+                        .padding(.top)
+                        .zIndex(0)
+                    }else if currentTab == "Tweets & Likes" {
                         
-                        ScrollView(showsIndicators: false) {
-                            ForEach(viewModel.tweets) {
-                                TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                    }else if currentTab == "Media" {
+                        
+                    }else { //currentTab == "Likes"
+                        VStack(spacing: 18) {
+                            ScrollView(showsIndicators: false) {
+                                ForEach(viewModel.userLikedTweets) {
+                                    TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                                }
                             }
                         }
-                        
+                        .padding(.top)
+                        .zIndex(0)
                     }
-                    .padding(.top)
-                    .zIndex(0)
                 }
                 .padding(.horizontal, 10)
                 .zIndex(-offset > 80 ? 0 : 1)

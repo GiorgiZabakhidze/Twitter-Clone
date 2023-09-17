@@ -95,6 +95,21 @@ router.get('/tweets/:id', async (req, res) => {
     }
 })
 
+//Fetch Certain User's Liked Tweets
+router.get('/tweets/liked/:id', async (req, res) => {
+    try {
+        const likedTweets = await Tweet.find({ likes: req.params.id })
+
+        if(!likedTweets) {
+            return res.status(404).send()
+        }
+
+        res.status(500).send(likedTweets)
+    }catch (err) {
+        res.status(500).send(err)
+    }
+})
+
 //Change Certain Tweet's user Property
 router.patch('/tweets/change/:id', auth, async (req, res) => {
     try {
