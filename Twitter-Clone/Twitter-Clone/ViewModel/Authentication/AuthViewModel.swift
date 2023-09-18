@@ -44,9 +44,9 @@ class AuthViewModel: ObservableObject {
                         
                         let response = try JSONDecoder().decode(APIResponse.self, from: data)
                         
-                        defaults.setValue(response.user.name, forKey: response.user.id)
                         DispatchQueue.main.async {
                             // Process user data
+                            defaults.set(response.user.name, forKey: response.user.id)
                             defaults.set(response.token?.tokens![0].token, forKey: "jsonwebtoken")
                             defaults.set(response.user.id, forKey: "userid")
                             self.isNewIdSet = true
@@ -54,8 +54,8 @@ class AuthViewModel: ObservableObject {
                             self.isAuthenticated = true
                             self.currentUser = response.user
                             print("Logged In..")
-                            completion()
                         }
+                        completion()
 
                     } catch {
                         print("Decoding Error: \(error)")
@@ -94,7 +94,7 @@ class AuthViewModel: ObservableObject {
                         return
                     }
                     DispatchQueue.main.async {
-                        UserDefaults.standard.setValue(user.id, forKey: "userid")
+                        UserDefaults.standard.set(user.id, forKey: "userid")
                         self.isAuthenticated = true
                         self.currentUser = user
                         print(user)
@@ -110,7 +110,9 @@ class AuthViewModel: ObservableObject {
         let dictionary = defaults.dictionaryRepresentation()
         
         dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
+            if (key == "jsonwebtoken" || key == "userid") {
+                defaults.removeObject(forKey: key)
+            }
         }
         
         DispatchQueue.main.async {

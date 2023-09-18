@@ -84,8 +84,8 @@ struct LogInView: View {
                         }else {
                             self.emailDone = true
                             self.email = self.email.lowercased()
-                            let previousUserId = UserDefaults.standard.string(forKey: "userid")
-                            print("previousUserId: \(previousUserId)")
+//                            let previousUserId = UserDefaults.standard.string(forKey: "userid")
+//                            print("previousUserId: \(previousUserId)")
                             self.viewModel.login(email: email, password: password) {
                                 
                                 if (self.viewModel.isNewIdSet) {
@@ -95,7 +95,7 @@ struct LogInView: View {
                                     self.userChanged = false
                                 }
                                 
-                                print("newUserId: \(UserDefaults.standard.value(forKey: "userid"))")
+                                print("newUserId: \(String(describing: UserDefaults.standard.value(forKey: "userid")))")
                                 if (!userChanged) {
                                     self.incorrectPassword = password
                                 }
