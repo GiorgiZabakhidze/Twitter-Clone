@@ -19,3 +19,14 @@ router.post('/messages', auth, async (req, res) => {
         res.status(400).send(err)
     }
 })
+
+//Fetch Certain User's Messages
+router.get('/notification/:id', async (req, res) => {
+    try {
+        const messages = await Message.find({ mesReceiverId: req.params._id })
+
+        res.status(200).send(messages)
+    }catch (err) {
+        res.status(500).send(err)
+    }
+})
