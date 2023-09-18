@@ -31,6 +31,8 @@
 		CE40CF512AA1FDE9008640F8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40CF502AA1FDE9008640F8 /* ProfileViewModel.swift */; };
 		CE40CF532AA204B2008640F8 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40CF522AA204B2008640F8 /* EditProfileViewModel.swift */; };
 		CE491EB02AABB18C00E1678D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE491EAF2AABB18C00E1678D /* SearchViewModel.swift */; };
+		CE4E86A22AB896140052B4B2 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E86A12AB896140052B4B2 /* MessagesViewModel.swift */; };
+		CE4E86A42AB896510052B4B2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E86A32AB896510052B4B2 /* Message.swift */; };
 		CE6335902A9A880C0093F598 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63358F2A9A880C0093F598 /* Tweet.swift */; };
 		CE6335952A9A8A1A0093F598 /* RequestServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6335942A9A8A1A0093F598 /* RequestServices.swift */; };
 		CE74C0EF2A9E3B2600795629 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74C0EE2A9E3B2600795629 /* ImageUploader.swift */; };
@@ -89,6 +91,8 @@
 		CE40CF502AA1FDE9008640F8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		CE40CF522AA204B2008640F8 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		CE491EAF2AABB18C00E1678D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		CE4E86A12AB896140052B4B2 /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
+		CE4E86A32AB896510052B4B2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CE63358F2A9A880C0093F598 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		CE6335942A9A8A1A0093F598 /* RequestServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServices.swift; sourceTree = "<group>"; };
 		CE74C0EE2A9E3B2600795629 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				CE8EE6472A95D79100DA1E21 /* User.swift */,
 				CE63358F2A9A880C0093F598 /* Tweet.swift */,
 				CEB4013B2AACA2B600D45A6C /* Notification.swift */,
+				CE4E86A32AB896510052B4B2 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 		CE2FDA702A9E47320054E41E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E86A02AB894D40052B4B2 /* Messages */,
 				CEB4013D2AACDD9C00D45A6C /* Notifications */,
 				CE491EAE2AABB17C00E1678D /* Search */,
 				CE40CF4F2AA1FDB8008640F8 /* Profile */,
@@ -369,6 +375,14 @@
 				CE491EAF2AABB18C00E1678D /* SearchViewModel.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		CE4E86A02AB894D40052B4B2 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E86A12AB896140052B4B2 /* MessagesViewModel.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		CEB4013D2AACDD9C00D45A6C /* Notifications */ = {
@@ -476,6 +490,7 @@
 				CEB772E52A87E6BF00A2C8F4 /* SlideMenu.swift in Sources */,
 				CEAB38422A8BE444007B9C04 /* RegisterView.swift in Sources */,
 				CE40CF512AA1FDE9008640F8 /* ProfileViewModel.swift in Sources */,
+				CE4E86A42AB896510052B4B2 /* Message.swift in Sources */,
 				CEB772DF2A87C5BF00A2C8F4 /* MessagesCellView.swift in Sources */,
 				CE16268C2A864E630080C802 /* SearchView.swift in Sources */,
 				CE16266D2A8643240080C802 /* ContentView.swift in Sources */,
@@ -489,6 +504,7 @@
 				CE74C0EF2A9E3B2600795629 /* ImageUploader.swift in Sources */,
 				CE1626882A86455D0080C802 /* Home.swift in Sources */,
 				CE8EE64C2A95E2E500DA1E21 /* AuthServices.swift in Sources */,
+				CE4E86A22AB896140052B4B2 /* MessagesViewModel.swift in Sources */,
 				CEB772E72A87E89B00A2C8F4 /* FollowView.swift in Sources */,
 				CE1626902A864E800080C802 /* MessagesView.swift in Sources */,
 				CE8137A22A8940A5006C66B0 /* UserProfile.swift in Sources */,
