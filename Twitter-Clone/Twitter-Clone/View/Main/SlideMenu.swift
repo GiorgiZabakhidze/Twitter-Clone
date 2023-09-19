@@ -105,15 +105,15 @@ struct SlideMenu: View {
                             HStack(spacing: 20) {
                                 
                                 NavigationLink {
-                                    FollowersView()
+                                    FollowersView(user: user)
                                 } label: {
-                                    FollowView(count: self.searchViewModel.followerUsers().count, title: "Followers")
+                                    FollowView(count: self.searchViewModel.followerUsers(userId: user.id).count, title: "Followers")
                                 }
 
                                 NavigationLink {
-                                    FollowingsView()
+                                    FollowingsView(user: user)
                                 } label: {
-                                    FollowView(count: self.searchViewModel.followingUsers().count, title: "Following")
+                                    FollowView(count: self.searchViewModel.followingUsers(userId: user.id).count, title: "Following")
                                 }
 
                                 

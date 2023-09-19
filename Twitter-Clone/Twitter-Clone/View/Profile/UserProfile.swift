@@ -192,24 +192,24 @@ struct UserProfile: View {
                                 
                                 NavigationLink {
                                     VStack {
-                                        FollowersView()
+                                        FollowersView(user: user)
                                             .padding(.top, -85)
                                         
                                         Spacer(minLength: 0)
                                     }
                                 } label: {
-                                    FollowView(count: self.searchViewModel.followerUsers().count, title: "Followers")
+                                    FollowView(count: self.searchViewModel.followerUsers(userId: user.id).count, title: "Followers")
                                 }.navigationBarTitle("")
 
                                 NavigationLink {
                                     VStack {
-                                        FollowingsView()
+                                        FollowingsView(user: user)
                                             .padding(.top, -85)
                                         
                                         Spacer(minLength: 0)
                                     }
                                 } label: {
-                                    FollowView(count: self.searchViewModel.followingUsers().count, title: "Following")
+                                    FollowView(count: self.searchViewModel.followingUsers(userId: user.id).count, title: "Following")
                                 }.navigationBarTitle("")
 
                                 

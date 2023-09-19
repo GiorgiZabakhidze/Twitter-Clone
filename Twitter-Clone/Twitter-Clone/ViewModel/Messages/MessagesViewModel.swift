@@ -10,6 +10,8 @@ import Foundation
 class MessagesViewModel: ObservableObject {
     @Published var messages = [Message]()
     
+    
+    
     func FetchUserMessages() {
         
     }

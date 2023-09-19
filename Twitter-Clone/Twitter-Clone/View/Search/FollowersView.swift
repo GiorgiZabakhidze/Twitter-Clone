@@ -10,8 +10,10 @@ import SwiftUI
 struct FollowersView: View {
     @ObservedObject var viewModel = SearchViewModel()
     
+    let user: User
+    
     var users: [User] {
-        return viewModel.followerUsers()
+        return viewModel.followerUsers(userId: user.id)
     }
     
     var body: some View {
@@ -40,8 +42,4 @@ struct FollowersView: View {
     }
 }
 
-struct FollowersView_Previews: PreviewProvider {
-    static var previews: some View {
-        FollowersView()
-    }
-}
+
