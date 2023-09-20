@@ -30,3 +30,5 @@ router.get('/messages/:id', async (req, res) => {
         res.status(500).send(err)
     }
 })
+
+module.exports = router

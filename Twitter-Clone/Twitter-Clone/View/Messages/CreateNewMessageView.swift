@@ -41,9 +41,9 @@ struct CreateNewMessageView: View {
                     }
                     
                     let name = UserDefaults.standard.string(forKey: authedUser.id)!
-                    let mesSenderId = UserDefaults.standard.string(forKey: authedUser.username)!
+                    let mesReceiverId = UserDefaults.standard.string(forKey: authedUser.username)!
                     
-                    self.viewModel.SendMessage(name: name, username: authedUser.username, mesSenderId: authedUser.id, mesReceiverId: mesSenderId, message: message)
+                    self.viewModel.SendMessage(name: name, username: authedUser.username, mesSenderId: authedUser.id, mesReceiverId: mesReceiverId, message: message)
                     self.showSendMessageView.toggle()
                 } label: {
                     Text("Send")
