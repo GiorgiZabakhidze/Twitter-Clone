@@ -14,11 +14,13 @@ struct MultilineTextField: UIViewRepresentable {
     
     @Binding var text: String
     
+    @State var textText: String
+    
     func makeUIView(context: Context) -> some UITextView {
         let text = UITextView()
         
         text.isEditable = true
-        text.text = "Type Something.."
+        text.text = textText
         text.isUserInteractionEnabled = true
         text.textColor = .gray
         text.font = .systemFont(ofSize: 20)

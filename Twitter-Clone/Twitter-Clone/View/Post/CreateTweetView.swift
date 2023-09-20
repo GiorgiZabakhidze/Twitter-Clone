@@ -46,7 +46,7 @@ struct CreateTweetView: View {
 
             }
             
-            MultilineTextField(text: $text)
+            MultilineTextField(text: $text, textText: "Type Something..")
             
             if postImage == nil {
                 Button {
