@@ -31,7 +31,7 @@ class ProfileViewModel: ObservableObject {
                         self.tweets = tweets
                     }
                 case .failure(let error):
-                print(error.localizedDescription)
+                    print(error.localizedDescription)
             }
         }
     }

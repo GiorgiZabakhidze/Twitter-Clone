@@ -10,6 +10,8 @@ import SwiftUI
 struct MessagesCellView: View {
     @State var width = UIScreen.main.bounds.width
     
+    @ObservedObject var viewModel = MessagesViewModel()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Rectangle()

@@ -21,7 +21,7 @@ router.post('/messages', auth, async (req, res) => {
 })
 
 //Fetch Certain User's Messages
-router.get('/notification/:id', async (req, res) => {
+router.get('/messages/:id', async (req, res) => {
     try {
         const messages = await Message.find({ mesReceiverId: req.params._id })
 

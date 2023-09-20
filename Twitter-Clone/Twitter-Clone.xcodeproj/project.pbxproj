@@ -63,6 +63,7 @@
 		CEB772E52A87E6BF00A2C8F4 /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772E42A87E6BF00A2C8F4 /* SlideMenu.swift */; };
 		CEB772E72A87E89B00A2C8F4 /* FollowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772E62A87E89B00A2C8F4 /* FollowView.swift */; };
 		CEB772E92A87ECDE00A2C8F4 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB772E82A87ECDE00A2C8F4 /* MenuButton.swift */; };
+		CED8B09C2ABABFAC0018BCF6 /* CreateNewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED8B09B2ABABFAC0018BCF6 /* CreateNewMessageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,7 @@
 		CEB772E42A87E6BF00A2C8F4 /* SlideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenu.swift; sourceTree = "<group>"; };
 		CEB772E62A87E89B00A2C8F4 /* FollowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowView.swift; sourceTree = "<group>"; };
 		CEB772E82A87ECDE00A2C8F4 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		CED8B09B2ABABFAC0018BCF6 /* CreateNewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewMessageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +276,7 @@
 			children = (
 				CE16268F2A864E800080C802 /* MessagesView.swift */,
 				CEB772DE2A87C5BE00A2C8F4 /* MessagesCellView.swift */,
+				CED8B09B2ABABFAC0018BCF6 /* CreateNewMessageView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				CEAB38462A8BE7B3007B9C04 /* SecureAuthTextField.swift in Sources */,
 				CEB772DD2A87AE9D00A2C8F4 /* NotificationsCellView.swift in Sources */,
 				CE40CF532AA204B2008640F8 /* EditProfileViewModel.swift in Sources */,
+				CED8B09C2ABABFAC0018BCF6 /* CreateNewMessageView.swift in Sources */,
 				CE2FDA752A9E47320054E41E /* CreateTweetViewModel.swift in Sources */,
 				CEB772DB2A87A83400A2C8F4 /* Extensions.swift in Sources */,
 			);

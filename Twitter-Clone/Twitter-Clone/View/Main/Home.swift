@@ -10,6 +10,7 @@ import SwiftUI
 struct Home: View {
     @State var selectedIndex = 0
     @State var showCreateTweet = false
+    @State var showSendMessage = false
     @State var text = ""
     
     @State var windowStartingPoint = -UIScreen.main.bounds.width
@@ -193,29 +194,49 @@ struct Home: View {
                     }))
                     .zIndex(0)
                 VStack {
+                    
                     Spacer()
                         
                     HStack {
                         Spacer()
                             
                         Button {
-                            self.showCreateTweet.toggle()
+                            if (windowStartingPoint > -2*windowFrameWidth) {
+                                self.showCreateTweet.toggle()
+                            }else {
+                                self.showSendMessage.toggle()
+                            }
                         } label: {
-                            Image("twitter-newtweet")
-                                .renderingMode(.template)
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .padding()
-                                .background(Color("bg"))
-                                .foregroundColor(.white)
-                                .clipShape(Circle())
+                            if (windowStartingPoint > -2 * windowFrameWidth) {
+                                Image("twitter-newtweet")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding()
+                                    .background(Color("bg"))
+                                    .foregroundColor(.white)
+                                    .clipShape(Circle())
+                            }else {
+                                Image(systemName: "square.and.pencil")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding()
+                                    .background(Color("bg"))
+                                    .foregroundColor(.white)
+                                    .clipShape(Circle())
+                            }
                         }
                         .opacity(CreateTweetOpacity())
                     }.padding()
                 }
+                .zIndex(3)
                 .padding(.bottom, 35)
                 .sheet(isPresented: $showCreateTweet) {
                     CreateTweetView(show: $showCreateTweet, text: text)
+                }
+                .sheet(isPresented: $showSendMessage) {
+                    CreateNewMessageView(showSendMessageView: $showSendMessage)
                 }
             }.padding(.top, 60)
             
@@ -228,12 +249,14 @@ struct Home: View {
 
 extension Home {
     func CreateTweetOpacity() -> Double {
-        print("x: \(windowStartingPoint)")
-        print("width: \(windowFrameWidth)")
         if (windowStartingPoint >= -windowFrameWidth - 20) {
             return 1
         }else if ( windowStartingPoint < -windowFrameWidth - 20 && windowStartingPoint > -1.5 * windowFrameWidth) {
             return (windowStartingPoint + 2*windowFrameWidth) / windowFrameWidth
+        }else if (windowStartingPoint < -3.5*windowFrameWidth && windowStartingPoint > -4*windowFrameWidth) {
+            return (-windowStartingPoint - 3*windowFrameWidth) / windowFrameWidth
+        }else if (windowStartingPoint <= -4*windowFrameWidth) {
+            return 1
         }else {
             return 0
         }

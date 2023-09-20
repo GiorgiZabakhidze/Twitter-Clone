@@ -29,8 +29,9 @@ struct TopBar: View {
                     .scaledToFill()
                     .frame(width: 20, height: 20)
                     .padding(.leading, width/3.1)
-                Spacer(minLength: 0)
                 
+                Spacer(minLength: 0)
+                                
             }.padding()
             
             

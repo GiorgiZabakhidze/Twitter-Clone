@@ -24,7 +24,8 @@ class NotificationsViewModel: ObservableObject {
                         print(json)
                     }
                     
-                    guard let notifications = try? JSONDecoder().decode([Notification].self, from: data as! Data) else { return }
+                    guard let notifications = try? JSONDecoder().decode([Notification].self, from: data as! Data) else { return
+                    }
                     
                 
                     DispatchQueue.main.async {

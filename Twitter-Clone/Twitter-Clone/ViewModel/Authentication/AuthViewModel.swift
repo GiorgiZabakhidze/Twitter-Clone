@@ -46,6 +46,7 @@ class AuthViewModel: ObservableObject {
                         
                         DispatchQueue.main.async {
                             // Process user data
+                            defaults.set(response.user.id, forKey: response.user.username)
                             defaults.set(response.user.name, forKey: response.user.id)
                             defaults.set(response.token?.tokens![0].token, forKey: "jsonwebtoken")
                             defaults.set(response.user.id, forKey: "userid")
