@@ -14,9 +14,13 @@ struct CreateNewMessageView: View {
     @Binding var showSendMessageView: Bool
     
     @State var message = ""
-    @State var ToUser = ""
+    @State var toUser = ""
+    
+    @State var prevMessage = ""
     
     @FocusState private var keyboardFocused: Bool
+    
+    @State var messageCompleted = true
     
     var body: some View {
         VStack {
@@ -36,15 +40,24 @@ struct CreateNewMessageView: View {
                 Spacer()
                 
                 Button {
-                    guard let authedUser = AuthViewModel.shared.currentUser else {
-                        return
+                    if (UserDefaults.standard.string(forKey: toUser) != nil && !message.isEmpty) {
+                        messageCompleted = true
+                        
+                        prevMessage = message
+                        
+                        guard let authedUser = AuthViewModel.shared.currentUser else {
+                            return
+                        }
+                        
+                        let name = UserDefaults.standard.string(forKey: authedUser.id)!
+                        let mesReceiverId = UserDefaults.standard.string(forKey: authedUser.username)!
+                        
+                        self.viewModel.SendMessage(name: name, username: authedUser.username, mesSenderId: authedUser.id, mesReceiverId: mesReceiverId, message: message)
+                        self.showSendMessageView.toggle()
+                    }else if (message.isEmpty || toUser.isEmpty) {
+                        messageCompleted = false
+                        prevMessage = message
                     }
-                    
-                    let name = UserDefaults.standard.string(forKey: authedUser.id)!
-                    let mesReceiverId = UserDefaults.standard.string(forKey: authedUser.username)!
-                    
-                    self.viewModel.SendMessage(name: name, username: authedUser.username, mesSenderId: authedUser.id, mesReceiverId: mesReceiverId, message: message)
-                    self.showSendMessageView.toggle()
                 } label: {
                     Text("Send")
                         .padding(7)
@@ -60,16 +73,26 @@ struct CreateNewMessageView: View {
                     .fontWeight(.medium)
                     .foregroundColor(.gray)
                 
-                TextField("", text: $ToUser)
+                TextField("", text: $toUser)
                     .focused($keyboardFocused)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
                             keyboardFocused = true
                         })
                     }
+                
+                Spacer()
+                
+                if (!toUser.isEmpty) {
+                    Image(systemName: UserDefaults.standard.string(forKey: toUser) == nil ? "x.circle" : "checkmark.circle")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 15, height: 15)
+                        .foregroundColor(UserDefaults.standard.string(forKey: toUser) == nil ? .red : Color("bg"))
+                }
             }
             .padding(.horizontal)
-            .padding(.trailing, 50)
+            .padding(.trailing)
             
             Divider()
                 .frame(width: UIScreen.main.bounds.width - 10, height: 1, alignment: .center)
@@ -79,6 +102,13 @@ struct CreateNewMessageView: View {
                 .padding(.horizontal, 5)
             
             Spacer()
+            
+            if(!messageCompleted && prevMessage == message) {
+                Text("Username or Message Can not Be Empty..")
+                    .foregroundColor(.red)
+                    .padding(.bottom, UIScreen.main.bounds.height / 3)
+            }
+            
         }.padding(.top)
     }
 }
