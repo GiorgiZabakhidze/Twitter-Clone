@@ -10,6 +10,11 @@ import Foundation
 class MessagesViewModel: ObservableObject {
     @Published var messages = [Message]()
     
+    init(messages: [Message] = [Message]()) {
+        self.messages = messages
+        FetchUserMessages()
+    }
+    
     func SendMessage(name: String, username: String, mesSenderId: String, mesReceiverId: String, message: String) {
         RequestServices.requestDomain = "http://localhost:3000/messages"
         

@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MessagesCellView: View {
     @State var width = UIScreen.main.bounds.width
     
-    @ObservedObject var viewModel = MessagesViewModel()
+    var message: Message
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -20,19 +21,23 @@ struct MessagesCellView: View {
                 .opacity(0.3)
             
             HStack(alignment: .top, spacing: 10) {
-                Image("profile_pic")
+                KFImage(URL(string: "http://localhost:3000/users/\(message.mesSenderId)/avatar"))
+                    .placeholder {
+                        Image("Profile")
+                            .resizable()
+                    }
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 55, height: 55)
                     .clipShape(Circle())
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("zabaxa ")
+                    Text("\(message.name) ")
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     +
-                    Text("@Giorgi_Zabakhidze")
+                    Text("@\(message.username)")
                         .fontWeight(.light)
-                    Text("You: Hey! How Is It Going?")
+                    Text(message.message)
                         .fontWeight(.light)
                         .foregroundColor(.gray)
                 }
@@ -43,8 +48,4 @@ struct MessagesCellView: View {
     }
 }
 
-struct MessagesCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        MessagesCellView()
-    }
-}
+

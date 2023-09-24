@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct MessagesView: View {
+    @ObservedObject var viewModel = MessagesViewModel()
+    
     var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
-                ForEach(0..<9) { _ in
-                    MessagesCellView()
+                ForEach(viewModel.messages) { message in
+                    MessagesCellView(message: message)
                 }
             }
         }

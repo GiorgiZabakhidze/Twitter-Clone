@@ -278,6 +278,8 @@ public class RequestServices {
             }
         }
         
+        task.resume()
+        
     }
     
     static func FetchUserMessages(userId: String, completion: @escaping (_ result: Result<Data?, NetworkError>) -> Void) {
