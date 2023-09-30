@@ -23,7 +23,12 @@ router.post('/messages', auth, async (req, res) => {
 //Fetch Certain User's Messages
 router.get('/messages/:id', async (req, res) => {
     try {
-        const messages = await Message.find({ mesReceiverId: req.params.id })
+        const messages = await Message.find({ 
+            $or: [
+                { mesReceiverId: req.params.id },
+                { mesSenderId: req.params.id }
+            ]
+         })
 
         res.status(200).send(messages)
     }catch (err) {
