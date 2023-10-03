@@ -12,10 +12,11 @@ struct MessagesView: View {
     
     var body: some View {
         VStack {
-            ScrollView(showsIndicators: false) {
+            RefreshableScrollView(content:
                 ForEach(viewModel.messages) { message in
                     MessagesCellView(message: message)
-                }
+            }) { control in
+                control.endRefreshing()
             }
         }
     }

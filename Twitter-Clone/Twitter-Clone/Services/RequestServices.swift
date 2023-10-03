@@ -59,31 +59,33 @@ public class RequestServices {
     }
     
     static func fetchTweets(completion: @escaping (_ result: Result<Data?, NetworkError>) -> Void) {
-        let url = URL(string: requestDomain)!
-        
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "GET"
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                completion(.failure(.noData))
-                return
+        DispatchQueue.global(qos: .background).async {
+            let url = URL(string: requestDomain)!
+            
+            let session = URLSession.shared
+            
+            var request = URLRequest(url: url)
+            
+            request.httpMethod = "GET"
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                guard error == nil else {
+                    completion(.failure(.noData))
+                    return
+                }
+                
+                guard let data = data else {
+                    return
+                }
+                
+                completion(.success(data))
             }
             
-            guard let data = data else {
-                return
-            }
-            
-            completion(.success(data))
+            task.resume()
         }
-        
-        task.resume()
     }
     
     public static func followingProcess(id: String, completion: @escaping (_ result: [String : Any]?) -> Void) {
@@ -238,48 +240,50 @@ public class RequestServices {
     
     static func SendMessages(name: String, username: String, mesSenderId: String, mesReceiverId: String, message: String, completion: @escaping (_ result: [String : Any]?) -> Void) {
         
-        var params: [String : Any] {
-            ["name": name, "username": username, "mesSenderId": mesSenderId, "mesReceiverId": mesReceiverId, "message": message] as [String : Any]
-        }
-        
-        let url = URL(string: requestDomain)!
-        
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "POST"
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-        }catch let error {
-            print(error.localizedDescription)
-        }
-        
-        let token = UserDefaults.standard.string(forKey: "jsonwebtoken")!
-        
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = session.dataTask(with: request) { data, res, err in
-            guard err == nil else { return }
+        DispatchQueue.global(qos: .background).async {
+            var params: [String : Any] {
+                ["name": name, "username": username, "mesSenderId": mesSenderId, "mesReceiverId": mesReceiverId, "message": message] as [String : Any]
+            }
             
-            guard let data = data else { return }
+            let url = URL(string: requestDomain)!
+            
+            let session = URLSession.shared
+            
+            var request = URLRequest(url: url)
+            
+            request.httpMethod = "POST"
             
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] {
-                    completion(json)
-                }
+                request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
             }catch let error {
                 print(error.localizedDescription)
-                print("Message Was Not Succesfully Sent")
             }
+            
+            let token = UserDefaults.standard.string(forKey: "jsonwebtoken")!
+            
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, res, err in
+                guard err == nil else { return }
+                
+                guard let data = data else { return }
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any] {
+                        completion(json)
+                    }
+                }catch let error {
+                    print(error.localizedDescription)
+                    print("Message Was Not Succesfully Sent")
+                }
+            }
+            
+            task.resume()
+            
         }
-        
-        task.resume()
-        
     }
     
     static func FetchUserMessages(userId: String, completion: @escaping (_ result: Result<Data?, NetworkError>) -> Void) {
