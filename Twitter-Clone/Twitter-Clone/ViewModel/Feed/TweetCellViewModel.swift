@@ -47,7 +47,7 @@ class TweetCellViewModel: ObservableObject {
         
         RequestServices.requestDomain = "http://localhost:3000/notifications"
         
-        RequestServices.sendNotification(username: self.currentUser.username, notSenderId: self.currentUser.id, notReceiverId: self.tweet.userId, notificationType: "like", postText: self.tweet.text) { result in
+        RequestServices.sendNotification(username: self.currentUser.username, notSenderId: self.currentUser.id, notReceiverId: self.tweet.userId, notificationType: "like", postText: self.tweet.text, postLikes: self.tweet.likes) { result in
             
             print("Tweet Has Been Liked")
         }

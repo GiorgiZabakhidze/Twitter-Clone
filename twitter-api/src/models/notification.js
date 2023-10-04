@@ -25,6 +25,12 @@ const notificationSchema = new mongoose.Schema({
 
     postText: {
         type: String
+    },
+
+    postLikes: {
+        type: Array,
+        default: [],
+        required: true
     }
 })
 

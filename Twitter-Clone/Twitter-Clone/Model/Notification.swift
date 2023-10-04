@@ -17,4 +17,5 @@ struct Notification: Decodable, Identifiable {
     let notReceiverId: String
     var notificationType: String
     var postText: String?
+    var postLikes: Array<String>?
 }

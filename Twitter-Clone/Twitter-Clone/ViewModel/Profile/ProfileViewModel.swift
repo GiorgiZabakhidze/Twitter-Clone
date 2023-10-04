@@ -54,7 +54,7 @@ class ProfileViewModel: ObservableObject {
         
         RequestServices.requestDomain = "http://localhost:3000/notifications"
         
-        RequestServices.sendNotification(username: authedUser.username, notSenderId: authedUser.id, notReceiverId: self.user.id, notificationType: "follow", postText: "") { result in
+        RequestServices.sendNotification(username: authedUser.username, notSenderId: authedUser.id, notReceiverId: self.user.id, notificationType: "follow", postText: "", postLikes: ["sdialm"]) { result in
             print("User Has Been Followed")
         }
         

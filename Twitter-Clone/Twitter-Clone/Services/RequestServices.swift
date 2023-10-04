@@ -157,14 +157,14 @@ public class RequestServices {
         task.resume()
     }
     
-    public static func sendNotification(username: String, notSenderId: String, notReceiverId: String, notificationType: String, postText: String, completion: @escaping (_ result: [String : Any]?) -> Void) {
+    public static func sendNotification(username: String, notSenderId: String, notReceiverId: String, notificationType: String, postText: String, postLikes: Array<String>, completion: @escaping (_ result: [String : Any]?) -> Void) {
         
         var params: [String : Any] {
             postText.isEmpty
             ?
                 ["username": username, "notSenderId": notSenderId, "notReceiverId": notReceiverId, "notificationType": notificationType] as [String : Any]
             :
-                ["username": username, "notSenderId": notSenderId, "notReceiverId": notReceiverId, "notificationType": notificationType, "postText": postText] as [String : Any]
+            ["username": username, "notSenderId": notSenderId, "notReceiverId": notReceiverId, "notificationType": notificationType, "postText": postText, "postLikes": postLikes] as [String : Any]
         }
         
         let url = URL(string: requestDomain)!
