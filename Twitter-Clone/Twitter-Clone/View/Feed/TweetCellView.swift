@@ -10,7 +10,7 @@ import Kingfisher
 
 struct TweetCellView: View {
     
-    @ObservedObject var viewModel: TweetCellViewModel
+    @StateObject var viewModel: TweetCellViewModel
 
     var isLiked: Bool {
         return self.viewModel.tweet.isLiked!
@@ -18,7 +18,7 @@ struct TweetCellView: View {
     
     
     init(viewModel: TweetCellViewModel) {
-        self.viewModel = viewModel
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     
@@ -31,7 +31,7 @@ struct TweetCellView: View {
                         NavigationLink {
                             UserProfile(user: user)
                         } label: {
-                            KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.tweet.userId)/avatar"))
+                            KFImage(URL(string: "http://192.168.100.114:3000/users/\(self.viewModel.tweet.userId)/avatar"))
                                 .placeholder {
                                     Image("Profile")
                                         .resizable()
@@ -57,7 +57,7 @@ struct TweetCellView: View {
                         
                         if viewModel.tweet.image == "true" {
                             GeometryReader { proxy in
-                                KFImage(URL(string: "http://localhost:3000/tweets/\(viewModel.tweet.id)/image"))
+                                KFImage(URL(string: "http://192.168.100.114:3000/tweets/\(viewModel.tweet.id)/image"))
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: proxy.frame(in: .global).width, height: 250)

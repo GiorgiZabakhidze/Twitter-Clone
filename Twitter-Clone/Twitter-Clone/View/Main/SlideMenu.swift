@@ -43,7 +43,7 @@ struct SlideMenu: View {
                                     }
                                 }
                         } label: {
-                            KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.currentUser!.id)/avatar"))
+                            KFImage(URL(string: "http://192.168.100.114:3000/users/\(self.viewModel.currentUser!.id)/avatar"))
                                 .placeholder {
                                     Image("Profile")
                                         .resizable()

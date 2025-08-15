@@ -12,7 +12,7 @@ struct UserProfile: View {
     
     let user: User
     
-    @ObservedObject var viewModel: ProfileViewModel
+    @StateObject var viewModel: ProfileViewModel
     
     @StateObject var searchViewModel = SearchViewModel()
     
@@ -35,7 +35,7 @@ struct UserProfile: View {
     
     init(user: User) {
         self.user = user
-        self.viewModel = ProfileViewModel(user: user)
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(user: user))
     }
     
     var body: some View {
@@ -79,7 +79,7 @@ struct UserProfile: View {
                 
                 VStack {
                     HStack {
-                        KFImage(URL(string: "http://localhost:3000/users/\(self.viewModel.user.id)/avatar"))
+                        KFImage(URL(string: "http://192.168.100.114:3000/users/\(self.viewModel.user.id)/avatar"))
                             .placeholder {
                                 Image("Profile")
                                     .resizable()
@@ -254,37 +254,45 @@ struct UserProfile: View {
                     }.frame(width: 0, height: 0), alignment: .top)
                     .zIndex(1)
                     
-                    if currentTab == "Tweets" {
-                        withAnimation {
-                            VStack(spacing: 18) {
-                                
-                                ScrollView(showsIndicators: false) {
-                                    ForEach(viewModel.tweets) {
-                                        TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                    ZStack {
+                        if currentTab == "Tweets" {
+                            withAnimation {
+                                LazyVStack(spacing: 18) {
+                                    
+                                    ScrollView(showsIndicators: false) {
+                                        ForEach(viewModel.tweets) {
+                                            TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                                        }
+                                    }
+                                    
+                                }
+                                .padding(.top)
+                                .zIndex(0)
+                            }
+                        }else if currentTab == "Tweets & Likes" {
+                            
+                        }else if currentTab == "Media" {
+                            
+                        }else { //currentTab == "Likes"
+                            
+                            
+                            withAnimation {
+                                LazyVStack(spacing: 18) {
+                                    ScrollView(showsIndicators: false) {
+                                        ForEach(viewModel.userLikedTweets) {
+                                            TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
+                                            
+//                                            Divider()
+                                        }
                                     }
                                 }
-                                
+                                .padding(.top)
+                                .zIndex(0)
                             }
-                            .padding(.top)
-                            .zIndex(0)
-                        }
-                    }else if currentTab == "Tweets & Likes" {
-                        
-                    }else if currentTab == "Media" {
-                        
-                    }else { //currentTab == "Likes"
-                        withAnimation {
-                            VStack(spacing: 18) {
-                                ScrollView(showsIndicators: false) {
-                                    ForEach(viewModel.userLikedTweets) {
-                                        TweetCellView(viewModel: TweetCellViewModel(tweet: $0, currentUser: user))
-                                    }
-                                }
-                            }
-                            .padding(.top)
-                            .zIndex(0)
                         }
                     }
+                    .padding(.top)
+                    .zIndex(0)
                 }
                 .padding(.horizontal, 10)
                 .zIndex(-offset > 80 ? 0 : 1)

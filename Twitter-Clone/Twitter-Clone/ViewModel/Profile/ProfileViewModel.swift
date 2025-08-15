@@ -37,7 +37,11 @@ class ProfileViewModel: ObservableObject {
     }
     
     func checkIfUserIsCurrentUser() {
-        self.user.isCurrentUser = Bool(self.user._id == AuthViewModel.shared.currentUser?._id)
+        guard let authId = AuthViewModel.shared.currentUser?._id else {
+            self.user.isCurrentUser = false
+            return
+        }
+        self.user.isCurrentUser = self.user._id == authId;
     }
     
     func follow() {

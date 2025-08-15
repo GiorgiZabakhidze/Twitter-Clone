@@ -69,8 +69,9 @@ struct Home: View {
                     })
                     .onEnded({ val in
                         withAnimation {
+                            print(self.beenThere)
                             if(val.translation.width < 0 && !beenThere) {
-                                if(val.translation.width < -windowFrameWidth/3) {
+                                if(val.translation.width < -windowFrameWidth/7) {
                                     windowStartingPoint = -2 * windowFrameWidth
                                     selectedIndex = 1
                                 }else {
@@ -78,12 +79,13 @@ struct Home: View {
                                 }
                             }else {
                                 if (val.translation.width >= 0) {
-                                    if (-slideManuOffset < 2 * slideMenuWidth/3) {
+                                    if (-slideManuOffset < 4*slideMenuWidth/5) {
                                         slideManuOffset = 0
                                     }else {
                                         slideManuOffset = -slideMenuWidth
                                     }
                                 }else {
+                                    print("Home : " + String(-slideManuOffset))
                                     if (-slideManuOffset > slideMenuWidth/3) {
                                         slideManuOffset = -slideMenuWidth
                                     }else {
@@ -113,14 +115,14 @@ struct Home: View {
                     }).onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0) {
-                                if(val.translation.width < -windowFrameWidth/3) {
+                                if(val.translation.width < -windowFrameWidth/7) {
                                     windowStartingPoint = -3 * windowFrameWidth
                                     selectedIndex = 2
                                 }else {
                                     windowStartingPoint = -2 * windowFrameWidth
                                 }
                             }else {
-                                if (val.translation.width > windowFrameWidth/3) {
+                                if (val.translation.width > windowFrameWidth/7) {
                                     windowStartingPoint = -windowFrameWidth
                                     selectedIndex = 0
                                 }else {
@@ -135,7 +137,7 @@ struct Home: View {
 //                        viewModel.fetchUserNotifications()
 //                    }
                     .navigationBarHidden(true)
-                    .offset(x: windowStartingPoint + 3 *  windowFrameWidth)
+                    .offset(x: windowStartingPoint + 3 * windowFrameWidth)
                     .tag(2)
                     .gesture(DragGesture().onChanged({ val in
                         withAnimation {
@@ -148,14 +150,14 @@ struct Home: View {
                     }).onEnded({ val in
                         withAnimation {
                             if(val.translation.width < 0) {
-                                if(val.translation.width < -windowFrameWidth/3) {
+                                if(val.translation.width < -windowFrameWidth/7) {
                                     windowStartingPoint = -4 * windowFrameWidth
                                     selectedIndex = 3
                                 }else {
                                     windowStartingPoint = -3 * windowFrameWidth
                                 }
                             }else {
-                                if (val.translation.width > windowFrameWidth/3) {
+                                if (val.translation.width > windowFrameWidth/7) {
                                     windowStartingPoint = -2 * windowFrameWidth
                                     selectedIndex = 1
                                 }else {
@@ -183,7 +185,7 @@ struct Home: View {
                             if(val.translation.width < 0) {
                                 windowStartingPoint = -4 * windowFrameWidth
                             }else {
-                                if (val.translation.width > windowFrameWidth/3) {
+                                if (val.translation.width > windowFrameWidth/7) {
                                     windowStartingPoint = -3 * windowFrameWidth
                                     selectedIndex = 2
                                 }else {

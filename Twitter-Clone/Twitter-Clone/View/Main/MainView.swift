@@ -52,7 +52,7 @@ struct MainView: View {
                                         x1 = -width1
                                     }
                                 }else {
-                                    if (-x1 > width1/3) {
+                                    if (-x1 > width1/5) {
                                         x1 = -width1
                                     }else {
                                         x1 = 0

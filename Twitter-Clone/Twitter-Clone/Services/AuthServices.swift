@@ -25,7 +25,7 @@ public class AuthServices {
     
     static func login(email: String, password: String, completion: @escaping (_ result: Result<Data, AuthenticationError>) -> Void) {
         
-        let urlString = URL(string: "http://localhost:3000/users/login")!
+        let urlString = URL(string: "http://192.168.100.114:3000/users/login")!
         
         makeRequest(urlString: urlString, reqBody: ["email": email, "password": password]) { result in
             switch result {
@@ -39,7 +39,7 @@ public class AuthServices {
     
     static func register(name: String, username: String, email: String, password: String, completion: @escaping (_ result: Result<Data?, AuthenticationError>) -> Void) {
         
-        let urlString = URL(string: "http://localhost:3000/users")!
+        let urlString = URL(string: "http://192.168.100.114:3000/users")!
         
         makeRequest(urlString: urlString, reqBody: ["name": name, "username": username, "email": email, "password": password]) { result in
             switch result {
