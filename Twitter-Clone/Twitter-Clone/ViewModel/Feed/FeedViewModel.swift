@@ -16,7 +16,7 @@ class FeedViewModel: ObservableObject {
     }
     
     func fetchTweets() {
-        RequestServices.requestDomain = "http://localhost:3000/tweets"
+        RequestServices.requestDomain = "http://192.168.100.114:3000/tweets"
         
         RequestServices.fetchTweets { res in
             DispatchQueue.global(qos: .background).async {

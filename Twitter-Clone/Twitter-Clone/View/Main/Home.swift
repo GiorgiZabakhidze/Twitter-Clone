@@ -24,7 +24,7 @@ struct Home: View {
     
     let user: User
     
-    @ObservedObject var viewModel = NotificationsViewModel()
+    @StateObject var viewModel = NotificationsViewModel()
     
     var body: some View {
         VStack {

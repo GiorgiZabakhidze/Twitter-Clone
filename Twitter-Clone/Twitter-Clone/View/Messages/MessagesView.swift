@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MessagesView: View {
-    @ObservedObject var viewModel = MessagesViewModel()
+    @StateObject var viewModel = MessagesViewModel()
     
     var body: some View {
         VStack {

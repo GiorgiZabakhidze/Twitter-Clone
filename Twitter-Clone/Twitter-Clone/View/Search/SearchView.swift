@@ -11,7 +11,7 @@ struct SearchView: View {
     @State var text = ""
     @State var isEditing = false
     
-    @ObservedObject var viewModel = SearchViewModel()
+    @StateObject var viewModel = SearchViewModel()
     
     var users: [User] {
         return text.isEmpty ? viewModel.users : viewModel.filteredUsers(text)

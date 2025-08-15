@@ -17,7 +17,7 @@ class SearchViewModel: ObservableObject {
     }
     
     func fetchUsers() {
-        AuthServices.requestDomain = "http://localhost:3000/users"
+        AuthServices.requestDomain = "http://192.168.100.114:3000/users"
         
         AuthServices.fetchUser { result in
             switch result {

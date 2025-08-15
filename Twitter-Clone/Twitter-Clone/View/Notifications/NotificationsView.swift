@@ -9,21 +9,30 @@ import SwiftUI
 
 struct NotificationsView: View {
     
-    @ObservedObject var viewModel = NotificationsViewModel()
+    @StateObject var viewModel = NotificationsViewModel()
     
     var body: some View {
         RefreshableScrollView(content:
             VStack {
-                ScrollView(showsIndicators: false) {
-                    ForEach(viewModel.notifications) { not in
-                        if (not.notSenderId != AuthViewModel.shared.currentUser!.id) {
-                            NotificationsCellView(notification: not, notificationType: not.notificationType)
+            if(viewModel.notifications.filter({$0.notSenderId != AuthViewModel.shared.currentUser!.id}).count > 0) {
+                    ScrollView(showsIndicators: false) {
+                        ForEach(viewModel.notifications) { not in
+                            if (not.notSenderId != AuthViewModel.shared.currentUser!.id) {
+                                NotificationsCellView(notification: not, notificationType: not.notificationType)
+                                
+                            }
+                            
                         }
-                        
                     }
+                }else {
+                    Spacer();
+                    Text("No Notifications yet for you nigger!");
+                    Spacer();
+                    Spacer();
                 }
         }) { control in
             print("x")
+            print(viewModel.notifications.count)
             control.endRefreshing()
         }
     }

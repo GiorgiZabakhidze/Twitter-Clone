@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateTweetView: View {
     
-    @ObservedObject var viewModel = CreateTweetViewModel()
+    @StateObject var viewModel = CreateTweetViewModel()
     
     @Binding var show: Bool
     @State var text = ""

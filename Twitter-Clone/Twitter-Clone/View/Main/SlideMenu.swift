@@ -12,7 +12,7 @@ struct SlideMenu: View {
     
     @ObservedObject var viewModel: AuthViewModel
     
-    @ObservedObject var searchViewModel = SearchViewModel()
+    @StateObject var searchViewModel = SearchViewModel()
     
     let user: User
     

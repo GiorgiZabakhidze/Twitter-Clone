@@ -46,7 +46,7 @@ class EditProfileViewModel: ObservableObject {
         
         let urlPath = "/users/\(userId)"
         
-        let url = URL(string: "http://localhost:3000\(urlPath)")!
+        let url = URL(string: "http://192.168.100.114:3000\(urlPath)")!
         
         AuthServices.makePatchRequestWithAuth(urlString: url, reqBody: ["name": name, "location": location, "bio": bio, "website": website]) { result in
             
@@ -63,7 +63,7 @@ class EditProfileViewModel: ObservableObject {
         
         if isUserNameChanged {
             if tweets.count > 0 {
-                let tweetUrl = URL(string: "http://localhost:3000/tweets/change/\(userId)")!
+                let tweetUrl = URL(string: "http://192.168.100.114:3000/tweets/change/\(userId)")!
                 
                 AuthServices.makePatchRequestWithAuth(urlString: tweetUrl, reqBody: ["user": name]) { result in
                     print(result)

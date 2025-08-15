@@ -14,7 +14,7 @@ struct UserProfile: View {
     
     @ObservedObject var viewModel: ProfileViewModel
     
-    @ObservedObject var searchViewModel = SearchViewModel()
+    @StateObject var searchViewModel = SearchViewModel()
     
     var isCurrentUser: Bool {
         return viewModel.user.isCurrentUser!

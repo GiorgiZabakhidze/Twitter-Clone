@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Feed: View {
     
-    @ObservedObject var viewModel = FeedViewModel()
+    @StateObject var viewModel = FeedViewModel()
     
     let user: User
     

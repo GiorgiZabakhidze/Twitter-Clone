@@ -43,7 +43,7 @@ struct NotificationsCellView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     +
-                    Text(notificationType == "follow" ? "followed you" : "Liked Your Post")
+                    Text(notificationType == "follow" ? "Followed you" : "Liked Your Post")
                         .foregroundColor(.black)
                 }
                 Spacer(minLength: 8)
