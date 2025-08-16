@@ -209,7 +209,7 @@ public class RequestServices {
     }
     
     static func FetchUserNotifications(userId: String, completion: @escaping (_ result: Result<Data?, NetworkError>) -> Void) {
-        let url = URL(string: "http://192.168.100.114:3000/notifications/\(userId)")!
+        let url = URL(string: "\(Constants.baseURL)/notifications/\(userId)")!
         
         let session = URLSession.shared
         
@@ -287,7 +287,7 @@ public class RequestServices {
     }
     
     static func FetchUserMessages(userId: String, completion: @escaping (_ result: Result<Data?, NetworkError>) -> Void) {
-        let url = URL(string: "http://192.168.100.114:3000/messages/\(userId)")!
+        let url = URL(string: "\(Constants.baseURL)/messages/\(userId)")!
         
         let session = URLSession.shared
         

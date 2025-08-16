@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageUplaoder {
     static func uploadImage(paramName: String, fileName: String, image: UIImage, urlPath: String) {
-        let url = URL(string: "http://localhost:3000\(urlPath)")
+        let url = URL(string: "\(Constants.baseURL)\(urlPath)")
         
         let boundary = UUID().uuidString
         

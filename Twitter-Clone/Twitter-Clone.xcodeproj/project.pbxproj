@@ -31,6 +31,7 @@
 		CE40CF512AA1FDE9008640F8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40CF502AA1FDE9008640F8 /* ProfileViewModel.swift */; };
 		CE40CF532AA204B2008640F8 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40CF522AA204B2008640F8 /* EditProfileViewModel.swift */; };
 		CE491EB02AABB18C00E1678D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE491EAF2AABB18C00E1678D /* SearchViewModel.swift */; };
+		CE4D911A2E4F753200177492 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D91192E4F753200177492 /* Constants.swift */; };
 		CE4E86A22AB896140052B4B2 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E86A12AB896140052B4B2 /* MessagesViewModel.swift */; };
 		CE4E86A42AB896510052B4B2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E86A32AB896510052B4B2 /* Message.swift */; };
 		CE6335902A9A880C0093F598 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63358F2A9A880C0093F598 /* Tweet.swift */; };
@@ -92,6 +93,7 @@
 		CE40CF502AA1FDE9008640F8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		CE40CF522AA204B2008640F8 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		CE491EAF2AABB18C00E1678D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		CE4D91192E4F753200177492 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE4E86A12AB896140052B4B2 /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		CE4E86A32AB896510052B4B2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CE63358F2A9A880C0093F598 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				CE1626792A8644520080C802 /* View */,
 				CE16266A2A8643240080C802 /* Twitter_CloneApp.swift */,
 				CE16266E2A8643250080C802 /* Assets.xcassets */,
+				CE4D91192E4F753200177492 /* Constants.swift */,
 				CE1626702A8643250080C802 /* Twitter_Clone.entitlements */,
 				CE1626712A8643250080C802 /* Preview Content */,
 			);
@@ -509,6 +512,7 @@
 				CE8EE64C2A95E2E500DA1E21 /* AuthServices.swift in Sources */,
 				CE4E86A22AB896140052B4B2 /* MessagesViewModel.swift in Sources */,
 				CEB772E72A87E89B00A2C8F4 /* FollowView.swift in Sources */,
+				CE4D911A2E4F753200177492 /* Constants.swift in Sources */,
 				CE1626902A864E800080C802 /* MessagesView.swift in Sources */,
 				CE8137A22A8940A5006C66B0 /* UserProfile.swift in Sources */,
 				CE2E20C82AB4F62F0010898F /* FollowingsView.swift in Sources */,

@@ -30,7 +30,7 @@ struct NotificationsCellView: View {
                     .foregroundColor(Color("bg"))
                     .padding(.top, 4)
                 VStack(alignment: .leading, spacing: 2) {
-                    KFImage(URL(string: "http://192.168.100.114:3000/users/\(self.notification.notSenderId)/avatar"))
+                    KFImage(URL(string: "\(Constants.baseURL)/users/\(self.notification.notSenderId)/avatar"))
                         .placeholder {
                             Image("Profile")
                                 .resizable()

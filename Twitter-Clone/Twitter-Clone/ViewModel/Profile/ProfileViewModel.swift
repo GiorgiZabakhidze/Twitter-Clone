@@ -21,7 +21,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func FetchTweets() {
-        RequestServices.requestDomain = "http://192.168.100.114:3000/tweets/\(self.user.id)"
+        RequestServices.requestDomain = "\(Constants.baseURL)/tweets/\(self.user.id)"
         
         RequestServices.fetchTweets { result in
             switch result {
@@ -50,13 +50,13 @@ class ProfileViewModel: ObservableObject {
             return
         }
         
-        RequestServices.requestDomain = "http://192.168.100.114:3000/users/\(self.user.id)/follow"
+        RequestServices.requestDomain = "\(Constants.baseURL)/users/\(self.user.id)/follow"
         
         RequestServices.followingProcess(id: self.user.id) { result in
             print(result)
         }
         
-        RequestServices.requestDomain = "http://192.168.100.114:3000/notifications"
+        RequestServices.requestDomain = "\(Constants.baseURL)/notifications"
         
         RequestServices.sendNotification(username: authedUser.username, notSenderId: authedUser.id, notReceiverId: self.user.id, notificationType: "follow", postText: "", postLikes: ["sdialm"]) { result in
             print("User Has Been Followed")
@@ -66,7 +66,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func unfollow() {
-        RequestServices.requestDomain = "http://192.168.100.114:3000/users/\(self.user.id)/unfollow"
+        RequestServices.requestDomain = "\(Constants.baseURL)/users/\(self.user.id)/unfollow"
         
         RequestServices.followingProcess(id: self.user.id) { result in
             print(result)
@@ -81,7 +81,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func FetchUserLikedTweets(){
-        RequestServices.requestDomain = "http://192.168.100.114:3000/tweets/liked/\(self.user.id)"
+        RequestServices.requestDomain = "\(Constants.baseURL)/tweets/liked/\(self.user.id)"
         
         RequestServices.fetchTweets { result in
             switch result {

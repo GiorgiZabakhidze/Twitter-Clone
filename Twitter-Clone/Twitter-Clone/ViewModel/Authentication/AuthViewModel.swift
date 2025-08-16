@@ -36,7 +36,7 @@ class AuthViewModel: ObservableObject {
     func login(email: String, password: String, completion: @escaping () -> Void) {
         let defaults = UserDefaults.standard
         
-        AuthServices.requestDomain = "http://192.168.100.114:3000/users/login"
+        AuthServices.requestDomain = "\(Constants.baseURL)/users/login"
         AuthServices.login(email: email, password: password) { result in
             switch result {
                 case .success(let data):
@@ -87,7 +87,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func fetchUser(userId: String) {
-        AuthServices.requestDomain = "http://192.168.100.114:3000/users/\(userId)"
+        AuthServices.requestDomain = "\(Constants.baseURL)/users/\(userId)"
         AuthServices.fetchUser() { result in
             switch result {
                 case.success(let data):

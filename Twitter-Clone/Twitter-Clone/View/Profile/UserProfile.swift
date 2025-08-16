@@ -79,7 +79,7 @@ struct UserProfile: View {
                 
                 VStack {
                     HStack {
-                        KFImage(URL(string: "http://192.168.100.114:3000/users/\(self.viewModel.user.id)/avatar"))
+                        KFImage(URL(string: "\(Constants.baseURL)/users/\(self.viewModel.user.id)/avatar"))
                             .placeholder {
                                 Image("Profile")
                                     .resizable()

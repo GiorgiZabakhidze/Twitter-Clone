@@ -24,7 +24,7 @@ struct MessagesCellView: View {
                 .padding(.top, -5)
             
             HStack(alignment: .top, spacing: 10) {
-                KFImage(URL(string: "http://192.168.100.114:3000/users/\(message.mesSenderId)/avatar"))
+                KFImage(URL(string: "\(Constants.baseURL)/users/\(message.mesSenderId)/avatar"))
                     .placeholder {
                         Image("Profile")
                             .resizable()

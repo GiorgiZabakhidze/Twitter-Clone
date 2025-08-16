@@ -15,7 +15,7 @@ class CreateTweetViewModel: ObservableObject {
             return
         }
         
-        RequestServices.requestDomain = "http://192.168.100.114:3000/tweets"
+        RequestServices.requestDomain = "\(Constants.baseURL)/tweets"
         
         RequestServices.postTweet(text: text, user: user.name, username: user.username, userId: user.id) { result in
             if let image = image {

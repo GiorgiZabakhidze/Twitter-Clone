@@ -22,7 +22,7 @@ class TweetCellViewModel: ObservableObject {
     }
     
     func fetchUser(userId: String) {
-        AuthServices.requestDomain = "http://192.168.100.114:3000/users/\(userId)"
+        AuthServices.requestDomain = "\(Constants.baseURL)/users/\(userId)"
         
         AuthServices.fetchUser() { result in
             switch result {
@@ -38,14 +38,14 @@ class TweetCellViewModel: ObservableObject {
     }
     
     func like() {
-        RequestServices.requestDomain = "http://192.168.100.114:3000/tweets/\(self.tweet.id)/like"
+        RequestServices.requestDomain = "\(Constants.baseURL)/tweets/\(self.tweet.id)/like"
         
         RequestServices.likeProcess(id: self.tweet.id) { result in
             print(result)
             print("The Tweet Has Been Liked")
         }
         
-        RequestServices.requestDomain = "http://192.168.100.114:3000/notifications"
+        RequestServices.requestDomain = "\(Constants.baseURL)/notifications"
         
         RequestServices.sendNotification(username: self.currentUser.username, notSenderId: self.currentUser.id, notReceiverId: self.tweet.userId, notificationType: "like", postText: self.tweet.text, postLikes: self.tweet.likes) { result in
             
@@ -56,7 +56,7 @@ class TweetCellViewModel: ObservableObject {
     }
     
     func unlike() {
-        RequestServices.requestDomain = "http://192.168.100.114:3000/tweets/\(self.tweet.id)/unlike"
+        RequestServices.requestDomain = "\(Constants.baseURL)/tweets/\(self.tweet.id)/unlike"
         
         RequestServices.likeProcess(id: self.tweet.id) { result in
             print(result)

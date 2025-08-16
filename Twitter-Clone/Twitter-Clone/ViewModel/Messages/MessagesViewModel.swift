@@ -16,7 +16,7 @@ class MessagesViewModel: ObservableObject {
     }
     
     func SendMessage(name: String, username: String, mesSenderId: String, mesReceiverId: String, message: String) {
-        RequestServices.requestDomain = "http://192.168.100.114:3000/messages"
+        RequestServices.requestDomain = "\(Constants.baseURL)/messages"
         
         RequestServices.SendMessages(name: name, username: username, mesSenderId: mesSenderId, mesReceiverId: mesReceiverId, message: message) { result in
                 
