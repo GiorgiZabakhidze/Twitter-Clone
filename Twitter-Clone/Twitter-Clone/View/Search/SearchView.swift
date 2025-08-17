@@ -21,6 +21,7 @@ struct SearchView: View {
         VStack(alignment: .leading) {
             SearchBar(text: $text, isEditing: $isEditing)
                 .padding(.horizontal)
+                .padding(.top)
             
             RefreshableScrollView(content:
                 LazyVStack(alignment: .leading) {
@@ -36,6 +37,7 @@ struct SearchView: View {
                 control.endRefreshing()
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

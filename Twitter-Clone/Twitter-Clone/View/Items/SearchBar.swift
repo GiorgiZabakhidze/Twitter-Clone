@@ -11,12 +11,11 @@ struct SearchBar: View {
     @Binding var text: String
     @Binding var isEditing: Bool
     
+    @FocusState private var isFocused: Bool
+    
     var body: some View {
         HStack {
             TextField("Search Twitter..", text: $text)
-                .onTapGesture {
-                    isEditing = true
-                }
                 .padding(8)
                 .padding(.horizontal, 24)
                 .background(Color(.systemGray6))
@@ -29,21 +28,29 @@ struct SearchBar: View {
                             .padding(.leading, 8)
                     }
                 )
-            Button {
-                isEditing = false
-                text = ""
-                UIApplication.shared.endEditing()
-            } label: {
-                Text("Cancel")
-                    .foregroundColor(.black)
-                    .padding(.trailing, 8)
-                    .transition(.move(edge: .trailing))
-                    .animation(.default)
+                .focused($isFocused)
+                .onChange(of: isFocused) { focused in
+                    withAnimation {
+                        isEditing = focused
+                    }
+                }
+            
+            if(isEditing) {
+                Button {
+                    text = ""
+                    isFocused = false;
+                    withAnimation {
+                        isEditing = false
+                    }
+                } label: {
+                    Text("Cancel")
+                        .foregroundColor(.black)
+                        .padding(.trailing, 8)
+                        .transition(.move(edge: .trailing))
+                        
+                }
             }
         }
         .padding(.top, 4)
-        .onTapGesture {
-            isEditing = true
-        }
     }
 }
