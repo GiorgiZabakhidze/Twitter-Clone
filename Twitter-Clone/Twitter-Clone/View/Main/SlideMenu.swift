@@ -16,7 +16,7 @@ struct SlideMenu: View {
     
     let user: User
     
-    @State var show = false
+    @State var show = true
     
     var menuButtons = ["Profile", "Lists", "Topics", "Bookmarks", "Moments"]
     
@@ -222,6 +222,8 @@ struct SlideMenu: View {
                     .frame(height: show ? nil : 0)
                     
                     VStack(alignment: .leading) {
+                        Spacer(minLength: 30);
+                        
                         Button {
                             self.IsCreateNewAccauntPresented.toggle()
                         } label: {
@@ -255,7 +257,8 @@ struct SlideMenu: View {
                                 .padding(.top, 15)
                         }
                         
-                        Spacer(minLength: 0)
+//                        Spacer(minLength: 0)
+                        
 
                     }
                     .opacity(show ? 0 : 1)

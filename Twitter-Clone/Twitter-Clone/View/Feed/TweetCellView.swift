@@ -27,21 +27,23 @@ struct TweetCellView: View {
             VStack {
                 HStack(alignment: .top, spacing: 10) {
                     
-                    if let user = viewModel.user {
-                        NavigationLink {
+                    NavigationLink {
+                        if let user = viewModel.user {
                             UserProfile(user: user)
-                        } label: {
-                            KFImage(URL(string: "\(Constants.baseURL)/users/\(self.viewModel.tweet.userId)/avatar"))
-                                .placeholder {
-                                    Image("Profile")
-                                        .resizable()
-                                }
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 55, height: 55)
-                                .clipShape(Circle())
                         }
-
+                    } label: {
+                        KFImage(URL(string: "\(Constants.baseURL)/users/\(self.viewModel.tweet.userId)/avatar")!)
+                            .placeholder {
+                                Image("Profile")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 55, height: 55)
+                                    .clipShape(Circle())
+                            }
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 55, height: 55)
+                            .clipShape(Circle())
                     }
                     
                     VStack(alignment: .leading, spacing: 10) {
@@ -57,7 +59,7 @@ struct TweetCellView: View {
                         
                         if viewModel.tweet.image == "true" {
                             GeometryReader { proxy in
-                                KFImage(URL(string: "\(Constants.baseURL)/tweets/\(viewModel.tweet.id)/image"))
+                                KFImage(URL(string: "\(Constants.baseURL)/tweets/\(viewModel.tweet.id)/image")!)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: proxy.frame(in: .global).width, height: 250)
