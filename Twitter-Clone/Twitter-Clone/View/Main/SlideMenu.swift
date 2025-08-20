@@ -136,39 +136,67 @@ struct SlideMenu: View {
                         }
                     }
                     
-                    VStack(alignment: .leading) {
-                        ForEach(menuButtons, id:\.self) { item in
-                            NavigationLink {
-                                if (item == "Profile") {
-                                    UserProfile(user: viewModel.currentUser!)
-                                        .onAppear {
-                                            withAnimation {
-                                                self.x1 = -UIScreen.main.bounds.width + 90
-                                            }
-                                        }
-                                }else if (item == "Lists") {
-
-                                }else if (item == "Topics") {
-
-                                }else if (item == "Bookmarks") {
-
-                                }else { //item == "Moments"
-
+                    VStack(alignment: .leading, spacing: 0) {
+                        VStack(spacing: 12) {
+                            ForEach(menuButtons, id:\.self) { item in
+                                NavigationLink {
+                                    if (item == "Profile") {
+                                        UserProfile(user: viewModel.currentUser!)
+                                        //                                        .onAppear {
+                                        //                                            withAnimation {
+                                        //                                                self.x1 = -UIScreen.main.bounds.width + 90
+                                        //                                            }
+                                        //                                        }
+                                    }else if (item == "Lists") {
+                                        
+                                    }else if (item == "Topics") {
+                                        
+                                    }else if (item == "Bookmarks") {
+                                        
+                                    }else { //item == "Moments"
+                                        
+                                    }
+                                } label: {
+                                    // THE PROBLEM IS HERE:: THIS MAKES VIEW MOVE UP WHEN KEYBOARD SHOWS UP!
+                                    MenuButton(title: item)
+//                                        .padding(.vertical, 8)
+                                        .contentShape(Rectangle()) // improves tap area without pushing layout
                                 }
-                            } label: {
-                                // THE PROBLEM IS HERE:: THIS MAKES VIEW MOVE UP WHEN KEYBOARD SHOWS UP!
-                                MenuButton(title: item)
+                                
                             }
-
                         }
+//                        Spacer(minLength: 12)
+//                        VStack(spacing: 12) {
+//                            MenuButton(title: menuButtons[0])
+//                                .padding(.vertical, 8)
+//                                    .contentShape(Rectangle()) // improves tap area without pushing layout
+//                            
+//                            MenuButton(title: menuButtons[1])
+//                                .padding(.vertical, 8)
+//                                    .contentShape(Rectangle()) // improves tap area without pushing layout
+//                            
+//                            MenuButton(title: menuButtons[2])
+//                                .padding(.vertical, 8)
+//                                    .contentShape(Rectangle()) // improves tap area without pushing layout
+//                            
+//                            MenuButton(title: menuButtons[3])
+//                                .padding(.vertical, 8)
+//                                    .contentShape(Rectangle()) // improves tap area without pushing layout
+//                            
+//                            MenuButton(title: menuButtons[4])
+//                                .padding(.vertical, 8)
+//                                    .contentShape(Rectangle()) // improves tap area without pushing layout
+//                        }
                         
                         Divider()
-                            .padding(.top)
+//                            .padding(.top)
                         
                         Button {
                             
                         } label: {
                             MenuButton(title: "Twitter Ads")
+                                .padding(.vertical, 8)
+                                    .contentShape(Rectangle()) // improves tap area without pushing layout
                         }
                         
                         Divider()
@@ -219,8 +247,10 @@ struct SlideMenu: View {
 
                         }
                     }
-//                    .opacity(show ? 1 : 0)
-//                    .frame(height: show ? nil : 0)
+                    .opacity(show ? 1 : 0)
+                    .frame(height: show ? nil : 0)
+//                    .frame(maxHeight: .infinity, alignment: .top) // keep fixed top anchor
+                    .ignoresSafeArea(.keyboard, edges: .bottom)
                     
                     VStack(alignment: .leading) {
                         Spacer(minLength: 30);

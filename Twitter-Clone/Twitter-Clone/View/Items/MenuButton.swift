@@ -21,6 +21,7 @@ struct MenuButton: View {
                 .foregroundColor(.black)
             Spacer(minLength: 0)
             
-        }.padding(.vertical, 12)
+        }
+//        .padding(.vertical, 12)
     }
 }
