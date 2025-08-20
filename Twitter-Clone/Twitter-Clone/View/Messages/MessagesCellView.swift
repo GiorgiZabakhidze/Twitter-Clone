@@ -61,6 +61,7 @@ struct MessagesCellView: View {
             .padding(.leading)
             .padding(.top, -5)
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

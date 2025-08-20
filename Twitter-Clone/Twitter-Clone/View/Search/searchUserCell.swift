@@ -31,6 +31,9 @@ struct searchUserCell: View {
                 Text("@\(self.user.username)")
                     .foregroundColor(.black)
             }
+            .ignoresSafeArea(.keyboard)
+            
+            //MARK: tweetebis raodenoba da egetebis damateba ra
             
             Spacer(minLength: 0)
         }

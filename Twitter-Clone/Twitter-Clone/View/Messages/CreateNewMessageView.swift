@@ -114,7 +114,9 @@ struct CreateNewMessageView: View {
                         .padding(.bottom, UIScreen.main.bounds.height / 3)
                 }
                 
-            }.padding(.top)
+            }
+            .padding(.top)
+            .ignoresSafeArea(.keyboard)
         }
     }
 }

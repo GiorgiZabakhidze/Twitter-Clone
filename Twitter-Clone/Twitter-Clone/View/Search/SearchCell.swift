@@ -19,6 +19,7 @@ struct SearchCell: View {
                 Text(tweets + " Tweets")
                     .fontWeight(.light)
             }
+            .ignoresSafeArea(.keyboard)
             
             Spacer()
         }

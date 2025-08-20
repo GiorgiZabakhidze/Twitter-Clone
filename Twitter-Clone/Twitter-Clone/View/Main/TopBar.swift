@@ -43,6 +43,9 @@ struct TopBar: View {
         }
         .background(.white)
         .zIndex(1)
+        .ignoresSafeArea(.keyboard)
+//        .padding(.top, 0)
+//        .safeAreaPadding(.top)
     }
 }
 

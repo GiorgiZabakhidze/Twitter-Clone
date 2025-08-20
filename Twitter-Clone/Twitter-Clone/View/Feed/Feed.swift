@@ -31,6 +31,7 @@ struct Feed: View {
                 .padding(.top)
                 .padding(.horizontal)
                 .zIndex(0)
+                .ignoresSafeArea(.keyboard)
         }) { control in
             DispatchQueue.main.async {
                 self.viewModel.fetchTweets()

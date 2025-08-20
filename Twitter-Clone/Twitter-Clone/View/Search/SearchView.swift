@@ -33,7 +33,7 @@ struct SearchView: View {
                                 .padding(.leading)
                         }
                     }
-            }) { control in
+            }.ignoresSafeArea(.keyboard)) { control in
                 control.endRefreshing()
             }
         }

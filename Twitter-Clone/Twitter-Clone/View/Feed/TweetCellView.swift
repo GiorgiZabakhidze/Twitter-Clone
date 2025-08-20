@@ -113,8 +113,10 @@ struct TweetCellView: View {
                 .padding(.top, 4)
                 .padding(.leading, 30)
             }
+            .ignoresSafeArea(.keyboard)
 
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

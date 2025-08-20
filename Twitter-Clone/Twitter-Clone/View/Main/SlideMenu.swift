@@ -30,8 +30,8 @@ struct SlideMenu: View {
     @Binding var x1: CGFloat
     
     var body: some View {
-        VStack {
-            HStack(spacing: 0){
+//        VStack {
+            HStack(spacing: 0) {
                 VStack(alignment: .leading) {
                     
                     HStack {
@@ -156,6 +156,7 @@ struct SlideMenu: View {
 
                                 }
                             } label: {
+                                // THE PROBLEM IS HERE:: THIS MAKES VIEW MOVE UP WHEN KEYBOARD SHOWS UP!
                                 MenuButton(title: item)
                             }
 
@@ -218,8 +219,8 @@ struct SlideMenu: View {
 
                         }
                     }
-                    .opacity(show ? 1 : 0)
-                    .frame(height: show ? nil : 0)
+//                    .opacity(show ? 1 : 0)
+//                    .frame(height: show ? nil : 0)
                     
                     VStack(alignment: .leading) {
                         Spacer(minLength: 30);
@@ -269,13 +270,13 @@ struct SlideMenu: View {
                 .padding(.bottom, edges?.bottom == 0 ? 15 : edges?.bottom)
                 .frame(width: width - 90)
                 .background(Color.white)
-                .ignoresSafeArea(.all, edges: .vertical)
-                .ignoresSafeArea(.all, edges: .horizontal)
+                .ignoresSafeArea(.all)
                 
                 Spacer(minLength: 0)
                 
             }
-        }
+//        }
+//        .ignoresSafeArea(.keyboard)
     }
 }
 

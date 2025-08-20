@@ -49,6 +49,7 @@ struct NotificationsCellView: View {
                 Spacer(minLength: 8)
             }.padding(.leading, 30)
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

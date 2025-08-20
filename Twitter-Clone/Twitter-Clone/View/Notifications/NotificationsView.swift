@@ -30,7 +30,7 @@ struct NotificationsView: View {
                     Spacer();
                     Spacer();
                 }
-        }) { control in
+        }.ignoresSafeArea(.keyboard)) { control in
             print("x")
             print(viewModel.notifications.count)
             control.endRefreshing()

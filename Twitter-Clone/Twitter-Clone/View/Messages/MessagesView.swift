@@ -19,6 +19,7 @@ struct MessagesView: View {
                 control.endRefreshing()
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 
